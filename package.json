@@ -14,8 +14,8 @@
     "contributes": {
         "commands": [
             {
-                "command": "glimpse.helloWorld",
-                "title": "Hello World"
+                "command": "glimpse.run",
+                "title": "Glimpse"
             }
         ]
     },
