@@ -14,7 +14,7 @@ function pick(glimpses: Menu) {
     for (const [key, value] of glimpses.items.entries()) {
         options.push({
             label: key,
-            description: value.label,
+            description: `\t${value.label}`,
         });
     }
 
@@ -45,19 +45,21 @@ function executeGlimpse(
     quickPick: vscode.QuickPick<vscode.QuickPickItem>,
     glimpses: Menu
 ) {
-    const key = quickPick.activeItems[0].label;
-    const command = glimpses.items.get(key)?.command;
-    if (command) {
-        if (typeof command === "string") {
-            vscode.commands.executeCommand(command);
-            if (glimpses.transient) {
-                pick(glimpses);
+    const activeItem = quickPick.activeItems[0];
+    if (activeItem) {
+        const key = activeItem.label;
+        const command = glimpses.items.get(key)?.command;
+        if (command) {
+            if (typeof command === "string") {
+                vscode.commands.executeCommand(command);
+                if (glimpses.transient) {
+                    pick(glimpses);
+                }
+            } else {
+                // it's a submenu
+                pick(command);
             }
-        } else {
-            // it's a submenu
-            pick(command);
         }
-
-        quickPick.dispose();
     }
+    quickPick.dispose();
 }
