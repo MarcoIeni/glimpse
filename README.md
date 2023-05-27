@@ -1,5 +1,8 @@
 # Glimpse
 
+Still experimental. Not ready for use.
+Come back later. 👀
+
 ## Features
 
 TODO: Describe specific features of your extension including screenshots of your extension in action.
