@@ -1,5 +1,8 @@
+// TODO: typedef Map<string, Key> as Menu
+
 export type Key = {
     label: string;
+    /** either the command name or a submenu */
     command: string | Map<string, Key>;
 };
 
