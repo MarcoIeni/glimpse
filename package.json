@@ -3,6 +3,7 @@
     "displayName": "glimpse",
     "description": "Mnemonic key bindings for VSCode actions",
     "version": "0.0.1",
+    "publisher": "ieni",
     "engines": {
         "vscode": "^1.78.0"
     },
