@@ -1,28 +1,37 @@
-// TODO: typedef Map<string, Key> as Menu
-
 export type Key = {
     label: string;
     /** either the command name or a submenu */
-    command: string | Map<string, Key>;
+    command: string | Menu;
 };
 
-export function keys(): Map<string, Key> {
-    return new Map<string, Key>([
-        ["w", { label: "Window", command: "editor.action.addCommentLine" }],
-        [
-            "f",
-            {
-                label: "File",
-                command: "workbench.action.files.newUntitledFile",
-            },
-        ],
-        ["z", { label: "Zoom", command: zoom() }],
-    ]);
+export type Menu = {
+    transient: boolean;
+    items: Map<string, Key>;
+};
+
+export function menu(): Menu {
+    return {
+        transient: false,
+        items: new Map<string, Key>([
+            ["w", { label: "Window", command: "editor.action.addCommentLine" }],
+            [
+                "f",
+                {
+                    label: "File",
+                    command: "workbench.action.files.newUntitledFile",
+                },
+            ],
+            ["z", { label: "Zoom", command: zoom() }],
+        ]),
+    };
 }
 
-export function zoom(): Map<string, Key> {
-    return new Map<string, Key>([
-        ["+", { label: "Zoom In", command: "workbench.action.zoomIn" }],
-        ["-", { label: "Zoom Out", command: "workbench.action.zoomOut" }],
-    ]);
+function zoom(): Menu {
+    return {
+        transient: true,
+        items: new Map<string, Key>([
+            ["+", { label: "Zoom In", command: "workbench.action.zoomIn" }],
+            ["-", { label: "Zoom Out", command: "workbench.action.zoomOut" }],
+        ]),
+    };
 }

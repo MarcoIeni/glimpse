@@ -1,17 +1,17 @@
 import * as vscode from "vscode";
-import { Key, keys } from "./keys";
+import { Key, Menu, menu } from "./keys";
 
 export async function glimpseRun(context: vscode.ExtensionContext) {
-    const glimpses = keys();
+    const glimpses = menu();
     pick(glimpses);
 }
 
-function pick(glimpses: Map<string, Key>) {
+function pick(glimpses: Menu) {
     const quickPick = vscode.window.createQuickPick();
 
     // Fill quick pick options.
     let options = [];
-    for (const [key, value] of glimpses.entries()) {
+    for (const [key, value] of glimpses.items.entries()) {
         options.push({
             label: key,
             description: value.label,
@@ -33,7 +33,7 @@ function pick(glimpses: Map<string, Key>) {
 
 function onValueChange(
     quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    glimpses: Map<string, Key>
+    glimpses: Menu
 ) {
     console.log("user typed ", quickPick.value);
     if (quickPick.value.length !== 0) {
@@ -43,14 +43,18 @@ function onValueChange(
 
 function executeGlimpse(
     quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    glimpses: Map<string, Key>
+    glimpses: Menu
 ) {
     const key = quickPick.activeItems[0].label;
-    const command = glimpses.get(key)?.command;
+    const command = glimpses.items.get(key)?.command;
     if (command) {
         if (typeof command === "string") {
             vscode.commands.executeCommand(command);
-        } else if (command instanceof Map) {
+            if (glimpses.transient) {
+                pick(glimpses);
+            }
+        } else {
+            // it's a submenu
             pick(command);
         }
 
