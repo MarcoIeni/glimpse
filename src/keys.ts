@@ -1,6 +1,6 @@
-type Key = {
+export type Key = {
     label: string;
-    command: string;
+    command: string | Map<string, Key>;
 };
 
 export function keys(): Map<string, Key> {
@@ -13,5 +13,13 @@ export function keys(): Map<string, Key> {
                 command: "workbench.action.files.newUntitledFile",
             },
         ],
+        ["z", { label: "Zoom", command: zoom() }],
+    ]);
+}
+
+export function zoom(): Map<string, Key> {
+    return new Map<string, Key>([
+        ["+", { label: "Zoom In", command: "workbench.action.zoomIn" }],
+        ["-", { label: "Zoom Out", command: "workbench.action.zoomOut" }],
     ]);
 }

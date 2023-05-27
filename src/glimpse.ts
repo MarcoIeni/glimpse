@@ -1,8 +1,12 @@
 import * as vscode from "vscode";
-import { keys } from "./keys";
+import { Key, keys } from "./keys";
 
 export async function glimpseRun(context: vscode.ExtensionContext) {
     const glimpses = keys();
+    pick(glimpses);
+}
+
+function pick(glimpses: Map<string, Key>) {
     const quickPick = vscode.window.createQuickPick();
 
     // fill quick pick options
@@ -21,9 +25,14 @@ export async function glimpseRun(context: vscode.ExtensionContext) {
             const key = quickPick.activeItems[0].label;
             const command = glimpses.get(key)?.command;
             if (command) {
-                vscode.commands.executeCommand(command);
+                if (typeof command === "string") {
+                    vscode.commands.executeCommand(command);
+                } else if (command instanceof Map) {
+                    pick(command);
+                }
+
+                quickPick.dispose();
             }
-            quickPick.dispose();
         }
     });
     quickPick.onDidHide(() => quickPick.dispose());
