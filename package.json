@@ -1,7 +1,7 @@
 {
     "name": "glimpse",
     "displayName": "glimpse",
-    "description": "Mnemonic key bindings for VSCode actions",
+    "description": "Mnemonic key bindings for VSCode commands",
     "version": "0.0.1",
     "publisher": "ieni",
     "engines": {
