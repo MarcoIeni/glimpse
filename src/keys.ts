@@ -13,6 +13,20 @@ export function menu(): Menu {
     return {
         transient: false,
         items: new Map<string, Key>([
+            [
+                "\t",
+                {
+                    label: "Last Buffer",
+                    command: "editor.action.addCommentLine",
+                },
+            ],
+            [
+                " ",
+                {
+                    label: "Last Bufferrr",
+                    command: "editor.action.addCommentLine",
+                },
+            ],
             ["w", { label: "Window", command: "editor.action.addCommentLine" }],
             [
                 "f",
@@ -26,7 +40,7 @@ export function menu(): Menu {
     };
 }
 
-function zoom(): Menu {
+export function zoom(): Menu {
     return {
         transient: true,
         items: new Map<string, Key>([

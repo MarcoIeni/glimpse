@@ -1,8 +1,34 @@
 import * as vscode from "vscode";
-import { Key, Menu, menu } from "./keys";
+import { Key, Menu, menu, zoom } from "./keys";
+import path = require("path");
+import * as fs from "fs/promises";
 
 export async function glimpseRun(context: vscode.ExtensionContext) {
-    const glimpses = menu();
+    let glimpses = menu();
+    const pathToJs = "/Users/marcoieni/conf";
+
+    try {
+        let module = await import(pathToJs);
+        console.log(process);
+        console.log(module);
+        glimpses = module(glimpses);
+    } catch (e) {
+        console.log(e);
+    }
+    // const userModule = require(pathToJs);
+    // console.log(userModule);
+    // conf.js file: (TODO: add jsdoc to config file header, to allow auto-complete)
+    // module.exports = function aa(glimpses) {
+    //     //return glimpses;
+    //     return {
+    //         transient: true,
+    //         items: new Map([
+    //             ["+", { label: "Zoom In", command: "workbench.action.zoomIn" }],
+    //             ["-", { label: "Zoom Out", command: "workbench.action.zoomOut" }],
+    //         ]),
+    //     };
+    // }
+
     pick(glimpses);
 }
 
@@ -10,7 +36,7 @@ function pick(glimpses: Menu) {
     const quickPick = vscode.window.createQuickPick();
 
     // Fill quick pick options.
-    let options = [];
+    const options = [];
     for (const [key, value] of glimpses.items.entries()) {
         options.push({
             label: key,
