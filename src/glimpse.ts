@@ -1,16 +1,21 @@
 import * as vscode from "vscode";
-import { Key, Menu, menu } from "./keys";
+import { Menu, menu } from "./keys";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function glimpseRun(context: vscode.ExtensionContext) {
-    const glimpses = menu();
-    pick(glimpses);
+    try {
+        const glimpses = menu();
+        pick(glimpses);
+    } catch (err) {
+        console.error("Failed to run Glimpse", err);
+    }
 }
 
 function pick(glimpses: Menu) {
     const quickPick = vscode.window.createQuickPick();
 
     // Fill quick pick options.
-    let options = [];
+    const options = [];
     for (const [key, value] of glimpses.items.entries()) {
         options.push({
             label: key,
