@@ -41,6 +41,7 @@
         "pretest": "npm run compile && npm run lint",
         "lint": "eslint src --ext ts",
         "format": "prettier --write .",
+        "format:check": "prettier --check .",
         "test": "node ./out/test/runTest.js"
     },
     "devDependencies": {
