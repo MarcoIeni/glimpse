@@ -1,8 +1,7 @@
 import * as vscode from "vscode";
 import { Menu, menu } from "./keys";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function glimpseRun(context: vscode.ExtensionContext) {
+export function glimpseRun() {
     try {
         const glimpses = menu();
         pick(glimpses);
@@ -26,37 +25,35 @@ function pick(glimpses: Menu) {
     quickPick.items = options;
     // Allow to select action by key press.
     quickPick.onDidChangeValue(() => {
-        onValueChange(quickPick, glimpses);
+        onValueChange(quickPick, glimpses).catch((err) => {
+            console.error("onDidChangeValue failure", err);
+        });
     });
     // Allow to select action with enter key.
     quickPick.onDidAccept(() => {
-        executeGlimpse(quickPick, glimpses);
+        executeGlimpse(quickPick, glimpses).catch((err) => {
+            console.error("onDidAccept failure", err);
+        });
     });
     quickPick.onDidHide(() => quickPick.dispose());
     quickPick.show();
 }
 
-function onValueChange(
-    quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    glimpses: Menu
-) {
+async function onValueChange(quickPick: vscode.QuickPick<vscode.QuickPickItem>, glimpses: Menu) {
     console.log("user typed ", quickPick.value);
     if (quickPick.value.length !== 0) {
-        executeGlimpse(quickPick, glimpses);
+        await executeGlimpse(quickPick, glimpses);
     }
 }
 
-function executeGlimpse(
-    quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    glimpses: Menu
-) {
+async function executeGlimpse(quickPick: vscode.QuickPick<vscode.QuickPickItem>, glimpses: Menu) {
     const activeItem = quickPick.activeItems[0];
     if (activeItem) {
         const key = activeItem.label;
         const command = glimpses.items.get(key)?.command;
         if (command) {
             if (typeof command === "string") {
-                vscode.commands.executeCommand(command);
+                await vscode.commands.executeCommand(command);
                 if (glimpses.transient) {
                     pick(glimpses);
                 }

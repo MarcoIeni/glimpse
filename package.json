@@ -22,7 +22,11 @@
         "commands": [
             {
                 "command": "glimpse.run",
-                "title": "Glimpse"
+                "title": "Glimpse: Run"
+            },
+            {
+                "command": "glimpse.configure",
+                "title": "Glimpse: Configure"
             }
         ]
     },
