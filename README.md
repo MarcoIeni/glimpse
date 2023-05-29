@@ -1,3 +1,5 @@
+![glimpse-logo](docs/src/assets/logo.jpeg)
+
 # Glimpse
 
 Still experimental. Not ready for use.
