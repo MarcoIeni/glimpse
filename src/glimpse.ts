@@ -57,6 +57,13 @@ async function executeGlimpse(quickPick: vscode.QuickPick<vscode.QuickPickItem>,
                 if (glimpses.transient) {
                     pick(glimpses);
                 }
+            } else if (Array.isArray(command)) {
+                for (const cmd of command) {
+                    await vscode.commands.executeCommand(cmd);
+                }
+                if (glimpses.transient) {
+                    pick(glimpses);
+                }
             } else {
                 // it's a submenu
                 pick(command);

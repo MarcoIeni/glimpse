@@ -1,7 +1,7 @@
 export type Key = {
     label: string;
     /** either the command name or a submenu */
-    command: string | Menu;
+    command: string | string[] | Menu;
 };
 
 export type Menu = {
@@ -22,6 +22,17 @@ export function menu(): Menu {
                 },
             ],
             ["z", { label: "Zoom", command: zoom() }],
+            [
+                "*",
+                {
+                    label: "search",
+                    command: [
+                        "editor.action.addSelectionToNextFindMatch",
+                        "workbench.action.findInFiles",
+                        "search.action.focusSearchList",
+                    ],
+                },
+            ],
         ]),
     };
 }

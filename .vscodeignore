@@ -1,10 +1,14 @@
+.github
 .vscode/**
 .vscode-test/**
+docs/**
 src/**
 .gitignore
 .yarnrc
 vsc-extension-quickstart.md
 **/tsconfig.json
-**/.eslintrc.json
+**/.eslintrc.cjs
+**/.prettierignore
+**/.prettierrc.js
 **/*.map
 **/*.ts
