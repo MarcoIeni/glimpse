@@ -86,8 +86,8 @@ function selectExpand(): Menu {
         transient: true,
         items: new Map<string, Key>([
             // TODO: support v and V
-            ["a", { label: "Grow selection", command: "editor.action.smartSelect.grow" }],
-            ["b", { label: "Shrink selection", command: "editor.action.smartSelect.shrink" }],
+            ["v", { label: "Grow selection", command: "editor.action.smartSelect.grow" }],
+            ["V", { label: "Shrink selection", command: "editor.action.smartSelect.shrink" }],
         ]),
     };
 }

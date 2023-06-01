@@ -47,15 +47,9 @@ async function onValueChange(quickPick: vscode.QuickPick<vscode.QuickPickItem>, 
 }
 
 async function executeGlimpse(quickPick: vscode.QuickPick<vscode.QuickPickItem>, glimpses: Menu) {
-    const activeItem = quickPick.activeItems[0];
-    if (activeItem) {
-        const key = activeItem.label;
-        const item = glimpses.items.get(key);
-        if (!item) {
-            console.error("item not found", key);
-            return;
-        }
-
+    const key = quickPick.value;
+    const item = glimpses.items.get(key);
+    if (item) {
         if ("command" in item) {
             const command = item.command;
             if (typeof command === "string") {
