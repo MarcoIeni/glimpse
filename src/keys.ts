@@ -1,8 +1,27 @@
 export type Key = {
+    /** icon displayed in the label */
+    icon?: string;
     label: string;
-    /** either the command name or a submenu */
-    command: string | string[] | Menu;
-};
+} & CommandOrSubmenu;
+
+type CommandOrSubmenu =
+    // when pressing the key, execute the command
+    | {
+          command: Command;
+      }
+    // when pressing the key, open another menu
+    | { menu: Menu }
+    // when pressing the key, execute the command AND open another menu
+    | {
+          command: Command;
+          menu: Menu;
+      };
+
+type Command = string | string[];
+
+export function keyDescription(key: Key): string {
+    return key.icon ? `$(${key.icon})   ${key.label}` : key.label;
+}
 
 export type Menu = {
     transient: boolean;
@@ -13,7 +32,14 @@ export function menu(): Menu {
     return {
         transient: false,
         items: new Map<string, Key>([
-            ["w", { label: "Window", command: "editor.action.addCommentLine" }],
+            [
+                "w",
+                {
+                    icon: "split-horizontal",
+                    label: "Window",
+                    command: "editor.action.addCommentLine",
+                },
+            ],
             [
                 "f",
                 {
@@ -21,7 +47,15 @@ export function menu(): Menu {
                     command: "workbench.action.files.newUntitledFile",
                 },
             ],
-            ["z", { label: "Zoom", command: zoom() }],
+            ["z", { label: "Zoom", menu: zoom() }],
+            [
+                "v",
+                {
+                    label: "Select/expand region",
+                    command: "editor.action.smartSelect.grow",
+                    menu: selectExpand(),
+                },
+            ],
             [
                 "*",
                 {
@@ -43,6 +77,17 @@ function zoom(): Menu {
         items: new Map<string, Key>([
             ["+", { label: "Zoom In", command: "workbench.action.zoomIn" }],
             ["-", { label: "Zoom Out", command: "workbench.action.zoomOut" }],
+        ]),
+    };
+}
+
+function selectExpand(): Menu {
+    return {
+        transient: true,
+        items: new Map<string, Key>([
+            // TODO: support v and V
+            ["a", { label: "Grow selection", command: "editor.action.smartSelect.grow" }],
+            ["b", { label: "Shrink selection", command: "editor.action.smartSelect.shrink" }],
         ]),
     };
 }

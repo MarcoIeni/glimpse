@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { Menu, menu } from "./keys";
+import { Menu, keyDescription, menu } from "./keys";
 
 export function glimpseRun() {
     try {
@@ -18,7 +18,7 @@ function pick(glimpses: Menu) {
     for (const [key, value] of glimpses.items.entries()) {
         options.push({
             label: key,
-            description: `\t${value.label}`,
+            description: `\t${keyDescription(value)}`,
         });
     }
 
@@ -50,8 +50,14 @@ async function executeGlimpse(quickPick: vscode.QuickPick<vscode.QuickPickItem>,
     const activeItem = quickPick.activeItems[0];
     if (activeItem) {
         const key = activeItem.label;
-        const command = glimpses.items.get(key)?.command;
-        if (command) {
+        const item = glimpses.items.get(key);
+        if (!item) {
+            console.error("item not found", key);
+            return;
+        }
+
+        if ("command" in item) {
+            const command = item.command;
             if (typeof command === "string") {
                 await vscode.commands.executeCommand(command);
                 if (glimpses.transient) {
@@ -65,9 +71,13 @@ async function executeGlimpse(quickPick: vscode.QuickPick<vscode.QuickPickItem>,
                     pick(glimpses);
                 }
             } else {
-                // it's a submenu
-                pick(command);
+                console.error("unknown command type", command);
             }
+        }
+
+        if ("menu" in item) {
+            // open the submenu
+            pick(item.menu);
         }
     }
     quickPick.dispose();
