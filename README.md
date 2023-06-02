@@ -1,4 +1,4 @@
-![glimpse-logo](docs/src/assets/logo.jpeg)
+![glimpse-logo](icon.jpeg)
 
 # Glimpse
 
