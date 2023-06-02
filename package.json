@@ -5,6 +5,7 @@
     "version": "0.0.2",
     "publisher": "ieni",
     "license": "MIT",
+    "icon": "docs/src/assets/logo.jpeg",
     "engines": {
         "vscode": "^1.78.0"
     },
