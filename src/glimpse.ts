@@ -1,13 +1,26 @@
 import * as vscode from "vscode";
 import { Menu, keyDescription, menu } from "./keys";
+import { configPath } from "./config";
 
-export function glimpseRun() {
+export async function glimpseRun(context: vscode.ExtensionContext) {
     try {
         const glimpses = menu();
-        pick(glimpses);
+        const userGlimpses = await getUserCustomization(context, glimpses);
+        pick(userGlimpses);
     } catch (err) {
         console.error("Failed to run Glimpse", err);
     }
+}
+
+async function getUserCustomization(
+    context: vscode.ExtensionContext,
+    defaultMenu: Menu
+): Promise<Menu> {
+    const configFilePath = configPath(context);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const userModule = await import(configFilePath.fsPath);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    return userModule(defaultMenu) as Menu;
 }
 
 function pick(glimpses: Menu) {

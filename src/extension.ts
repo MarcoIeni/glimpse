@@ -10,7 +10,9 @@ export function activate(context: vscode.ExtensionContext) {
     // The commandId parameter must match the command field in package.json
     context.subscriptions.push(
         vscode.commands.registerCommand("glimpse.run", () => {
-            glimpseRun();
+            glimpseRun(context).catch((err) => {
+                console.error("Failed to run async Glimpse run", err);
+            });
         })
     );
     context.subscriptions.push(

@@ -5,12 +5,16 @@ module.exports = function editConfig(menu) {
     return menu;
 }`;
 
+export function configPath(context: vscode.ExtensionContext) {
+    return vscode.Uri.joinPath(context.globalStorageUri, "config.js");
+}
+
 export async function glimpseConfigure(context: vscode.ExtensionContext) {
     try {
         const storageUri = context.globalStorageUri;
         await createDirIfDoesntExist(storageUri);
-        const configPath = vscode.Uri.joinPath(storageUri, "config.js");
-        await openConfig(configPath);
+        const configFilePath = configPath(context);
+        await openConfig(configFilePath);
     } catch (err) {
         console.error("Failed to run Glimpse configure", err);
     }
