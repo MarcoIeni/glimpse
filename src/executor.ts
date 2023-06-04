@@ -8,14 +8,13 @@ export type Executor = {
     /** current menu displayed to user */
     menu: Menu;
     originalMenu: Menu;
-    quickPick: vscode.QuickPick<vscode.QuickPickItem>;
+    quickPick?: vscode.QuickPick<vscode.QuickPickItem>;
 };
 
 export function newExecutor(menu: Menu): Executor {
     return {
         menu,
         originalMenu: menu,
-        quickPick: vscode.window.createQuickPick(),
     };
 }
 
@@ -45,10 +44,10 @@ export async function execute(executor: Executor, key: string) {
             pick(executor);
     } else {
         console.log("disposing quick pick");
-        executor.quickPick.dispose();
+        executor.quickPick?.dispose();
     }
     } else {
         console.log("disposing quick pick");
-        executor.quickPick.dispose();
+        executor.quickPick?.dispose();
     }
 }

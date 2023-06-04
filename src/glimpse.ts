@@ -53,7 +53,7 @@ export function pick(executor: Executor) {
         });
     });
     executor.quickPick.onDidHide(() => {
-        executor.quickPick.dispose();
+        executor.quickPick?.dispose();
         setGlimpseVisible(false).catch((err) => console.error("setContext failure", err));
     });
     console.log("showing quick pick");
@@ -78,13 +78,13 @@ function prettifyKey(key: string): string {
 }
 
 async function onValueChange(executor: Executor) {
-    console.log("user typed", executor.quickPick.value);
-    if (executor.quickPick.value.length !== 0) {
+    console.log("user typed", executor.quickPick?.value);
+    if (executor.quickPick?.value.length !== 0) {
         await executeGlimpse(executor);
     }
 }
 
 async function executeGlimpse(executor: Executor) {
-    const key = executor.quickPick.value;
+    const key = executor.quickPick?.value as string;
     await execute(executor, key);
 }
