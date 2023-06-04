@@ -30,7 +30,7 @@ function pick(glimpses: Menu) {
     const options = [];
     for (const [key, value] of glimpses.items.entries()) {
         options.push({
-            label: key,
+            label: prettifyKey(key),
             description: `\t${keyDescription(value)}`,
         });
     }
@@ -50,6 +50,16 @@ function pick(glimpses: Menu) {
     });
     quickPick.onDidHide(() => quickPick.dispose());
     quickPick.show();
+}
+
+function prettifyKey(key: string): string {
+    if (key === " ") {
+        return "␣";
+    } else if (key === "\t") {
+        return "↹";
+    } else {
+        return key;
+    }
 }
 
 async function onValueChange(quickPick: vscode.QuickPick<vscode.QuickPickItem>, glimpses: Menu) {
