@@ -25,3 +25,9 @@ This extension contributes the following settings:
 ## Plan
 
 - configuration in javascript/typescript. I.e. you import our library with our key bindings and you can edit them in plain javascript. Not in json.
+
+## Credits
+
+Parts of the codebase are inspired by:
+- [VSpaceCode](https://github.com/VSpaceCode/VSpaceCode)
+- [vscode-which-key](https://github.com/VSpaceCode/vscode-which-key)
