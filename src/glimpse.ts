@@ -2,11 +2,21 @@ import * as vscode from "vscode";
 import { type Menu, keyDescription, menu } from "./keys";
 import { configPath } from "./config";
 
-export async function glimpseRun(context: vscode.ExtensionContext): Promise<void> {
+type Executor = {
+    menu: Menu;
+};
+
+export async function newExecutor(context: vscode.ExtensionContext): Promise<Executor> {
+    const originalMenu = menu();
+    const userMenu = await getUserCustomization(context, originalMenu);
+    return {
+        menu: userMenu,
+    };
+}
+
+export function glimpseRun(executor: Executor): void {
     try {
-        const glimpses = menu();
-        const userGlimpses = await getUserCustomization(context, glimpses);
-        pick(userGlimpses);
+        pick(executor.menu);
     } catch (err) {
         console.error("Failed to run Glimpse", err);
     }
