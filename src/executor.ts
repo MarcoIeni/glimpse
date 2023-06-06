@@ -42,10 +42,10 @@ export async function execute(executor: Executor, key: string) {
             console.log("opening submenu");
             executor.menu = item.menu;
             pick(executor);
-    } else {
-        console.log("disposing quick pick");
-        executor.quickPick?.dispose();
-    }
+        } else {
+            console.log("disposing quick pick");
+            executor.quickPick?.dispose();
+        }
     } else {
         console.log("disposing quick pick");
         executor.quickPick?.dispose();
