@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
-import { Menu, keyDescription } from "./keys";
+import { type Menu, keyDescription } from "./keys";
 import { configPath } from "./config";
 import { Executor, execute } from "./executor";
 
-export function glimpseRun(executor: Executor) {
+export function glimpseRun(executor: Executor): void {
     try {
         // re-initialize menu.
         console.log("running glimpse");
@@ -26,7 +26,7 @@ export async function getUserCustomization(
     return userModule(defaultMenu) as Menu;
 }
 
-export function pick(executor: Executor) {
+export function pick(executor: Executor): void {
     executor.quickPick = vscode.window.createQuickPick();
     // Fill quick pick options.
     const options = [];
@@ -77,14 +77,14 @@ function prettifyKey(key: string): string {
     }
 }
 
-async function onValueChange(executor: Executor) {
+async function onValueChange(executor: Executor): Promise<void> {
     console.log("user typed", executor.quickPick?.value);
     if (executor.quickPick?.value.length !== 0) {
         await executeGlimpse(executor);
     }
 }
 
-async function executeGlimpse(executor: Executor) {
+async function executeGlimpse(executor: Executor): Promise<void> {
     const key = executor.quickPick?.value as string;
     await execute(executor, key);
 }

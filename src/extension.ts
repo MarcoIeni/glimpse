@@ -6,7 +6,7 @@ import { menu } from "./keys";
 
 // This method is called when the extension is activated.
 // The extension is activated the very first time the command is executed.
-export async function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
     console.log("The Glimpse extension is now active");
     const defaultMenu = menu();
     const originalMenu = await getUserCustomization(context, defaultMenu);
@@ -40,6 +40,6 @@ async function triggerKey(executor: Executor, key: string) {
 }
 
 // This method is called when the extension is deactivated
-export function deactivate() {
+export function deactivate(): void {
     console.log("deactivate Glimpse");
 }
