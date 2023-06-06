@@ -80,6 +80,7 @@ function zoom(): Menu {
         transient: true,
         items: new Map<string, Key>([
             ["+", { label: "Zoom In", command: "workbench.action.zoomIn" }],
+            ["=", { label: "Zoom In", command: "workbench.action.zoomIn" }],
             ["-", { label: "Zoom Out", command: "workbench.action.zoomOut" }],
         ]),
     };
