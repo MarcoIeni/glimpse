@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { Menu, keyDescription, menu } from "./keys";
+import { type Menu, keyDescription, menu } from "./keys";
 import { configPath } from "./config";
 
-export async function glimpseRun(context: vscode.ExtensionContext) {
+export async function glimpseRun(context: vscode.ExtensionContext): Promise<void> {
     try {
         const glimpses = menu();
         const userGlimpses = await getUserCustomization(context, glimpses);
@@ -23,7 +23,7 @@ async function getUserCustomization(
     return userModule(defaultMenu) as Menu;
 }
 
-function pick(glimpses: Menu) {
+function pick(glimpses: Menu): void {
     const quickPick = vscode.window.createQuickPick();
 
     // Fill quick pick options.
@@ -48,7 +48,9 @@ function pick(glimpses: Menu) {
             console.error("onDidAccept failure", err);
         });
     });
-    quickPick.onDidHide(() => quickPick.dispose());
+    quickPick.onDidHide(() => {
+        quickPick.dispose();
+    });
     quickPick.show();
 }
 
@@ -62,14 +64,20 @@ function prettifyKey(key: string): string {
     }
 }
 
-async function onValueChange(quickPick: vscode.QuickPick<vscode.QuickPickItem>, glimpses: Menu) {
+async function onValueChange(
+    quickPick: vscode.QuickPick<vscode.QuickPickItem>,
+    glimpses: Menu
+): Promise<void> {
     console.log("user typed ", quickPick.value);
     if (quickPick.value.length !== 0) {
         await executeGlimpse(quickPick, glimpses);
     }
 }
 
-async function executeGlimpse(quickPick: vscode.QuickPick<vscode.QuickPickItem>, glimpses: Menu) {
+async function executeGlimpse(
+    quickPick: vscode.QuickPick<vscode.QuickPickItem>,
+    glimpses: Menu
+): Promise<void> {
     const key = quickPick.value;
     const item = glimpses.items.get(key);
     if (item) {

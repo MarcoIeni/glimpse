@@ -5,11 +5,11 @@ module.exports = function editConfig(menu) {
     return menu;
 }`;
 
-export function configPath(context: vscode.ExtensionContext) {
+export function configPath(context: vscode.ExtensionContext): vscode.Uri {
     return vscode.Uri.joinPath(context.globalStorageUri, "config.js");
 }
 
-export async function glimpseConfigure(context: vscode.ExtensionContext) {
+export async function glimpseConfigure(context: vscode.ExtensionContext): Promise<void> {
     try {
         const storageUri = context.globalStorageUri;
         await createDirIfDoesntExist(storageUri);
@@ -20,7 +20,7 @@ export async function glimpseConfigure(context: vscode.ExtensionContext) {
     }
 }
 
-async function createDirIfDoesntExist(dir: vscode.Uri) {
+async function createDirIfDoesntExist(dir: vscode.Uri): Promise<void> {
     try {
         // if dir doesn't exist, this will throw an error
         await vscode.workspace.fs.stat(dir);
@@ -29,7 +29,7 @@ async function createDirIfDoesntExist(dir: vscode.Uri) {
     }
 }
 
-async function createFileIfDoesntExist(file: vscode.Uri, content: string) {
+async function createFileIfDoesntExist(file: vscode.Uri, content: string): Promise<void> {
     try {
         // if file doesn't exist, this will throw an error
         await vscode.workspace.fs.stat(file);
@@ -42,11 +42,11 @@ async function createFileIfDoesntExist(file: vscode.Uri, content: string) {
     }
 }
 
-function sleep(ms: number) {
+function sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function openConfig(configUri: vscode.Uri) {
+async function openConfig(configUri: vscode.Uri): Promise<void> {
     await createFileIfDoesntExist(configUri, defaultConfig);
     // open the file in the editor
     await vscode.commands.executeCommand("vscode.open", configUri);

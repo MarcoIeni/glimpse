@@ -4,7 +4,7 @@ import { glimpseConfigure } from "./config";
 
 // This method is called when the extension is activated.
 // The extension is activated the very first time the command is executed.
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
     console.log("The Glimpse extension is now active");
 
     // The commandId parameter must match the command field in package.json
@@ -25,6 +25,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when the extension is deactivated
-export function deactivate() {
+export function deactivate(): void {
     console.log("deactivate Glimpse");
 }

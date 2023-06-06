@@ -1,26 +1,30 @@
-export type Key = {
+export type Key = CommandOrSubmenu & {
     /** icon displayed in the label */
     icon?: string;
     label: string;
-} & CommandOrSubmenu;
+};
 
 type CommandOrSubmenu =
+    // when pressing the key, execute the command AND open another menu
+    | {
+          command: Command;
+          menu: Menu;
+      }
     // when pressing the key, execute the command
     | {
           command: Command;
       }
     // when pressing the key, open another menu
-    | { menu: Menu }
-    // when pressing the key, execute the command AND open another menu
-    | {
-          command: Command;
-          menu: Menu;
-      };
+    | { menu: Menu };
 
-type Command = string | string[];
+type Command = string[] | string;
 
 export function keyDescription(key: Key): string {
-    return key.icon ? `$(${key.icon})   ${key.label}` : key.label;
+    if (key.icon) {
+        return `$(${key.icon})   ${key.label}`;
+    } else {
+        return key.label;
+    }
 }
 
 export type Menu = {
