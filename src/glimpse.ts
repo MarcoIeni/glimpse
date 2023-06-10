@@ -4,6 +4,8 @@ import { configPath } from "./config";
 
 type Executor = {
     menu: Menu;
+    /** The menu that the user originally defined. */
+    userMenu: Menu;
 };
 
 export async function newExecutor(context: vscode.ExtensionContext): Promise<Executor> {
@@ -11,12 +13,14 @@ export async function newExecutor(context: vscode.ExtensionContext): Promise<Exe
     const userMenu = await getUserCustomization(context, originalMenu);
     return {
         menu: userMenu,
+        userMenu: userMenu,
     };
 }
 
 export function glimpseRun(executor: Executor): void {
+    executor.menu = executor.userMenu;
     try {
-        pick(executor.menu);
+        pick(executor);
     } catch (err) {
         console.error("Failed to run Glimpse", err);
     }
@@ -33,12 +37,12 @@ async function getUserCustomization(
     return userModule(defaultMenu) as Menu;
 }
 
-function pick(glimpses: Menu): void {
+function pick(executor: Executor): void {
     const quickPick = vscode.window.createQuickPick();
 
     // Fill quick pick options.
     const options = [];
-    for (const [key, value] of glimpses.items.entries()) {
+    for (const [key, value] of executor.menu.items.entries()) {
         options.push({
             label: prettifyKey(key),
             description: `\t${keyDescription(value)}`,
@@ -48,13 +52,13 @@ function pick(glimpses: Menu): void {
     quickPick.items = options;
     // Allow to select action by key press.
     quickPick.onDidChangeValue(() => {
-        onValueChange(quickPick, glimpses).catch((err) => {
+        onValueChange(quickPick, executor).catch((err) => {
             console.error("onDidChangeValue failure", err);
         });
     });
     // Allow to select action with enter key.
     quickPick.onDidAccept(() => {
-        executeGlimpse(quickPick, glimpses).catch((err) => {
+        executeGlimpse(quickPick, executor).catch((err) => {
             console.error("onDidAccept failure", err);
         });
     });
@@ -76,20 +80,20 @@ function prettifyKey(key: string): string {
 
 async function onValueChange(
     quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    glimpses: Menu
+    executor: Executor
 ): Promise<void> {
     console.log("user typed ", quickPick.value);
     if (quickPick.value.length !== 0) {
-        await executeGlimpse(quickPick, glimpses);
+        await executeGlimpse(quickPick, executor);
     }
 }
 
 async function executeGlimpse(
     quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    glimpses: Menu
+    executor: Executor
 ): Promise<void> {
     const key = quickPick.value;
-    const item = glimpses.items.get(key);
+    const item = executor.menu.items.get(key);
     if (item) {
         if ("command" in item) {
             const command = item.command;
@@ -102,14 +106,15 @@ async function executeGlimpse(
             } else {
                 console.error("unknown command type", command);
             }
-            if (glimpses.transient) {
-                pick(glimpses);
+            if (executor.menu.transient) {
+                pick(executor);
             }
         }
 
         if ("menu" in item) {
             // open the submenu
-            pick(item.menu);
+            executor.menu = item.menu;
+            pick(executor);
         }
     }
     quickPick.dispose();
