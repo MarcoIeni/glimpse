@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { glimpseRun, newExecutor } from "./glimpse";
+import { type Executor, executeKey, glimpseRun, newExecutor } from "./glimpse";
 import { glimpseConfigure } from "./config";
 
 // This method is called when the extension is activated.
@@ -18,6 +18,13 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         vscode.commands.registerCommand("glimpse.configure", () => {
             glimpseConfigure(context).catch((err) => {
                 console.error("Failed to run async Glimpse configure", err);
+            });
+        })
+    );
+    context.subscriptions.push(
+        vscode.commands.registerCommand("glimpse.triggerKey", () => {
+            executeKey(executor, "\t").catch((err) => {
+                console.error("Failed to run async Glimpse triggerKey", err);
             });
         })
     );

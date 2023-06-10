@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { type Menu, keyDescription, menu } from "./keys";
 import { configPath } from "./config";
 
-type Executor = {
+export type Executor = {
     menu: Menu;
     /** The menu that the user originally defined. */
     userMenu: Menu;
@@ -68,8 +68,14 @@ function pick(executor: Executor): void {
     });
     executor.quickPick.onDidHide(() => {
         executor.quickPick.dispose();
+        setGlimpseVisible(false).catch((err) => {
+            console.error("Failed setting Glimpse Invisible", err);
+        });
     });
     executor.quickPick.show();
+    setGlimpseVisible(true).catch((err) => {
+        console.error("Failed setting Glimpse Visible", err);
+    });
 }
 
 function prettifyKey(key: string): string {
@@ -90,8 +96,12 @@ async function onValueChange(executor: Executor): Promise<void> {
 }
 
 async function executeGlimpse(executor: Executor): Promise<void> {
-    executor.quickPick.dispose();
     const key = executor.quickPick.value;
+    await executeKey(executor, key);
+}
+
+export async function executeKey(executor: Executor, key: string): Promise<void> {
+    executor.quickPick.dispose();
     const item = executor.menu.items.get(key);
     if (item) {
         if ("command" in item) {
@@ -116,4 +126,8 @@ async function executeGlimpse(executor: Executor): Promise<void> {
             pick(executor);
         }
     }
+}
+
+async function setGlimpseVisible(value: boolean): Promise<void> {
+    await vscode.commands.executeCommand("setContext", "glimpseVisible", value);
 }

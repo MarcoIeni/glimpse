@@ -37,6 +37,14 @@ export function menu(): Menu {
         transient: false,
         items: new Map<string, Key>([
             [
+                "\t",
+                {
+                    icon: "split-horizontal",
+                    label: "Window",
+                    command: "editor.action.addCommentLine",
+                },
+            ],
+            [
                 "w",
                 {
                     icon: "split-horizontal",
