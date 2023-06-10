@@ -6,6 +6,7 @@ type Executor = {
     menu: Menu;
     /** The menu that the user originally defined. */
     userMenu: Menu;
+    quickPick: vscode.QuickPick<vscode.QuickPickItem>;
 };
 
 export async function newExecutor(context: vscode.ExtensionContext): Promise<Executor> {
@@ -14,6 +15,9 @@ export async function newExecutor(context: vscode.ExtensionContext): Promise<Exe
     return {
         menu: userMenu,
         userMenu: userMenu,
+        // we create the quick pick here just to avoid having to check for null.
+        // this value will be replaced.
+        quickPick: vscode.window.createQuickPick(),
     };
 }
 
@@ -38,7 +42,7 @@ async function getUserCustomization(
 }
 
 function pick(executor: Executor): void {
-    const quickPick = vscode.window.createQuickPick();
+    executor.quickPick = vscode.window.createQuickPick();
 
     // Fill quick pick options.
     const options = [];
@@ -49,23 +53,23 @@ function pick(executor: Executor): void {
         });
     }
 
-    quickPick.items = options;
+    executor.quickPick.items = options;
     // Allow to select action by key press.
-    quickPick.onDidChangeValue(() => {
-        onValueChange(quickPick, executor).catch((err) => {
+    executor.quickPick.onDidChangeValue(() => {
+        onValueChange(executor).catch((err) => {
             console.error("onDidChangeValue failure", err);
         });
     });
     // Allow to select action with enter key.
-    quickPick.onDidAccept(() => {
-        executeGlimpse(quickPick, executor).catch((err) => {
+    executor.quickPick.onDidAccept(() => {
+        executeGlimpse(executor).catch((err) => {
             console.error("onDidAccept failure", err);
         });
     });
-    quickPick.onDidHide(() => {
-        quickPick.dispose();
+    executor.quickPick.onDidHide(() => {
+        executor.quickPick.dispose();
     });
-    quickPick.show();
+    executor.quickPick.show();
 }
 
 function prettifyKey(key: string): string {
@@ -78,21 +82,16 @@ function prettifyKey(key: string): string {
     }
 }
 
-async function onValueChange(
-    quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    executor: Executor
-): Promise<void> {
-    console.log("user typed ", quickPick.value);
-    if (quickPick.value.length !== 0) {
-        await executeGlimpse(quickPick, executor);
+async function onValueChange(executor: Executor): Promise<void> {
+    console.log("user typed ", executor.quickPick.value);
+    if (executor.quickPick.value.length !== 0) {
+        await executeGlimpse(executor);
     }
 }
 
-async function executeGlimpse(
-    quickPick: vscode.QuickPick<vscode.QuickPickItem>,
-    executor: Executor
-): Promise<void> {
-    const key = quickPick.value;
+async function executeGlimpse(executor: Executor): Promise<void> {
+    executor.quickPick.dispose();
+    const key = executor.quickPick.value;
     const item = executor.menu.items.get(key);
     if (item) {
         if ("command" in item) {
@@ -117,5 +116,4 @@ async function executeGlimpse(
             pick(executor);
         }
     }
-    quickPick.dispose();
 }
