@@ -1,7 +1,7 @@
 export type Key = CommandOrSubmenu & {
     /** icon displayed in the label */
     icon?: string;
-    label: string;
+    name: string;
 };
 
 type CommandOrSubmenu =
@@ -21,9 +21,9 @@ type Command = string[] | string;
 
 export function keyDescription(key: Key): string {
     if (key.icon) {
-        return `$(${key.icon})   ${key.label}`;
+        return `$(${key.icon})   ${key.name}`;
     } else {
-        return key.label;
+        return key.name;
     }
 }
 
@@ -39,31 +39,34 @@ export function menu(): Menu {
             [
                 "\t",
                 {
-                    icon: "split-horizontal",
-                    label: "Window",
-                    command: "editor.action.addCommentLine",
+                    icon: "go-to-file",
+                    name: "Last editor",
+                    command: [
+                        "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+                        "list.select",
+                    ],
                 },
             ],
             [
                 "w",
                 {
                     icon: "split-horizontal",
-                    label: "Window",
+                    name: "Window",
                     command: "editor.action.addCommentLine",
                 },
             ],
             [
                 "f",
                 {
-                    label: "File",
+                    name: "File",
                     command: "workbench.action.files.newUntitledFile",
                 },
             ],
-            ["z", { label: "Zoom", menu: zoom() }],
+            ["z", { name: "Zoom", menu: zoom() }],
             [
                 "v",
                 {
-                    label: "Select/expand region",
+                    name: "Select/expand region",
                     command: "editor.action.smartSelect.grow",
                     menu: selectExpand(),
                 },
@@ -71,7 +74,7 @@ export function menu(): Menu {
             [
                 "*",
                 {
-                    label: "search",
+                    name: "search",
                     command: [
                         "editor.action.addSelectionToNextFindMatch",
                         "workbench.action.findInFiles",
@@ -87,9 +90,9 @@ function zoom(): Menu {
     return {
         transient: true,
         items: new Map<string, Key>([
-            ["+", { label: "Zoom In", command: "workbench.action.zoomIn" }],
-            ["=", { label: "Zoom In", command: "workbench.action.zoomIn" }],
-            ["-", { label: "Zoom Out", command: "workbench.action.zoomOut" }],
+            ["+", { name: "Zoom In", command: "workbench.action.zoomIn" }],
+            ["=", { name: "Zoom In", command: "workbench.action.zoomIn" }],
+            ["-", { name: "Zoom Out", command: "workbench.action.zoomOut" }],
         ]),
     };
 }
@@ -99,8 +102,8 @@ function selectExpand(): Menu {
         transient: true,
         items: new Map<string, Key>([
             // TODO: support v and V
-            ["v", { label: "Grow selection", command: "editor.action.smartSelect.grow" }],
-            ["V", { label: "Shrink selection", command: "editor.action.smartSelect.shrink" }],
+            ["v", { name: "Grow selection", command: "editor.action.smartSelect.grow" }],
+            ["V", { name: "Shrink selection", command: "editor.action.smartSelect.shrink" }],
         ]),
     };
 }
