@@ -19,6 +19,12 @@
             {
                 "key": "alt+v",
                 "command": "glimpse.run"
+            },
+            {
+                "key": "tab",
+                "command": "glimpse.triggerKey",
+                "args": "\t",
+                "when": "glimpseVisible"
             }
         ],
         "commands": [
