@@ -6,6 +6,14 @@ import { glimpseConfigure } from "./config";
 // The extension is activated the very first time the command is executed.
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     console.log("The Glimpse extension is now active");
+    try {
+        await activateExtension(context);
+    } catch (err) {
+        console.error("Failed to activate Glimpse", err);
+    }
+}
+
+async function activateExtension(context: vscode.ExtensionContext): Promise<void> {
     const executor = await newExecutor(context);
 
     // The commandId parameter must match the command field in package.json
