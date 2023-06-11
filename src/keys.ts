@@ -42,6 +42,14 @@ export function menu(): Menu {
         transient: false,
         items: new Map<string, Key>([
             [
+                " ",
+                {
+                    name: "Commands",
+                    icon: "rocket",
+                    command: "workbench.action.showCommands",
+                },
+            ],
+            [
                 "\t",
                 {
                     icon: "go-to-file",
@@ -50,6 +58,14 @@ export function menu(): Menu {
                         "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
                         "list.select",
                     ],
+                },
+            ],
+            [
+                "!",
+                {
+                    name: "Show terminal",
+                    icon: "terminal",
+                    command: "workbench.action.terminal.focus",
                 },
             ],
             [
