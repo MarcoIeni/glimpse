@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import { type Menu, keyDescription, menu } from "./keys";
-import { configPath } from "./config";
 
 export type Executor = {
     menu: Menu;
@@ -10,8 +9,7 @@ export type Executor = {
 };
 
 export async function newExecutor(context: vscode.ExtensionContext): Promise<Executor> {
-    const originalMenu = menu();
-    const userMenu = await getUserCustomization(context, originalMenu);
+    const userMenu: Menu = await menu(context);
     return {
         menu: userMenu,
         userMenu: userMenu,
@@ -28,17 +26,6 @@ export function glimpseRun(executor: Executor): void {
     } catch (err) {
         console.error("Failed to run Glimpse", err);
     }
-}
-
-async function getUserCustomization(
-    context: vscode.ExtensionContext,
-    defaultMenu: Menu
-): Promise<Menu> {
-    const configFilePath = configPath(context);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const userModule = await import(configFilePath.fsPath);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    return userModule(defaultMenu) as Menu;
 }
 
 function pick(executor: Executor): void {
