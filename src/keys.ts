@@ -1,6 +1,7 @@
 export type Key = CommandOrSubmenu & {
-    /** icon displayed in the label */
+    /** icon displayed in the name */
     icon?: string;
+    /** name of the key */
     name: string;
 };
 
@@ -20,11 +21,15 @@ type CommandOrSubmenu =
 type Command = string[] | string;
 
 export function keyDescription(key: Key): string {
+    let description = "";
     if (key.icon) {
-        return `$(${key.icon})   ${key.name}`;
-    } else {
-        return key.name;
+        description += `$(${key.icon})   `;
     }
+    if (!("command" in key)) {
+        description += "+";
+    }
+    description += key.name;
+    return description;
 }
 
 export type Menu = {
@@ -74,7 +79,7 @@ export function menu(): Menu {
             [
                 "*",
                 {
-                    name: "search",
+                    name: "Search",
                     command: [
                         "editor.action.addSelectionToNextFindMatch",
                         "workbench.action.findInFiles",
