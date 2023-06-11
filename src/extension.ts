@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { type Executor, executeKey, glimpseRun, newExecutor } from "./glimpse";
+import { executeKey, glimpseRun, newExecutor } from "./glimpse";
 import { glimpseConfigure } from "./config";
 
 // This method is called when the extension is activated.
