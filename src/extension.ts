@@ -9,7 +9,10 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     try {
         await activateExtension(context);
     } catch (err) {
-        console.error("Failed to activate Glimpse", err);
+        const errStr = err as string;
+        const msg = `Failed to activate Glimpse. ${errStr}`;
+        console.error(msg);
+        await vscode.window.showErrorMessage(msg);
     }
 }
 

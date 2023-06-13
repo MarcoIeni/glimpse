@@ -10,33 +10,33 @@ type KeyDescription = {
     name: string;
 };
 
+type CommandAndArgs =
+    | {
+          command: Command;
+      }
+    | {
+          commands: Command[];
+      };
+
 type CommandOrSubmenu =
     // when pressing the key, execute the command AND open another menu
     | {
-          command: Command;
+          commands: Command[];
           menu: Menu;
       }
-    // when pressing the key, execute the command
-    | {
-          command: Command;
-      }
-    // when pressing the key, open another menu
+    | { commands: Command[] }
     | { menu: Menu };
 
 type UserCommandOrSubmenu =
     // when pressing the key, execute the command AND open another menu
-    | {
-          command: Command;
+    | CommandAndArgs
+    | { menu: UserMenu }
+    | (CommandAndArgs & {
           menu: UserMenu;
-      }
-    // when pressing the key, execute the command
-    | {
-          command: Command;
-      }
-    // when pressing the key, open another menu
-    | { menu: UserMenu };
+      });
 
-type Command = string[] | string;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Command = string | { id: string; args?: any[] | any };
 
 export function keyDescription(key: Key): string {
     let description = "";
@@ -78,7 +78,8 @@ function userMenu(): UserMenu {
                 key: "\t",
                 icon: "go-to-file",
                 name: "Last editor",
-                command: [
+                command: "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+                commands: [
                     "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
                     "list.select",
                 ],
@@ -104,7 +105,7 @@ function userMenu(): UserMenu {
             {
                 key: "*",
                 name: "Search",
-                command: [
+                commands: [
                     "editor.action.addSelectionToNextFindMatch",
                     "workbench.action.findInFiles",
                     "search.action.focusSearchList",
@@ -112,15 +113,87 @@ function userMenu(): UserMenu {
             },
             {
                 key: ":",
-                name: "Tasks",
+                name: "Task",
                 icon: "tasklist",
                 menu: tasks(),
             },
             {
                 key: "b",
-                name: "Buffers",
+                name: "Buffer",
                 icon: "file",
                 menu: buffers(),
+            },
+            {
+                key: "c",
+                name: "Compile/Comment",
+                icon: "gear",
+                menu: compileComments(),
+            },
+            {
+                key: "d",
+                name: "Debug",
+                icon: "bug",
+                menu: debug(),
+            },
+            {
+                key: "e",
+                name: "Error",
+                icon: "error",
+                menu: errors(),
+            },
+            {
+                key: "F",
+                name: "Format",
+                icon: "list-flat",
+                menu: format(),
+            },
+            {
+                key: "f",
+                name: "File",
+                icon: "file",
+                menu: files(),
+            },
+            {
+                key: "g",
+                name: "Git",
+                icon: "git-branch",
+                menu: git(),
+            },
+            {
+                key: "G",
+                name: "Go to",
+                icon: "go-to-file",
+                menu: goTo(),
+            },
+            {
+                key: "h",
+                name: "Help",
+                icon: "question",
+                menu: help(),
+            },
+            {
+                key: "i",
+                name: "Insert",
+                icon: "question",
+                menu: insert(),
+            },
+            {
+                key: "j",
+                name: "Jump/Join/Split",
+                icon: "gather",
+                menu: jumpJoinSplit(),
+            },
+            {
+                key: "P",
+                name: "Peek",
+                icon: "eye",
+                menu: peek(),
+            },
+            {
+                key: "r",
+                name: "Refactor",
+                icon: "edit",
+                menu: refactor(),
             },
             {
                 key: "/",
@@ -139,11 +212,6 @@ function userMenu(): UserMenu {
                 icon: "split-horizontal",
                 name: "Window",
                 command: "editor.action.addCommentLine",
-            },
-            {
-                key: "f",
-                name: "File",
-                command: "workbench.action.files.newUntitledFile",
             },
             {
                 key: "v",
@@ -224,6 +292,9 @@ export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
 function fromUserMenu(userMenu: UserMenu): Menu {
     const items = new Map<string, Key>();
     for (const item of userMenu.items) {
+        if (items.has(item.key)) {
+            throw new Error(`Duplicate key ${item.key}`);
+        }
         items.set(item.key, fromUserKey(item));
     }
     let transient = false;
@@ -235,12 +306,25 @@ function fromUserMenu(userMenu: UserMenu): Menu {
 
 function fromUserKey(userKey: UserKey): Key {
     const keyDescription: KeyDescription = { name: userKey.name, icon: userKey.icon };
-    if ("command" in userKey && "menu" in userKey) {
-        return { ...keyDescription, command: userKey.command, menu: fromUserMenu(userKey.menu) };
-    } else if ("command" in userKey) {
-        return { ...keyDescription, command: userKey.command };
-    } else if ("menu" in userKey) {
-        return { ...keyDescription, menu: fromUserMenu(userKey.menu) };
+    let commands = null;
+    if ("command" in userKey) {
+        commands = [userKey.command];
+    } else if ("commands" in userKey) {
+        commands = [];
+        for (const command of userKey.commands) {
+            commands.push(command);
+        }
+    }
+    let menu = null;
+    if ("menu" in userKey) {
+        menu = fromUserMenu(userKey.menu);
+    }
+    if (menu && commands) {
+        return { ...keyDescription, commands, menu };
+    } else if (commands) {
+        return { ...keyDescription, commands };
+    } else if (menu) {
+        return { ...keyDescription, menu };
     } else {
         throw new Error("Invalid user key");
     }
@@ -460,7 +544,7 @@ function buffers(): UserMenu {
                 key: "P",
                 name: "Paste clipboard to buffer",
                 icon: "clippy",
-                command: ["editor.action.selectAll", "editor.action.clipboardPasteAction"],
+                commands: ["editor.action.selectAll", "editor.action.clipboardPasteAction"],
             },
             {
                 key: "R",
@@ -491,7 +575,7 @@ function buffers(): UserMenu {
                             key: "h",
                             name: "New untitled buffer (split left)",
                             icon: "arrow-small-left",
-                            command: [
+                            commands: [
                                 "workbench.action.splitEditorLeft",
                                 "workbench.action.files.newUntitledFile",
                                 "workbench.action.closeOtherEditors",
@@ -501,7 +585,7 @@ function buffers(): UserMenu {
                             key: "j",
                             name: "New untitled buffer (split down)",
                             icon: "arrow-small-down",
-                            command: [
+                            commands: [
                                 "workbench.action.splitEditorDown",
                                 "workbench.action.files.newUntitledFile",
                                 "workbench.action.closeOtherEditors",
@@ -511,7 +595,7 @@ function buffers(): UserMenu {
                             key: "k",
                             name: "New untitled buffer (split up)",
                             icon: "arrow-small-up",
-                            command: [
+                            commands: [
                                 "workbench.action.splitEditorUp",
                                 "workbench.action.files.newUntitledFile",
                                 "workbench.action.closeOtherEditors",
@@ -521,7 +605,7 @@ function buffers(): UserMenu {
                             key: "l",
                             name: "New untitled buffer (split right)",
                             icon: "arrow-small-right",
-                            command: [
+                            commands: [
                                 "workbench.action.splitEditorRight",
                                 "workbench.action.files.newUntitledFile",
                                 "workbench.action.closeOtherEditors",
@@ -535,6 +619,905 @@ function buffers(): UserMenu {
                         },
                     ],
                 },
+            },
+        ],
+    };
+}
+
+// TODO compile project maybe is under tasks
+function compileComments(): UserMenu {
+    return {
+        items: [
+            {
+                key: "c",
+                name: "Compile project",
+                icon: "gear",
+                command: "workbench.action.tasks.build",
+            },
+            {
+                key: "l",
+                name: "Toggle line comment",
+                icon: "comment",
+                command: "editor.action.commentLine",
+            },
+            // TODO: isn't this under "errors"?
+            {
+                key: "n",
+                name: "Next error",
+                icon: "arrow-down",
+                command: "editor.action.marker.nextInFiles",
+            },
+            {
+                key: "N",
+                name: "Previous error",
+                icon: "arrow-up",
+                command: "editor.action.marker.prevInFiles",
+            },
+        ],
+    };
+}
+
+// TODO compile project maybe is under tasks
+function debug(): UserMenu {
+    return {
+        items: [
+            {
+                key: "c",
+                name: "Continue debug",
+                icon: "debug-continue",
+                command: "workbench.action.debug.continue",
+            },
+            {
+                key: "d",
+                name: "Start debug",
+                icon: "debug-start",
+                command: "workbench.action.debug.start",
+            },
+            {
+                key: "i",
+                name: "Step into",
+                icon: "debug-step-into",
+                command: "workbench.action.debug.stepInto",
+            },
+            {
+                key: "j",
+                name: "Jump to cursor",
+                icon: "whole-word",
+                command: "debug.jumpToCursor",
+            },
+            {
+                key: "o",
+                name: "Step out",
+                icon: "debug-step-out",
+                command: "workbench.action.debug.stepOut",
+            },
+            {
+                key: "p",
+                name: "Pause debug",
+                icon: "debug-pause",
+                command: "workbench.action.debug.pause",
+            },
+            {
+                key: "s",
+                name: "Step over",
+                icon: "debug-step-over",
+                command: "workbench.action.debug.stepOver",
+            },
+            {
+                key: "v",
+                name: "REPL",
+                icon: "debug-console",
+                command: "workbench.debug.action.toggleRepl",
+            },
+            {
+                key: "w",
+                name: "Focus on watch window",
+                icon: "eye-watch",
+                command: "workbench.debug.action.focusWatchView",
+            },
+            {
+                key: "C",
+                name: "Continue to cursor",
+                icon: "debug-continue",
+                command: "editor.debug.action.runToCursor",
+            },
+            {
+                key: "D",
+                name: "Run without debugging",
+                icon: "run",
+                command: "workbench.action.debug.run",
+            },
+            {
+                key: "R",
+                name: "Restart debug",
+                icon: "debug-restart",
+                command: "workbench.action.debug.restart",
+            },
+            {
+                key: "S",
+                name: "Stop debug",
+                icon: "debug-stop",
+                command: "workbench.action.debug.stop",
+            },
+            {
+                key: "W",
+                name: "Add to watch",
+                icon: "watch-expressions-add",
+                command: "editor.debug.action.selectionToWatch",
+            },
+            {
+                key: "b",
+                name: "+Breakpoint",
+                icon: "debug-breakpoint",
+                menu: {
+                    items: [
+                        {
+                            key: "b",
+                            name: "Toggle breakpoint",
+                            icon: "activate-breakpoints",
+                            command: "editor.debug.action.toggleBreakpoint",
+                        },
+                        {
+                            key: "c",
+                            name: "Add conditional breakpoint",
+                            icon: "debug-breakpoint-conditional",
+                            command: "editor.debug.action.conditionalBreakpoint",
+                        },
+                        {
+                            key: "d",
+                            name: "Delete breakpoint",
+                            icon: "trash",
+                            command: "debug.removeBreakpoint",
+                        },
+                        {
+                            key: "e",
+                            name: "Enable breakpoint",
+                            icon: "debug-breakpoint",
+                            command: "debug.enableOrDisableBreakpoint",
+                        },
+                        {
+                            key: "f",
+                            name: "Add function breakpoint",
+                            icon: "debug-breakpoint-function",
+                            command: "workbench.debug.viewlet.action.addFunctionBreakpointAction",
+                        },
+                        {
+                            key: "i",
+                            name: "Toggle inline breakpoint",
+                            icon: "activate-breakpoints",
+                            command: "editor.debug.action.toggleInlineBreakpoint",
+                        },
+                        {
+                            key: "n",
+                            name: "Next breakpoint",
+                            icon: "arrow-down",
+                            command: "editor.debug.action.goToNextBreakpoint",
+                            menu: {
+                                items: [
+                                    {
+                                        key: "n",
+                                        name: "Next breakpoint",
+                                        icon: "arrow-down",
+                                        command: "editor.debug.action.goToNextBreakpoint",
+                                    },
+                                    {
+                                        key: "p",
+                                        name: "Previous breakpoint",
+                                        icon: "arrow-up",
+                                        command: "editor.debug.action.goToPreviousBreakpoint",
+                                    },
+                                ],
+                            },
+                        },
+                        {
+                            key: "p",
+                            name: "Previous breakpoint",
+                            icon: "arrow-up",
+                            command: "editor.debug.action.goToPreviousBreakpoint",
+                            menu: {
+                                transient: true,
+                                items: [
+                                    {
+                                        key: "n",
+                                        name: "Next breakpoint",
+                                        icon: "arrow-down",
+                                        command: "editor.debug.action.goToNextBreakpoint",
+                                    },
+                                    {
+                                        key: "p",
+                                        name: "Previous breakpoint",
+                                        icon: "arrow-up",
+                                        command: "editor.debug.action.goToPreviousBreakpoint",
+                                    },
+                                ],
+                            },
+                        },
+                        {
+                            key: "s",
+                            name: "Disable breakpoint",
+                            icon: "debug-breakpoint-disabled",
+                            command: "debug.enableOrDisableBreakpoint",
+                        },
+                        {
+                            key: "D",
+                            name: "Delete all breakpoints",
+                            icon: "trash",
+                            command: "workbench.debug.viewlet.action.removeAllBreakpoints",
+                        },
+                        {
+                            key: "E",
+                            name: "Enable all breakpoints",
+                            icon: "expand-all",
+                            command: "workbench.debug.viewlet.action.enableAllBreakpoints",
+                        },
+                        {
+                            key: "S",
+                            name: "Disable all breakpoints",
+                            icon: "collapse-all",
+                            command: "workbench.debug.viewlet.action.disableAllBreakpoints",
+                        },
+                    ],
+                },
+            },
+        ],
+    };
+}
+
+function errors(): UserMenu {
+    return {
+        items: [
+            {
+                key: ".",
+                name: "Error transient",
+                icon: "window",
+                menu: {
+                    transient: true,
+
+                    items: [
+                        {
+                            key: "f",
+                            name: "Fix error",
+                            icon: "lightbulb-autofix",
+                            command: "editor.action.quickFix",
+                        },
+                        {
+                            key: "n",
+                            name: "Next error",
+                            icon: "arrow-down",
+                            command: "editor.action.marker.nextInFiles",
+                        },
+                        {
+                            key: "p",
+                            name: "Previous error",
+                            icon: "arrow-up",
+                            command: "editor.action.marker.prevInFiles",
+                        },
+                        {
+                            key: "N",
+                            name: "Previous error",
+                            icon: "arrow-up",
+                            command: "editor.action.marker.prevInFiles",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "e",
+                name: "Show error",
+                icon: "error",
+                command: "editor.action.showHover",
+            },
+            {
+                key: "f",
+                name: "Fix error",
+                icon: "lightbulb-autofix",
+                command: "editor.action.quickFix",
+            },
+            {
+                key: "l",
+                name: "List errors",
+                icon: "list-flat",
+                command: "workbench.actions.view.problems",
+            },
+            {
+                key: "n",
+                name: "Next error",
+                icon: "arrow-down",
+                command: "editor.action.marker.nextInFiles",
+            },
+            {
+                key: "p",
+                name: "Previous error",
+                icon: "arrow-up",
+                command: "editor.action.marker.prevInFiles",
+            },
+            {
+                key: "N",
+                name: "Previous error",
+                icon: "arrow-up",
+                command: "editor.action.marker.prevInFiles",
+            },
+        ],
+    };
+}
+
+function files(): UserMenu {
+    return {
+        items: [
+            {
+                key: "f",
+                name: "Open file/folder",
+                icon: "folder-opened",
+                command: "file-browser.open",
+            },
+            {
+                key: "l",
+                name: "Change file language",
+                icon: "code",
+                command: "workbench.action.editor.changeLanguageMode",
+            },
+            {
+                key: "n",
+                name: "New file",
+                icon: "new-file",
+                command: "explorer.newFile",
+            },
+            {
+                key: "o",
+                name: "+Open with",
+                icon: "file-code",
+                command: "explorer.openWith",
+            },
+            {
+                key: "r",
+                name: "+Open recent",
+                icon: "clock",
+                command: "workbench.action.openRecent",
+            },
+            {
+                key: "s",
+                name: "Save file",
+                icon: "save",
+                command: "workbench.action.files.save",
+            },
+            {
+                key: "t",
+                name: "Toggle tree/explorer view",
+                icon: "list-tree",
+                menu: {
+                    items: [
+                        {
+                            key: "",
+                            name: "Show explorer view",
+                            command: "workbench.view.explorer",
+                        },
+                        {
+                            key: "when:sideBarVisible && explorerViewletVisible",
+                            name: "Hide side bar",
+                            command: "workbench.action.toggleSidebarVisibility",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "w",
+                name: "Open active in new window",
+                icon: "window",
+                command: "workbench.action.files.showOpenedFileInNewWindow",
+            },
+            {
+                key: "D",
+                name: "Delete current file",
+                icon: "trash",
+                commands: ["workbench.files.action.showActiveFileInExplorer", "deleteFile"],
+            },
+            {
+                key: "L",
+                name: "Locate file",
+                icon: "file-symlink-directory",
+                command: "revealFileInOS",
+            },
+            {
+                key: "R",
+                name: "Rename file",
+                icon: "edit",
+                commands: ["revealInExplorer", "renameFile"],
+            },
+            {
+                key: "S",
+                name: "Save all files",
+                icon: "save-all",
+                command: "workbench.action.files.saveAll",
+            },
+            {
+                key: "T",
+                name: "Show active file in tree/explorer view",
+                icon: "list-tree",
+                command: "workbench.files.action.showActiveFileInExplorer",
+            },
+            {
+                key: "e",
+                name: "+Emacs/VSpaceCode",
+                icon: "settings",
+                menu: {
+                    items: [
+                        {
+                            key: "d",
+                            name: "Open settings",
+                            icon: "settings",
+                            command: "workbench.action.openGlobalSettings",
+                        },
+                        {
+                            key: "k",
+                            name: "Open global key bindings",
+                            icon: "keyboard",
+                            command: "workbench.action.openGlobalKeybindings",
+                        },
+                        {
+                            key: "l",
+                            name: "Open language settings",
+                            icon: "code",
+                            command: "workbench.action.configureLanguageBasedSettings",
+                        },
+                        {
+                            key: "s",
+                            name: "Configure user snippets",
+                            icon: "symbol-snippet",
+                            command: "workbench.action.openSnippets",
+                        },
+                        {
+                            key: "w",
+                            name: "Open workspace settings",
+                            icon: "settings-edit",
+                            command: "workbench.action.openWorkspaceSettings",
+                        },
+                        {
+                            key: "D",
+                            name: "Open settings JSON",
+                            icon: "json",
+                            command: "workbench.action.openSettingsJson",
+                        },
+                        {
+                            key: "K",
+                            name: "Open global key bindings JSON",
+                            icon: "json",
+                            command: "workbench.action.openGlobalKeybindingsFile",
+                        },
+                        {
+                            key: "W",
+                            name: "Open workspace settings JSON",
+                            icon: "json",
+                            command: "workbench.action.openWorkspaceSettingsFile",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "i",
+                name: "+Indentation",
+                icon: "arrow-right",
+                menu: {
+                    items: [
+                        {
+                            key: "d",
+                            name: "Detect indentation",
+                            icon: "whitespace",
+                            command: "editor.action.detectIndentation",
+                        },
+                        {
+                            key: "i",
+                            name: "Change indentation",
+                            icon: "edit",
+                            command: "changeEditorIndentation",
+                        },
+                        {
+                            key: "r",
+                            name: "Reindent",
+                            icon: "list-flat",
+                            command: "editor.action.reindentlines",
+                        },
+                        {
+                            key: "s",
+                            name: "Convert indentation to spaces",
+                            icon: "arrow-small-right",
+                            command: "editor.action.indentationToSpaces",
+                        },
+                        {
+                            key: "t",
+                            name: "Convert indentation to tabs",
+                            icon: "export",
+                            command: "editor.action.indentationToTabs",
+                        },
+                        {
+                            key: "R",
+                            name: "Reindent selected",
+                            icon: "selection",
+                            command: "editor.action.reindentselectedlines",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "y",
+                name: "+Yank",
+                icon: "clippy",
+                menu: {
+                    items: [
+                        {
+                            key: "c",
+                            name: "Copy path of active file with line and column",
+                            icon: "list-selection",
+                            command: "vspacecode.copyPathWithLineColumn",
+                        },
+                        {
+                            key: "d",
+                            name: "Copy directory path of the active file",
+                            icon: "file-directory",
+                            command: "vspacecode.copyDirectoryPath",
+                        },
+                        {
+                            key: "l",
+                            name: "Copy path of active file with line",
+                            icon: "list-flat",
+                            command: "vspacecode.copyPathWithLine",
+                        },
+                        {
+                            key: "n",
+                            name: "Copy filename of active file",
+                            icon: "file",
+                            command: "vspacecode.copyFilename",
+                        },
+                        {
+                            key: "y",
+                            name: "Copy path of active file",
+                            icon: "go-to-file",
+                            command: "vspacecode.copyPath",
+                        },
+                        {
+                            key: "C",
+                            name: "Copy relative path of active file with line and column",
+                            icon: "list-selection",
+                            command: "vspacecode.copyRelativePathWithLineColumn",
+                        },
+                        {
+                            key: "D",
+                            name: "Copy relative directory path of the active file",
+                            icon: "file-directory",
+                            command: "vspacecode.copyRelativeDirectoryPath",
+                        },
+                        {
+                            key: "L",
+                            name: "Copy relative path of active file with line",
+                            icon: "list-flat",
+                            command: "vspacecode.copyRelativePathWithLine",
+                        },
+                        {
+                            key: "N",
+                            name: "Copy filename without extension of active file",
+                            icon: "file",
+                            command: "vspacecode.copyFilenameBase",
+                        },
+                        {
+                            key: "Y",
+                            name: "Copy relative path of active file",
+                            icon: "go-to-file",
+                            command: "vspacecode.copyRelativePath",
+                        },
+                    ],
+                },
+            },
+        ],
+    };
+}
+
+function git(): UserMenu {
+    return {
+        items: [
+            {
+                key: "c",
+                name: "Clone",
+                icon: "repo-clone",
+                command: "git.clone",
+            },
+            {
+                key: "i",
+                name: "Initialize repository",
+                icon: "repo-create",
+                command: "git.init",
+            },
+            {
+                key: "l",
+                name: "Show log/timeline",
+                icon: "history",
+                command: "timeline.focus",
+            },
+        ],
+    };
+}
+
+function help(): UserMenu {
+    return {
+        items: [
+            {
+                key: "d",
+                name: "Open VSCode Documentation",
+                icon: "book",
+                command: "workbench.action.openDocumentationUrl",
+            },
+            {
+                key: "k",
+                name: "Open global key bindings",
+                icon: "keyboard",
+                command: "workbench.action.openGlobalKeybindings",
+            },
+            {
+                key: "D",
+                name: "Open VSpaceCode Documentation",
+                icon: "book",
+                command: "vspacecode.openDocumentationUrl",
+            },
+            {
+                key: "I",
+                name: "Report VSCode Issue",
+                icon: "issues",
+                command: "workbench.action.openIssueReporter",
+            },
+            {
+                key: "T",
+                name: "Open VSCode Tutorial",
+                icon: "lightbulb",
+                command: "workbench.action.showInteractivePlayground",
+            },
+        ],
+    };
+}
+
+function insert(): UserMenu {
+    return {
+        items: [
+            {
+                key: "j",
+                name: "Insert line below",
+                icon: "arrow-down",
+                command: "editor.action.insertLineAfter",
+            },
+            {
+                key: "k",
+                name: "Insert line above",
+                icon: "arrow-up",
+                command: "editor.action.insertLineBefore",
+            },
+            {
+                key: "s",
+                name: "Insert snippet",
+                icon: "symbol-snippet",
+                command: "editor.action.insertSnippet",
+            },
+        ],
+    };
+}
+
+function jumpJoinSplit(): UserMenu {
+    return {
+        items: [
+            {
+                key: "+",
+                name: "Format buffer",
+                icon: "file",
+                command: "editor.action.formatDocument",
+            },
+            {
+                key: "=",
+                name: "Format region or buffer",
+                icon: "list-flat",
+                command: "editor.action.format",
+            },
+            {
+                key: "c",
+                name: "Jump to previous change",
+                icon: "arrow-up",
+                command: "workbench.action.editor.previousChange",
+            },
+            {
+                key: "i",
+                name: "Jump to symbol in buffer",
+                icon: "symbol-class",
+                command: "workbench.action.gotoSymbol",
+            },
+            {
+                key: "n",
+                name: "Split new line",
+                icon: "whitespace",
+                command: "lineBreakInsert",
+            },
+            {
+                key: "v",
+                name: "Jump to outline/variables",
+                icon: "variable",
+                command: "breadcrumbs.focusAndSelect",
+            },
+            {
+                key: "C",
+                name: "Jump to next change",
+                icon: "arrow-down",
+                command: "workbench.action.editor.nextChange",
+            },
+            {
+                key: "I",
+                name: "Jump to symbol in project",
+                icon: "project",
+                command: "workbench.action.showAllSymbols",
+            },
+        ],
+    };
+}
+
+function format(): UserMenu {
+    return {
+        items: [
+            {
+                key: "=",
+                name: "Format region or buffer",
+                icon: "list-flat",
+                command: "editor.action.format",
+            },
+            {
+                key: "b",
+                name: "Format buffer",
+                icon: "file",
+                command: "editor.action.formatDocument",
+            },
+            {
+                key: "c",
+                name: "Format changes",
+                icon: "diff",
+                command: "editor.action.formatChanges",
+            },
+            {
+                key: "s",
+                name: "Format selection",
+                icon: "selection",
+                command: "editor.action.formatSelection",
+            },
+            {
+                key: "B",
+                name: "Format buffer with formatter",
+                icon: "file",
+                command: "editor.action.formatDocument.multiple",
+            },
+            {
+                key: "S",
+                name: "Format selection with formatter",
+                icon: "selection",
+                command: "editor.action.formatSelection.multiple",
+            },
+        ],
+    };
+}
+
+function goTo(): UserMenu {
+    return {
+        items: [
+            {
+                key: "d",
+                name: "Go to declaration",
+                icon: "symbol-struct",
+                command: "editor.action.revealDeclaration",
+            },
+            {
+                key: "e",
+                name: "Go to errors/problems",
+                icon: "error",
+                command: "workbench.actions.view.problems",
+            },
+            {
+                key: "f",
+                name: "Go to file in explorer",
+                icon: "file",
+                command: "workbench.files.action.showActiveFileInExplorer",
+            },
+            {
+                key: "g",
+                name: "Go to definition",
+                icon: "symbol-function",
+                command: "editor.action.revealDefinition",
+            },
+            {
+                key: "r",
+                name: "Go to reference",
+                icon: "symbol-reference",
+                command: "editor.action.goToReferences",
+            },
+            {
+                key: "i",
+                name: "Go to implementations",
+                icon: "symbol-module",
+                command: "editor.action.goToImplementation",
+            },
+            {
+                key: "I",
+                name: "Find implementations",
+                icon: "symbol-module",
+                command: "references-view.findImplementations",
+            },
+            {
+                key: "s",
+                name: "Go to symbol in buffer",
+                icon: "symbol-class",
+                command: "workbench.action.gotoSymbol",
+            },
+            {
+                key: "R",
+                name: "Find references",
+                icon: "symbol-reference",
+                command: "references-view.findReferences",
+            },
+            {
+                key: "S",
+                name: "Go to symbol in project",
+                icon: "symbol-class",
+                command: "workbench.action.showAllSymbols",
+            },
+        ],
+    };
+}
+
+function refactor(): UserMenu {
+    return {
+        items: [
+            {
+                key: ".",
+                name: "Quick fix",
+                icon: "lightbulb-autofix",
+                command: "editor.action.quickFix",
+            },
+            {
+                key: "e",
+                name: "Extract to function or variable",
+                icon: "gather",
+                command: {
+                    id: "editor.action.codeAction",
+                    args: {
+                        kind: "refactor.extract",
+                    },
+                },
+            },
+            {
+                key: "r",
+                name: "Rename Symbol",
+                icon: "symbol-keyword",
+                command: "editor.action.rename",
+            },
+        ],
+    };
+}
+
+function peek(): UserMenu {
+    return {
+        items: [
+            {
+                key: "d",
+                name: "Peek declaration",
+                icon: "symbol-struct",
+                command: "editor.action.peekDeclaration",
+            },
+            {
+                key: "g",
+                name: "Peek definition",
+                icon: "symbol-function",
+                command: "editor.action.peekDefinition",
+            },
+            {
+                key: "i",
+                name: "Peek implementations",
+                icon: "symbol-module",
+                command: "editor.action.peekImplementation",
+            },
+            {
+                key: "r",
+                name: "Peek references",
+                icon: "symbol-reference",
+                command: "editor.action.referenceSearch.trigger",
             },
         ],
     };

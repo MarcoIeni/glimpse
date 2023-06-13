@@ -91,16 +91,17 @@ export async function executeKey(executor: Executor, key: string): Promise<void>
     executor.quickPick.dispose();
     const item = executor.menu.items.get(key);
     if (item) {
-        if ("command" in item) {
-            const command = item.command;
-            if (typeof command === "string") {
-                await vscode.commands.executeCommand(command);
-            } else if (Array.isArray(command)) {
+        if ("commands" in item) {
+            const command = item.commands;
+            if (Array.isArray(command)) {
                 for (const cmd of command) {
-                    await vscode.commands.executeCommand(cmd);
+                    if (typeof cmd === "string") {
+                        await vscode.commands.executeCommand(cmd);
+                    } else if ("id" in command && "args" in command) {
+                        const commandId = command.id as string;
+                        await vscode.commands.executeCommand(commandId, command.args);
+                    }
                 }
-            } else {
-                console.error("unknown command type", command);
             }
             if (executor.menu.transient) {
                 pick(executor);
