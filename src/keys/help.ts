@@ -1,6 +1,6 @@
 import { type UserMenu } from "./keys";
 
-function helpKeys(): UserMenu {
+export function helpKeys(): UserMenu {
     return {
         items: [
             {
