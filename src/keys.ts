@@ -136,6 +136,12 @@ function userMenu(): UserMenu {
                 menu: debug(),
             },
             {
+                key: "D",
+                name: "Diff/Compare",
+                icon: "diff",
+                menu: diff(),
+            },
+            {
                 key: "e",
                 name: "Error",
                 icon: "error",
@@ -212,6 +218,12 @@ function userMenu(): UserMenu {
                 name: "Search/Symbol",
                 icon: "search",
                 menu: searchSymbol(),
+            },
+            {
+                key: "S",
+                name: "Show",
+                icon: "info",
+                menu: show(),
             },
             {
                 key: "t",
@@ -517,62 +529,63 @@ function zoom(): UserMenu {
                 name: "+Fold",
                 icon: "fold",
                 menu: {
-                    items:[
-                    {
-                        key: "a",
-                        name: "Toggle: around a point",
-                        icon: "selection",
-                        command: "editor.toggleFold",
-                    },
-                    {
-                        key: "b",
-                        name: "Close: all block comments",
-                        icon: "fold",
-                        command: "editor.foldAllBlockComments",
-                    },
-                    {
-                        key: "c",
-                        name: "Close: at a point",
-                        icon: "fold",
-                        command: "editor.fold",
-                    },
-                    {
-                        key: "g",
-                        name: "Close: all regions",
-                        icon: "fold",
-                        command: "editor.foldAllMarkerRegions",
-                    },
-                    {
-                        key: "m",
-                        name: "Close: all",
-                        icon: "fold",
-                        command: "editor.foldAll",
-                    },
-                    {
-                        key: "o",
-                        name: "Open: at a point",
-                        icon: "unfold",
-                        command: "editor.unfold",
-                    },
-                    {
-                        key: "r",
-                        name: "Open: all",
-                        icon: "unfold",
-                        command: "editor.unfoldAll",
-                    },
-                    {
-                        key: "G",
-                        name: "Open: all regions",
-                        icon: "unfold",
-                        command: "editor.unfoldAllMarkerRegions",
-                    },
-                    {
-                        key: "O",
-                        name: "Open: recursively",
-                        icon: "unfold",
-                        command: "editor.unfoldRecursively",
-                    },
-                ]},
+                    items: [
+                        {
+                            key: "a",
+                            name: "Toggle: around a point",
+                            icon: "selection",
+                            command: "editor.toggleFold",
+                        },
+                        {
+                            key: "b",
+                            name: "Close: all block comments",
+                            icon: "fold",
+                            command: "editor.foldAllBlockComments",
+                        },
+                        {
+                            key: "c",
+                            name: "Close: at a point",
+                            icon: "fold",
+                            command: "editor.fold",
+                        },
+                        {
+                            key: "g",
+                            name: "Close: all regions",
+                            icon: "fold",
+                            command: "editor.foldAllMarkerRegions",
+                        },
+                        {
+                            key: "m",
+                            name: "Close: all",
+                            icon: "fold",
+                            command: "editor.foldAll",
+                        },
+                        {
+                            key: "o",
+                            name: "Open: at a point",
+                            icon: "unfold",
+                            command: "editor.unfold",
+                        },
+                        {
+                            key: "r",
+                            name: "Open: all",
+                            icon: "unfold",
+                            command: "editor.unfoldAll",
+                        },
+                        {
+                            key: "G",
+                            name: "Open: all regions",
+                            icon: "unfold",
+                            command: "editor.unfoldAllMarkerRegions",
+                        },
+                        {
+                            key: "O",
+                            name: "Open: recursively",
+                            icon: "unfold",
+                            command: "editor.unfoldRecursively",
+                        },
+                    ],
+                },
             },
         ],
     };
@@ -1106,6 +1119,43 @@ function debug(): UserMenu {
                         },
                     ],
                 },
+            },
+        ],
+    };
+}
+
+function diff(): UserMenu {
+    return {
+        items: [
+            {
+                key: "c",
+                name: "Compare active file with clipboard",
+                icon: "clippy",
+                command: "workbench.files.action.compareWithClipboard",
+            },
+            {
+                key: "m",
+                name: "Compare current merge conflict",
+                icon: "git-merge",
+                command: "merge-conflict.compare",
+            },
+            {
+                key: "s",
+                name: "Compare active file with saved",
+                icon: "save-as",
+                command: "workbench.files.action.compareWithSaved",
+            },
+            {
+                key: "w",
+                name: "Toggle ignore trim whitespace",
+                icon: "whitespace",
+                command: "toggle.diff.ignoreTrimWhitespace",
+            },
+            {
+                key: "D",
+                name: "+Compare active file with",
+                icon: "diff",
+                command: "workbench.files.action.compareFileWith",
             },
         ],
     };
@@ -2081,11 +2131,138 @@ function searchSymbol(): UserMenu {
     };
 }
 
+function show(): UserMenu {
+    return {
+        items: [
+            {
+                key: "d",
+                name: "Show debug console",
+                icon: "debug-console",
+                command: "workbench.debug.action.toggleRepl",
+            },
+            {
+                key: "e",
+                name: "Show explorer",
+                icon: "list-tree",
+                command: "workbench.view.explorer",
+            },
+            {
+                key: "g",
+                name: "Show source control",
+                icon: "source-control",
+                command: "workbench.view.scm",
+            },
+            {
+                key: "n",
+                name: "Show notification",
+                icon: "comment",
+                command: "notifications.toggleList",
+            },
+            {
+                key: "o",
+                name: "Show output",
+                icon: "output",
+                command: "workbench.action.output.toggleOutput",
+            },
+            {
+                key: "p",
+                name: "Show problem",
+                icon: "error",
+                command: "workbench.actions.view.problems",
+            },
+            {
+                key: "r",
+                name: "Show remote explorer",
+                icon: "remote-explorer",
+                command: "workbench.view.remote",
+            },
+            {
+                key: "s",
+                name: "Show search",
+                icon: "search",
+                command: "workbench.view.search",
+            },
+            {
+                key: "t",
+                name: "Show test",
+                icon: "beaker",
+                command: "workbench.view.extension.test",
+            },
+            {
+                key: "x",
+                name: "Show extensions",
+                icon: "extensions",
+                command: "workbench.view.extensions",
+            },
+        ],
+    };
+}
+
 function toggles(): UserMenu {
     return {
         items: [
             {
+                key: "b",
+                name: "Toggle side bar visibility",
+                icon: "split-horizontal",
+                command: "workbench.action.toggleSidebarVisibility",
+            },
+            {
                 key: "c",
+                name: "Toggle centered layout",
+                icon: "list-flat",
+                command: "workbench.action.toggleCenteredLayout",
+            },
+            {
+                key: "i",
+                name: "Select icon theme",
+                icon: "symbol-misc",
+                command: "workbench.action.selectIconTheme",
+            },
+            {
+                key: "j",
+                name: "Toggle panel visibility",
+                icon: "output",
+                command: "workbench.action.togglePanel",
+            },
+            {
+                key: "m",
+                name: "Toggle maximized panel",
+                icon: "chevron-up",
+                command: "workbench.action.toggleMaximizedPanel",
+            },
+            {
+                key: "s",
+                name: "Select theme",
+                icon: "paintcan",
+                command: "workbench.action.selectTheme",
+            },
+            {
+                key: "t",
+                name: "Toggle tool/activity bar visibility",
+                icon: "tools",
+                command: "workbench.action.toggleActivityBarVisibility",
+            },
+            {
+                key: "z",
+                name: "Toggle zen mode",
+                icon: "eye",
+                command: "workbench.action.toggleZenMode",
+            },
+            {
+                key: "F",
+                name: "Toggle full screen",
+                icon: "screen-full",
+                command: "workbench.action.toggleFullScreen",
+            },
+            {
+                key: "T",
+                name: "Toggle tab visibility",
+                icon: "files",
+                command: "workbench.action.toggleTabsVisibility",
+            },
+            {
+                key: "C",
                 name: "Toggle find case sensitive",
                 icon: "case-sensitive",
                 command: "toggleFindCaseSensitive",
@@ -2207,6 +2384,12 @@ function window(): UserMenu {
                 name: "Maximize window",
                 icon: "chrome-maximize",
                 command: "workbench.action.toggleEditorWidths",
+            },
+            {
+                key: "n",
+                name: "Duplicate workspace in new frame",
+                icon: "window",
+                command: "workbench.action.duplicateWorkspaceInNewWindow",
             },
             {
                 key: "o",
