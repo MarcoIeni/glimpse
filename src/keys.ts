@@ -36,7 +36,7 @@ type UserCommandOrSubmenu =
       });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Command = string | { id: string; args?: any[] | any };
+export type Command = string | { id: string; args: any[] | any };
 
 export function keyDescription(key: Key): string {
     let description = "";
@@ -184,16 +184,58 @@ function userMenu(): UserMenu {
                 menu: jumpJoinSplit(),
             },
             {
+                key: "p",
+                name: "Project",
+                icon: "project",
+                menu: projects(),
+            },
+            {
                 key: "P",
                 name: "Peek",
                 icon: "eye",
                 menu: peek(),
             },
             {
+                key: "q",
+                name: "Quit",
+                icon: "x",
+                menu: quit(),
+            },
+            {
                 key: "r",
                 name: "Refactor",
                 icon: "edit",
                 menu: refactor(),
+            },
+            {
+                key: "s",
+                name: "Search/Symbol",
+                icon: "search",
+                menu: searchSymbol(),
+            },
+            {
+                key: "t",
+                name: "Toogle",
+                icon: "settings",
+                menu: toggles(),
+            },
+            {
+                key: "T",
+                name: "Test",
+                icon: "beaker",
+                menu: tests(),
+            },
+            {
+                key: "w",
+                name: "Window",
+                icon: "split-horizontal",
+                menu: window(),
+            },
+            {
+                key: "x",
+                name: "Text",
+                icon: "symbol-text",
+                menu: text(),
             },
             {
                 key: "/",
@@ -220,7 +262,7 @@ function userMenu(): UserMenu {
                 command: "editor.action.smartSelect.grow",
                 menu: selectExpand(),
             },
-            { key: "z", name: "Zoom", menu: zoom() },
+            { key: "z", name: "Zoom/Fold", icon: "zoom-in", menu: zoom() },
             {
                 key: "0",
                 name: "Focus on files explorer",
@@ -331,6 +373,212 @@ function fromUserKey(userKey: UserKey): Key {
 }
 
 function zoom(): UserMenu {
+    return {
+        items: [
+            {
+                key: "+",
+                name: "Zoom In",
+                command: "workbench.action.zoomIn",
+                menu: zoomTransient(),
+            },
+            {
+                key: "=",
+                name: "Zoom In",
+                command: "workbench.action.zoomIn",
+                menu: zoomTransient(),
+            },
+            {
+                key: "-",
+                name: "Zoom Out",
+                command: "workbench.action.zoomOut",
+                menu: zoomTransient(),
+            },
+            {
+                key: "f",
+                name: "+Frame",
+                icon: "window",
+                menu: {
+                    transient: true,
+                    items: [
+                        {
+                            key: "+",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "workbench.action.zoomIn",
+                        },
+                        {
+                            key: "-",
+                            name: "Zoom out",
+                            icon: "zoom-out",
+                            command: "workbench.action.zoomOut",
+                        },
+                        {
+                            key: "0",
+                            name: "Reset zoom",
+                            icon: "search",
+                            command: "workbench.action.zoomReset",
+                        },
+                        {
+                            key: "=",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "workbench.action.zoomIn",
+                        },
+                        {
+                            key: "j",
+                            name: "Zoom out",
+                            icon: "zoom-out",
+                            command: "workbench.action.zoomOut",
+                        },
+                        {
+                            key: "k",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "workbench.action.zoomIn",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "i",
+                name: "+Image preview",
+                icon: "eye",
+                menu: {
+                    transient: true,
+                    items: [
+                        {
+                            key: "+",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "imagePreview.zoomIn",
+                        },
+                        {
+                            key: "-",
+                            name: "Zoom out",
+                            icon: "zoom-out",
+                            command: "imagePreview.zoomOut",
+                        },
+                        {
+                            key: "=",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "imagePreview.zoomIn",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "x",
+                name: "+Font",
+                icon: "case-sensitive",
+                menu: {
+                    items: [
+                        {
+                            key: "+",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "editor.action.fontZoomIn",
+                        },
+                        {
+                            key: "-",
+                            name: "Zoom out",
+                            icon: "zoom-out",
+                            command: "editor.action.fontZoomOut",
+                        },
+                        {
+                            key: "0",
+                            name: "Reset zoom",
+                            icon: "search",
+                            command: "editor.action.fontZoomReset",
+                        },
+                        {
+                            key: "=",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "editor.action.fontZoomIn",
+                        },
+                        {
+                            key: "j",
+                            name: "Zoom out",
+                            icon: "zoom-out",
+                            command: "editor.action.fontZoomOut",
+                        },
+                        {
+                            key: "k",
+                            name: "Zoom in",
+                            icon: "zoom-in",
+                            command: "editor.action.fontZoomIn",
+                        },
+                    ],
+                },
+            },
+            {
+                key: ".",
+                name: "+Fold",
+                icon: "fold",
+                menu: {
+                    items:[
+                    {
+                        key: "a",
+                        name: "Toggle: around a point",
+                        icon: "selection",
+                        command: "editor.toggleFold",
+                    },
+                    {
+                        key: "b",
+                        name: "Close: all block comments",
+                        icon: "fold",
+                        command: "editor.foldAllBlockComments",
+                    },
+                    {
+                        key: "c",
+                        name: "Close: at a point",
+                        icon: "fold",
+                        command: "editor.fold",
+                    },
+                    {
+                        key: "g",
+                        name: "Close: all regions",
+                        icon: "fold",
+                        command: "editor.foldAllMarkerRegions",
+                    },
+                    {
+                        key: "m",
+                        name: "Close: all",
+                        icon: "fold",
+                        command: "editor.foldAll",
+                    },
+                    {
+                        key: "o",
+                        name: "Open: at a point",
+                        icon: "unfold",
+                        command: "editor.unfold",
+                    },
+                    {
+                        key: "r",
+                        name: "Open: all",
+                        icon: "unfold",
+                        command: "editor.unfoldAll",
+                    },
+                    {
+                        key: "G",
+                        name: "Open: all regions",
+                        icon: "unfold",
+                        command: "editor.unfoldAllMarkerRegions",
+                    },
+                    {
+                        key: "O",
+                        name: "Open: recursively",
+                        icon: "unfold",
+                        command: "editor.unfoldRecursively",
+                    },
+                ]},
+            },
+        ],
+    };
+}
+
+function zoomTransient(): UserMenu {
     return {
         transient: true,
         items: [
@@ -875,6 +1123,12 @@ function errors(): UserMenu {
 
                     items: [
                         {
+                            key: "e",
+                            name: "Go to errors/problems",
+                            icon: "error",
+                            command: "workbench.action.problems.focus",
+                        },
+                        {
                             key: "f",
                             name: "Fix error",
                             icon: "lightbulb-autofix",
@@ -1239,6 +1493,12 @@ function help(): UserMenu {
     return {
         items: [
             {
+                key: "h",
+                name: "Describe thing at point",
+                icon: "book",
+                command: "editor.action.showHover",
+            },
+            {
                 key: "d",
                 name: "Open VSCode Documentation",
                 icon: "book",
@@ -1300,18 +1560,6 @@ function insert(): UserMenu {
 function jumpJoinSplit(): UserMenu {
     return {
         items: [
-            {
-                key: "+",
-                name: "Format buffer",
-                icon: "file",
-                command: "editor.action.formatDocument",
-            },
-            {
-                key: "=",
-                name: "Format region or buffer",
-                icon: "list-flat",
-                command: "editor.action.format",
-            },
             {
                 key: "c",
                 name: "Jump to previous change",
@@ -1417,6 +1665,12 @@ function goTo(): UserMenu {
                 command: "workbench.files.action.showActiveFileInExplorer",
             },
             {
+                key: "h",
+                name: "Show call hierarchy",
+                icon: "type-hierarchy",
+                command: "references-view.showCallHierarchy",
+            },
+            {
                 key: "g",
                 name: "Go to definition",
                 icon: "symbol-function",
@@ -1458,6 +1712,12 @@ function goTo(): UserMenu {
                 icon: "symbol-class",
                 command: "workbench.action.showAllSymbols",
             },
+            {
+                key: "t",
+                name: "Go to type definition",
+                icon: "symbol-struct",
+                command: "editor.action.goToTypeDefinition",
+            },
         ],
     };
 }
@@ -1472,6 +1732,12 @@ function refactor(): UserMenu {
                 command: "editor.action.quickFix",
             },
             {
+                key: "a",
+                name: "Execute code actions",
+                icon: "lightbulb",
+                command: "editor.action.codeAction",
+            },
+            {
                 key: "e",
                 name: "Extract to function or variable",
                 icon: "gather",
@@ -1483,10 +1749,28 @@ function refactor(): UserMenu {
                 },
             },
             {
+                key: "i",
+                name: "Organize imports",
+                icon: "edit",
+                command: "editor.action.organizeImports",
+            },
+            {
                 key: "r",
                 name: "Rename Symbol",
                 icon: "symbol-keyword",
                 command: "editor.action.rename",
+            },
+            {
+                key: "R",
+                name: "Refactor actions",
+                icon: "edit",
+                command: "editor.action.refactor",
+            },
+            {
+                key: "s",
+                name: "Execute source action",
+                icon: "lightbulb",
+                command: "editor.action.sourceAction",
             },
         ],
     };
@@ -1502,10 +1786,10 @@ function peek(): UserMenu {
                 command: "editor.action.peekDeclaration",
             },
             {
-                key: "g",
-                name: "Peek definition",
-                icon: "symbol-function",
-                command: "editor.action.peekDefinition",
+                key: "h",
+                name: "Peek call hierarchy",
+                icon: "type-hierarchy",
+                command: "editor.showCallHierarchy",
             },
             {
                 key: "i",
@@ -1514,10 +1798,718 @@ function peek(): UserMenu {
                 command: "editor.action.peekImplementation",
             },
             {
+                key: "p",
+                name: "Peek definition",
+                icon: "symbol-function",
+                command: "editor.action.peekDefinition",
+            },
+            {
                 key: "r",
                 name: "Peek references",
                 icon: "symbol-reference",
                 command: "editor.action.referenceSearch.trigger",
+            },
+            {
+                key: "t",
+                name: "Peek type definition",
+                icon: "symbol-struct",
+                command: "editor.action.peekTypeDefinition",
+            },
+        ],
+    };
+}
+
+function tests(): UserMenu {
+    return {
+        items: [
+            {
+                key: "a",
+                name: "Run all tests",
+                icon: "beaker",
+                command: "testing.runAll",
+            },
+            {
+                key: "b",
+                name: "Run current test file",
+                icon: "file",
+                command: "testing.runCurrentFile",
+            },
+            {
+                key: "r",
+                name: "Re-run failed tests",
+                icon: "close",
+                command: "testing.reRunFailTests",
+            },
+            {
+                key: "t",
+                name: "Select and run test",
+                icon: "list-unordered",
+                command: "testing.runSelected",
+            },
+            {
+                key: "A",
+                name: "Debug all tests",
+                icon: "bug",
+                command: "testing.debugAll",
+            },
+            {
+                key: "T",
+                name: "Select and debug test",
+                icon: "debug-alt",
+                command: "testing.debugSelected",
+            },
+        ],
+    };
+}
+
+function projects(): UserMenu {
+    return {
+        items: [
+            {
+                key: "c",
+                name: "Compile project",
+                icon: "gear",
+                command: "workbench.action.tasks.build",
+            },
+            {
+                key: "f",
+                name: "+Find file in project",
+                icon: "file",
+                command: "workbench.action.quickOpen",
+            },
+            {
+                key: "l",
+                name: "+Switch project",
+                icon: "project",
+                command: "workbench.action.openRecent",
+            },
+            {
+                key: "p",
+                name: "+Switch project",
+                icon: "project",
+                command: "workbench.action.openRecent",
+            },
+            {
+                key: "t",
+                name: "Show tree/explorer view",
+                icon: "list-tree",
+                command: "workbench.view.explorer",
+            },
+            {
+                key: "R",
+                name: "+Replace in files",
+                icon: "find-replace",
+                command: "workbench.action.replaceInFiles",
+            },
+            {
+                key: "T",
+                name: "Test project",
+                icon: "beaker",
+                command: "workbench.action.tasks.test",
+            },
+        ],
+    };
+}
+
+function quit(): UserMenu {
+    return {
+        items: [
+            {
+                key: "f",
+                name: "Close frame",
+                icon: "close",
+                command: "workbench.action.closeWindow",
+            },
+            {
+                key: "q",
+                name: "Close frame",
+                icon: "close",
+                command: "workbench.action.closeWindow",
+            },
+            {
+                key: "r",
+                name: "Reload frame",
+                icon: "refresh",
+                command: "workbench.action.reloadWindow",
+            },
+            {
+                key: "s",
+                name: "Save all and close frame",
+                icon: "save-all",
+                commands: ["workbench.action.files.saveAll", "workbench.action.closeWindow"],
+            },
+            {
+                key: "Q",
+                name: "Quit application",
+                icon: "log-out",
+                command: "workbench.action.quit",
+            },
+            {
+                key: "R",
+                name: "Reload frame with extensions disabled",
+                icon: "refresh",
+                command: "workbench.action.reloadWindowWithExtensionsDisabled",
+            },
+            {
+                key: "w",
+                name: "Close workspace",
+                icon: "close-all",
+                command: "workbench.action.closeFolder",
+            },
+        ],
+    };
+}
+
+function searchSymbol(): UserMenu {
+    return {
+        items: [
+            {
+                key: "c",
+                name: "Clear highlight",
+                icon: "clear-all",
+                command: {
+                    id: "vim.remap",
+                    args: {
+                        commands: [
+                            {
+                                command: ":noh",
+                            },
+                        ],
+                    },
+                },
+            },
+            {
+                key: "e",
+                name: "Edit symbol",
+                icon: "edit",
+                command: "editor.action.rename",
+            },
+            {
+                key: "h",
+                name: "Highlight symbol",
+                icon: "symbol-color",
+                command: "editor.action.wordHighlight.trigger",
+                menu: {
+                    transient: true,
+
+                    items: [
+                        {
+                            key: "/",
+                            name: "Search in project with selection",
+                            icon: "selection",
+                            commands: [
+                                "editor.action.addSelectionToNextFindMatch",
+                                "workbench.action.findInFiles",
+                            ],
+                        },
+                        {
+                            key: "n",
+                            name: "Next occurrence",
+                            icon: "arrow-down",
+                            command: "editor.action.wordHighlight.next",
+                        },
+                        {
+                            key: "p",
+                            name: "Previous occurrence",
+                            icon: "arrow-up",
+                            command: "editor.action.wordHighlight.prev",
+                        },
+                        {
+                            key: "N",
+                            name: "Previous occurrence",
+                            icon: "arrow-up",
+                            command: "editor.action.wordHighlight.prev",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "j",
+                name: "Jump to symbol in buffer",
+                icon: "symbol-class",
+                command: "workbench.action.gotoSymbol",
+            },
+            {
+                key: "p",
+                name: "Search in project",
+                icon: "search",
+                command: "workbench.action.findInFiles",
+            },
+            {
+                key: "r",
+                name: "Search all references",
+                icon: "references",
+                command: "editor.action.referenceSearch.trigger",
+            },
+            {
+                key: "s",
+                name: "Fuzzy search in current buffer",
+                icon: "file",
+                command: "fuzzySearch.activeTextEditorWithCurrentSelection",
+            },
+            {
+                key: "J",
+                name: "Jump to symbol in project",
+                icon: "symbol-class",
+                command: "workbench.action.showAllSymbols",
+            },
+            {
+                key: "P",
+                name: "Search in project with selection",
+                icon: "selection",
+                commands: [
+                    "editor.action.addSelectionToNextFindMatch",
+                    "workbench.action.findInFiles",
+                ],
+            },
+            {
+                key: "R",
+                name: "Search all references in side bar",
+                icon: "references",
+                command: "references-view.find",
+            },
+            {
+                key: "S",
+                name: "Fuzzy search with selection in current buffer",
+                icon: "selection",
+                commands: [
+                    "editor.action.addSelectionToNextFindMatch",
+                    "fuzzySearch.activeTextEditorWithCurrentSelection",
+                ],
+            },
+        ],
+    };
+}
+
+function toggles(): UserMenu {
+    return {
+        items: [
+            {
+                key: "c",
+                name: "Toggle find case sensitive",
+                icon: "case-sensitive",
+                command: "toggleFindCaseSensitive",
+            },
+            {
+                key: "l",
+                name: "Toggle word wrap",
+                icon: "word-wrap",
+                command: "editor.action.toggleWordWrap",
+            },
+            {
+                key: "w",
+                name: "Toggle render whitespace",
+                icon: "whitespace",
+                command: "editor.action.toggleRenderWhitespace",
+            },
+        ],
+    };
+}
+
+function window(): UserMenu {
+    return {
+        items: [
+            {
+                key: "-",
+                name: "Split window below",
+                icon: "split-vertical",
+                command: "workbench.action.splitEditorDown",
+            },
+            {
+                key: "/",
+                name: "Split window right",
+                icon: "split-horizontal",
+                command: "workbench.action.splitEditor",
+            },
+            {
+                key: "=",
+                name: "Reset window sizes",
+                icon: "move",
+                command: "workbench.action.evenEditorWidths",
+            },
+            {
+                key: "[",
+                name: "Shrink window",
+                icon: "remove",
+                command: "workbench.action.decreaseViewSize",
+                menu: {
+                    items: [
+                        {
+                            key: "[",
+                            name: "Shrink window",
+                            icon: "remove",
+                            command: "workbench.action.decreaseViewSize",
+                        },
+                        {
+                            key: "]",
+                            name: "Enlarge window",
+                            icon: "add",
+                            command: "workbench.action.increaseViewSize",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "]",
+                name: "Enlarge window",
+                icon: "add",
+                command: "workbench.action.increaseViewSize",
+                menu: {
+                    transient: true,
+                    items: [
+                        {
+                            key: "[",
+                            name: "Shrink window",
+                            icon: "remove",
+                            command: "workbench.action.decreaseViewSize",
+                        },
+                        {
+                            key: "]",
+                            name: "Enlarge window",
+                            icon: "add",
+                            command: "workbench.action.increaseViewSize",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "d",
+                name: "Close window",
+                icon: "close",
+                command: "workbench.action.closeEditorsInGroup",
+            },
+            {
+                key: "h",
+                name: "Focus window left",
+                icon: "arrow-left",
+                command: "workbench.action.focusPreviousGroup",
+            },
+            {
+                key: "j",
+                name: "Focus window down",
+                icon: "arrow-down",
+                command: "workbench.action.focusBelowGroup",
+            },
+            {
+                key: "k",
+                name: "Focus window up",
+                icon: "arrow-up",
+                command: "workbench.action.focusAboveGroup",
+            },
+            {
+                key: "l",
+                name: "Focus window right",
+                icon: "arrow-right",
+                command: "workbench.action.focusNextGroup",
+            },
+            {
+                key: "m",
+                name: "Maximize window",
+                icon: "chrome-maximize",
+                command: "workbench.action.toggleEditorWidths",
+            },
+            {
+                key: "o",
+                name: "Switch frame",
+                icon: "multiple-windows",
+                command: "workbench.action.quickSwitchWindow",
+            },
+            {
+                key: "s",
+                name: "Split window below",
+                icon: "split-vertical",
+                command: "workbench.action.splitEditorDown",
+            },
+            {
+                key: "v",
+                name: "Split window right",
+                icon: "split-horizontal",
+                command: "workbench.action.splitEditor",
+            },
+            {
+                key: "w",
+                name: "Focus next window",
+                icon: "arrow-small-down",
+                command: "workbench.action.focusNextGroup",
+            },
+            {
+                key: "x",
+                name: "Close all windows",
+                icon: "close-all",
+                command: "workbench.action.closeAllGroups",
+            },
+            {
+                key: "z",
+                name: "Combine all buffers",
+                icon: "combine",
+                command: "workbench.action.joinAllGroups",
+            },
+            {
+                key: "D",
+                name: "Close all other windows",
+                icon: "close-all",
+                command: "workbench.action.closeEditorsInOtherGroups",
+            },
+            {
+                key: "F",
+                name: "Open new empty frame",
+                icon: "empty-window",
+                command: "workbench.action.newWindow",
+            },
+            {
+                key: "H",
+                name: "Move window left",
+                icon: "triangle-left",
+                command: "workbench.action.moveActiveEditorGroupLeft",
+            },
+            {
+                key: "J",
+                name: "Move window down",
+                icon: "triangle-down",
+                command: "workbench.action.moveActiveEditorGroupDown",
+            },
+            {
+                key: "K",
+                name: "Move window up",
+                icon: "triangle-up",
+                command: "workbench.action.moveActiveEditorGroupUp",
+            },
+            {
+                key: "L",
+                name: "Move window right",
+                icon: "triangle-right",
+                command: "workbench.action.moveActiveEditorGroupRight",
+            },
+            {
+                key: "M",
+                name: "Maximize window and hide side bar",
+                icon: "screen-full",
+                command: "workbench.action.maximizeEditor",
+            },
+            {
+                key: "W",
+                name: "Focus previous window",
+                icon: "arrow-small-up",
+                command: "workbench.action.focusPreviousGroup",
+            },
+        ],
+    };
+}
+
+function text(): UserMenu {
+    return {
+        items: [
+            {
+                key: ".",
+                name: "Quick fix",
+                icon: "lightbulb-autofix",
+                command: "editor.action.quickFix",
+            },
+            {
+                key: "a",
+                name: "Find all references",
+                icon: "references",
+                command: "editor.action.referenceSearch.trigger",
+            },
+            {
+                key: "i",
+                name: "Organize Imports",
+                icon: "selection",
+                command: "editor.action.organizeImports",
+            },
+            {
+                key: "o",
+                name: "Open link",
+                icon: "link-external",
+                command: "editor.action.openLink",
+            },
+            {
+                key: "r",
+                name: "Rename symbol",
+                icon: "symbol-keyword",
+                command: "editor.action.rename",
+            },
+            {
+                key: "u",
+                name: "To lower case",
+                icon: "case-sensitive",
+                command: "editor.action.transformToLowercase",
+            },
+            {
+                key: "J",
+                name: "Move lines down",
+                icon: "triangle-down",
+                command: "editor.action.moveLinesDownAction",
+                menu: {
+                    transient: true,
+                    items: [
+                        {
+                            key: "J",
+                            name: "Move lines down",
+                            icon: "triangle-down",
+                            command: "editor.action.moveLinesDownAction",
+                        },
+                        {
+                            key: "K",
+                            name: "Move lines up",
+                            icon: "triangle-up",
+                            command: "editor.action.moveLinesUpAction",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "K",
+                name: "Move lines up",
+                icon: "triangle-up",
+                command: "editor.action.moveLinesUpAction",
+                menu: {
+                    transient: true,
+                    items: [
+                        {
+                            key: "J",
+                            name: "Move lines down",
+                            icon: "triangle-down",
+                            command: "editor.action.moveLinesDownAction",
+                        },
+                        {
+                            key: "K",
+                            name: "Move lines up",
+                            icon: "triangle-up",
+                            command: "editor.action.moveLinesUpAction",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "R",
+                name: "Refactor",
+                icon: "edit",
+                command: "editor.action.refactor",
+            },
+            {
+                key: "U",
+                name: "To upper case",
+                icon: "preserve-case",
+                command: "editor.action.transformToUppercase",
+            },
+            {
+                key: "d",
+                name: "+Delete",
+                icon: "trash",
+                menu: {
+                    items: [
+                        {
+                            key: "w",
+                            name: "Delete trailing whitespace",
+                            icon: "whitespace",
+                            command: "editor.action.trimTrailingWhitespace",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "l",
+                name: "+Lines",
+                icon: "list-flat",
+                menu: {
+                    transient: true,
+                    items: [
+                        {
+                            key: "d",
+                            name: "Duplicate lines down",
+                            icon: "fold-down",
+                            command: "editor.action.copyLinesDownAction",
+                        },
+                        {
+                            key: "s",
+                            name: "Sort lines in ascending order",
+                            icon: "chevron-left",
+                            command: "editor.action.sortLinesAscending",
+                        },
+                        {
+                            key: "D",
+                            name: "Duplicate lines up",
+                            icon: "fold-up",
+                            command: "editor.action.copyLinesUpAction",
+                        },
+                        {
+                            key: "S",
+                            name: "Sort lines in descending order",
+                            icon: "chevron-right",
+                            command: "editor.action.sortLinesDescending",
+                        },
+                    ],
+                },
+            },
+            {
+                key: "m",
+                name: "+Merge conflict",
+                icon: "git-merge",
+                menu: {
+                    items: [
+                        {
+                            key: "b",
+                            name: "Accept both",
+                            icon: "arrow-both",
+                            command: "merge-conflict.accept.both",
+                        },
+                        {
+                            key: "c",
+                            name: "Accept current",
+                            icon: "arrow-small-right",
+                            command: "merge-conflict.accept.current",
+                        },
+                        {
+                            key: "i",
+                            name: "Accept incoming",
+                            icon: "arrow-small-left",
+                            command: "merge-conflict.accept.incoming",
+                        },
+                        {
+                            key: "k",
+                            name: "Compare current conflict",
+                            icon: "diff",
+                            command: "merge-conflict.compare",
+                        },
+                        {
+                            key: "n",
+                            name: "Next Conflict",
+                            icon: "arrow-down",
+                            command: "merge-conflict.next",
+                        },
+                        {
+                            key: "s",
+                            name: "Accept selection",
+                            icon: "selection",
+                            command: "merge-conflict.accept.selection",
+                        },
+                        {
+                            key: "B",
+                            name: "Accept all both",
+                            icon: "arrow-both",
+                            command: "merge-conflict.accept.all-both",
+                        },
+                        {
+                            key: "C",
+                            name: "Accept all current",
+                            icon: "arrow-right",
+                            command: "merge-conflict.accept.all-current",
+                        },
+                        {
+                            key: "I",
+                            name: "Accept all incoming",
+                            icon: "arrow-left",
+                            command: "merge-conflict.accept.all-incoming",
+                        },
+                        {
+                            key: "N",
+                            name: "Previous Conflict",
+                            icon: "arrow-up",
+                            command: "merge-conflict.previous",
+                        },
+                    ],
+                },
             },
         ],
     };

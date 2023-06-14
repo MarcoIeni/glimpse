@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { type Menu, keyDescription, menu } from "./keys";
+import { type Menu, keyDescription, menu, Command } from "./keys";
 
 export type Executor = {
     menu: Menu;
@@ -92,17 +92,7 @@ export async function executeKey(executor: Executor, key: string): Promise<void>
     const item = executor.menu.items.get(key);
     if (item) {
         if ("commands" in item) {
-            const command = item.commands;
-            if (Array.isArray(command)) {
-                for (const cmd of command) {
-                    if (typeof cmd === "string") {
-                        await vscode.commands.executeCommand(cmd);
-                    } else if ("id" in command && "args" in command) {
-                        const commandId = command.id as string;
-                        await vscode.commands.executeCommand(commandId, command.args);
-                    }
-                }
-            }
+            await executeCommands(item.commands);
             if (executor.menu.transient) {
                 pick(executor);
             }
@@ -112,6 +102,27 @@ export async function executeKey(executor: Executor, key: string): Promise<void>
             // open the submenu
             executor.menu = item.menu;
             pick(executor);
+        }
+    }
+}
+
+async function executeCommands(commands: Command[]): Promise<void> {
+    for (const cmd of commands) {
+        if (typeof cmd === "string") {
+            await vscode.commands.executeCommand(cmd);
+        } else if ("id" in commands && "args" in commands) {
+            const commandId = commands.id as string;
+            const args = commands.args;
+            if (Array.isArray(args)) {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                await vscode.commands.executeCommand(commandId, ...args);
+            } else {
+                // undefined from the object chainning/indexing or
+                // null from the json deserialization
+                await vscode.commands.executeCommand(commandId, args);
+            }
+        } else {
+            throw new Error("Invalid command");
         }
     }
 }
