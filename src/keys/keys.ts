@@ -2,6 +2,7 @@ import type * as vscode from "vscode";
 import { configPath } from "../config";
 import { tasksKeys } from "./tasks";
 import { gitKeys } from "./git";
+import { goTo as goToKeys } from "./go_to";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
@@ -170,13 +171,13 @@ function userMenu(): UserMenu {
                 key: "G",
                 name: "Go to",
                 icon: "go-to-file",
-                menu: goTo(),
+                menu: goToKeys(),
             },
             {
                 key: "h",
                 name: "Help",
                 icon: "question",
-                menu: help(),
+                menu: helpKeys(),
             },
             {
                 key: "i",
@@ -1448,49 +1449,6 @@ function files(): UserMenu {
     };
 }
 
-function help(): UserMenu {
-    return {
-        items: [
-            {
-                key: "h",
-                name: "Describe thing at point",
-                icon: "book",
-                command: "editor.action.showHover",
-            },
-            {
-                key: "d",
-                name: "Open VSCode Documentation",
-                icon: "book",
-                command: "workbench.action.openDocumentationUrl",
-            },
-            {
-                key: "k",
-                name: "Open global key bindings",
-                icon: "keyboard",
-                command: "workbench.action.openGlobalKeybindings",
-            },
-            {
-                key: "D",
-                name: "Open VSpaceCode Documentation",
-                icon: "book",
-                command: "vspacecode.openDocumentationUrl",
-            },
-            {
-                key: "I",
-                name: "Report VSCode Issue",
-                icon: "issues",
-                command: "workbench.action.openIssueReporter",
-            },
-            {
-                key: "T",
-                name: "Open VSCode Tutorial",
-                icon: "lightbulb",
-                command: "workbench.action.showInteractivePlayground",
-            },
-        ],
-    };
-}
-
 function insert(): UserMenu {
     return {
         items: [
@@ -1602,84 +1560,6 @@ function format(): UserMenu {
     };
 }
 
-function goTo(): UserMenu {
-    return {
-        items: [
-            {
-                key: "d",
-                name: "Go to declaration",
-                icon: "symbol-struct",
-                command: "editor.action.revealDeclaration",
-            },
-            {
-                key: "e",
-                name: "Go to errors/problems",
-                icon: "error",
-                command: "workbench.actions.view.problems",
-            },
-            {
-                key: "f",
-                name: "Go to file in explorer",
-                icon: "file",
-                command: "workbench.files.action.showActiveFileInExplorer",
-            },
-            {
-                key: "h",
-                name: "Show call hierarchy",
-                icon: "type-hierarchy",
-                command: "references-view.showCallHierarchy",
-            },
-            {
-                key: "g",
-                name: "Go to definition",
-                icon: "symbol-function",
-                command: "editor.action.revealDefinition",
-            },
-            {
-                key: "r",
-                name: "Go to reference",
-                icon: "symbol-reference",
-                command: "editor.action.goToReferences",
-            },
-            {
-                key: "i",
-                name: "Go to implementations",
-                icon: "symbol-module",
-                command: "editor.action.goToImplementation",
-            },
-            {
-                key: "I",
-                name: "Find implementations",
-                icon: "symbol-module",
-                command: "references-view.findImplementations",
-            },
-            {
-                key: "s",
-                name: "Go to symbol in buffer",
-                icon: "symbol-class",
-                command: "workbench.action.gotoSymbol",
-            },
-            {
-                key: "R",
-                name: "Find references",
-                icon: "symbol-reference",
-                command: "references-view.findReferences",
-            },
-            {
-                key: "S",
-                name: "Go to symbol in project",
-                icon: "symbol-class",
-                command: "workbench.action.showAllSymbols",
-            },
-            {
-                key: "t",
-                name: "Go to type definition",
-                icon: "symbol-struct",
-                command: "editor.action.goToTypeDefinition",
-            },
-        ],
-    };
-}
 
 function refactor(): UserMenu {
     return {
@@ -2605,4 +2485,7 @@ function text(): UserMenu {
             },
         ],
     };
+}
+function helpKeys(): UserMenu {
+    throw new Error("Function not implemented.");
 }
