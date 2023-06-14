@@ -78,7 +78,6 @@ function userMenu(): UserMenu {
                 key: "\t",
                 icon: "go-to-file",
                 name: "Last editor",
-                command: "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
                 commands: [
                     "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
                     "list.select",
@@ -262,12 +261,6 @@ function userMenu(): UserMenu {
                 command: "editor.action.commentLine",
             },
             {
-                key: "w",
-                icon: "split-horizontal",
-                name: "Window",
-                command: "editor.action.addCommentLine",
-            },
-            {
                 key: "v",
                 name: "Select/expand region",
                 icon: "selection",
@@ -347,7 +340,7 @@ function fromUserMenu(userMenu: UserMenu): Menu {
     const items = new Map<string, Key>();
     for (const item of userMenu.items) {
         if (items.has(item.key)) {
-            throw new Error(`Duplicate key ${item.key}`);
+            throw new Error(`Duplicate key ${item.key}: ${JSON.stringify(item)}`);
         }
         items.set(item.key, fromUserKey(item));
     }
