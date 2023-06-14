@@ -1,5 +1,7 @@
 import type * as vscode from "vscode";
-import { configPath } from "./config";
+import { configPath } from "../config";
+import { tasksKeys } from "./tasks";
+import { gitKeys } from "./git";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
@@ -55,7 +57,7 @@ export type Menu = {
     items: Map<string, Key>;
 };
 
-type UserMenu = {
+export type UserMenu = {
     transient?: boolean;
     items: UserKey[];
 };
@@ -114,7 +116,7 @@ function userMenu(): UserMenu {
                 key: ":",
                 name: "Task",
                 icon: "tasklist",
-                menu: tasks(),
+                menu: tasksKeys(),
             },
             {
                 key: "b",
@@ -162,7 +164,7 @@ function userMenu(): UserMenu {
                 key: "g",
                 name: "Git",
                 icon: "git-branch",
-                menu: git(),
+                menu: gitKeys(),
             },
             {
                 key: "G",
@@ -610,67 +612,6 @@ function selectExpand(): UserMenu {
                 icon: "remove",
                 name: "Shrink selection",
                 command: "editor.action.smartSelect.shrink",
-            },
-        ],
-    };
-}
-
-function tasks(): UserMenu {
-    return {
-        items: [
-            {
-                key: ".",
-                name: "Rerun last task",
-                icon: "debug-rerun",
-                command: "workbench.action.tasks.reRunTask",
-            },
-            {
-                key: ":",
-                name: "Run task",
-                icon: "play",
-                command: "workbench.action.tasks.runTask",
-            },
-            {
-                key: "b",
-                name: "Run build tasks",
-                icon: "server-process",
-                command: "workbench.action.tasks.build",
-            },
-            {
-                key: "c",
-                name: "Configure task runner",
-                icon: "gear",
-                command: "workbench.action.tasks.configureTaskRunner",
-            },
-            {
-                key: "g",
-                name: "Show running tasks",
-                icon: "checklist",
-                command: "workbench.action.tasks.showTasks",
-            },
-            {
-                key: "l",
-                name: "Show task log",
-                icon: "history",
-                command: "workbench.action.tasks.showLog",
-            },
-            {
-                key: "t",
-                name: "Run test task",
-                icon: "beaker",
-                command: "workbench.action.tasks.test",
-            },
-            {
-                key: "x",
-                name: "Terminate task",
-                icon: "trash",
-                command: "workbench.action.tasks.terminate",
-            },
-            {
-                key: "R",
-                name: "Restart running task",
-                icon: "refresh",
-                command: "workbench.action.tasks.restartTask",
             },
         ],
     };
@@ -1502,31 +1443,6 @@ function files(): UserMenu {
                         },
                     ],
                 },
-            },
-        ],
-    };
-}
-
-function git(): UserMenu {
-    return {
-        items: [
-            {
-                key: "c",
-                name: "Clone",
-                icon: "repo-clone",
-                command: "git.clone",
-            },
-            {
-                key: "i",
-                name: "Initialize repository",
-                icon: "repo-create",
-                command: "git.init",
-            },
-            {
-                key: "l",
-                name: "Show log/timeline",
-                icon: "history",
-                command: "timeline.focus",
             },
         ],
     };
