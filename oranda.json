@@ -1,0 +1,10 @@
+{
+  "social": {
+    "twitter_account": "@MarcoIeni"
+  },
+  "static_dir": ".",
+  "changelog": true,
+  "styles": {
+    "theme": "dark"
+  }
+}
