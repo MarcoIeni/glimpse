@@ -7,6 +7,7 @@ import { helpKeys } from "./help";
 import { searchSymbolKeys } from "./search_symbol";
 import { zoomKeys } from "./zoom";
 import { files as filesKeys } from "./files";
+import { errors } from "./errors";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
@@ -881,91 +882,6 @@ function diff(): UserMenu {
         ],
     };
 }
-
-function errors(): UserMenu {
-    return {
-        items: [
-            {
-                key: ".",
-                name: "Error transient",
-                icon: "window",
-                menu: {
-                    transient: true,
-
-                    items: [
-                        {
-                            key: "e",
-                            name: "Go to errors/problems",
-                            icon: "error",
-                            command: "workbench.action.problems.focus",
-                        },
-                        {
-                            key: "f",
-                            name: "Fix error",
-                            icon: "lightbulb-autofix",
-                            command: "editor.action.quickFix",
-                        },
-                        {
-                            key: "n",
-                            name: "Next error",
-                            icon: "arrow-down",
-                            command: "editor.action.marker.nextInFiles",
-                        },
-                        {
-                            key: "p",
-                            name: "Previous error",
-                            icon: "arrow-up",
-                            command: "editor.action.marker.prevInFiles",
-                        },
-                        {
-                            key: "N",
-                            name: "Previous error",
-                            icon: "arrow-up",
-                            command: "editor.action.marker.prevInFiles",
-                        },
-                    ],
-                },
-            },
-            {
-                key: "e",
-                name: "Show error",
-                icon: "error",
-                command: "editor.action.showHover",
-            },
-            {
-                key: "f",
-                name: "Fix error",
-                icon: "lightbulb-autofix",
-                command: "editor.action.quickFix",
-            },
-            {
-                key: "l",
-                name: "List errors",
-                icon: "list-flat",
-                command: "workbench.actions.view.problems",
-            },
-            {
-                key: "n",
-                name: "Next error",
-                icon: "arrow-down",
-                command: "editor.action.marker.nextInFiles",
-            },
-            {
-                key: "p",
-                name: "Previous error",
-                icon: "arrow-up",
-                command: "editor.action.marker.prevInFiles",
-            },
-            {
-                key: "N",
-                name: "Previous error",
-                icon: "arrow-up",
-                command: "editor.action.marker.prevInFiles",
-            },
-        ],
-    };
-}
-
 
 function insert(): UserMenu {
     return {
