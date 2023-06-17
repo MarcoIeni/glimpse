@@ -82,58 +82,10 @@ function userMenu(): UserMenu {
     return {
         items: [
             {
-                key: " ",
-                name: "Commands",
-                icon: "rocket",
-                command: "workbench.action.showCommands",
-            },
-            {
-                key: "\t",
-                icon: "go-to-file",
-                name: "Last editor",
-                commands: [
-                    "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
-                    "list.select",
-                ],
-            },
-            {
-                key: "!",
-                name: "Show terminal",
-                icon: "terminal",
-                command: "workbench.action.terminal.focus",
-            },
-            {
-                key: '"',
-                name: "Open new external terminal",
-                icon: "chevron-right",
-                command: "workbench.action.terminal.openNativeConsole",
-            },
-            {
-                key: "'",
-                name: "Show terminal",
-                icon: "terminal",
-                command: "workbench.action.terminal.focus",
-            },
-            {
-                key: "*",
-                name: "Search",
-                commands: [
-                    "editor.action.addSelectionToNextFindMatch",
-                    "workbench.action.findInFiles",
-                    "search.action.focusSearchList",
-                ],
-            },
-            {
-                key: ":",
-                name: "Task",
-                icon: "tasklist",
-                menu: tasksKeys(),
-            },
-            {
                 key: "c",
                 name: "Compile/Comment",
                 icon: "gear",
-                menu: compileComments(),
+                menu: comments(),
             },
             {
                 key: "d",
@@ -260,6 +212,54 @@ function userMenu(): UserMenu {
                 name: "Text",
                 icon: "symbol-text",
                 menu: textKeys(),
+            },
+            {
+                key: " ",
+                name: "Commands",
+                icon: "rocket",
+                command: "workbench.action.showCommands",
+            },
+            {
+                key: "\t",
+                icon: "go-to-file",
+                name: "Last editor",
+                commands: [
+                    "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+                    "list.select",
+                ],
+            },
+            {
+                key: "!",
+                name: "Show terminal",
+                icon: "terminal",
+                command: "workbench.action.terminal.focus",
+            },
+            {
+                key: '"',
+                name: "Open new external terminal",
+                icon: "chevron-right",
+                command: "workbench.action.terminal.openNativeConsole",
+            },
+            {
+                key: "'",
+                name: "Show terminal",
+                icon: "terminal",
+                command: "workbench.action.terminal.focus",
+            },
+            {
+                key: "*",
+                name: "Search",
+                commands: [
+                    "editor.action.addSelectionToNextFindMatch",
+                    "workbench.action.findInFiles",
+                    "search.action.focusSearchList",
+                ],
+            },
+            {
+                key: ":",
+                name: "Task",
+                icon: "tasklist",
+                menu: tasksKeys(),
             },
             {
                 key: "/",
@@ -410,34 +410,14 @@ function selectExpand(): UserMenu {
     };
 }
 
-// TODO compile project maybe is under tasks
-function compileComments(): UserMenu {
+function comments(): UserMenu {
     return {
         items: [
-            {
-                key: "c",
-                name: "Compile project",
-                icon: "gear",
-                command: "workbench.action.tasks.build",
-            },
             {
                 key: "l",
                 name: "Toggle line comment",
                 icon: "comment",
                 command: "editor.action.commentLine",
-            },
-            // TODO: isn't this under "errors"?
-            {
-                key: "n",
-                name: "Next error",
-                icon: "arrow-down",
-                command: "editor.action.marker.nextInFiles",
-            },
-            {
-                key: "N",
-                name: "Previous error",
-                icon: "arrow-up",
-                command: "editor.action.marker.prevInFiles",
             },
         ],
     };
@@ -735,12 +715,6 @@ function projects(): UserMenu {
     return {
         items: [
             {
-                key: "c",
-                name: "Compile project",
-                icon: "gear",
-                command: "workbench.action.tasks.build",
-            },
-            {
                 key: "f",
                 name: "+Find file in project",
                 icon: "file",
@@ -769,12 +743,6 @@ function projects(): UserMenu {
                 name: "+Replace in files",
                 icon: "find-replace",
                 command: "workbench.action.replaceInFiles",
-            },
-            {
-                key: "T",
-                name: "Test project",
-                icon: "beaker",
-                command: "workbench.action.tasks.test",
             },
         ],
     };
