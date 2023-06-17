@@ -12,6 +12,7 @@ import { debugKeys } from "./debug";
 import { windowKeys } from "./window";
 import { toggleKeys } from "./toggles";
 import { textKeys } from "./text";
+import { editorKeys } from "./editor";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
@@ -129,12 +130,6 @@ function userMenu(): UserMenu {
                 menu: tasksKeys(),
             },
             {
-                key: "b",
-                name: "Buffer",
-                icon: "file",
-                menu: buffers(),
-            },
-            {
                 key: "c",
                 name: "Compile/Comment",
                 icon: "gear",
@@ -157,6 +152,12 @@ function userMenu(): UserMenu {
                 name: "Error",
                 icon: "error",
                 menu: errorKeys(),
+            },
+            {
+                key: "E",
+                name: "Editor",
+                icon: "file",
+                menu: editorKeys(),
             },
             {
                 key: "F",
@@ -404,208 +405,6 @@ function selectExpand(): UserMenu {
                 icon: "remove",
                 name: "Shrink selection",
                 command: "editor.action.smartSelect.shrink",
-            },
-        ],
-    };
-}
-
-// TODO: buffer is an emacs concept, vscode has editors instead.
-function buffers(): UserMenu {
-    return {
-        items: [
-            {
-                key: "0",
-                name: "Last buffer in window",
-                icon: "arrow-both",
-                command: "workbench.action.lastEditorInGroup",
-            },
-            {
-                key: "1",
-                name: "First buffer in window",
-                icon: "arrow-both",
-                command: "workbench.action.firstEditorInGroup",
-            },
-            {
-                key: "b",
-                name: "Show all buffers",
-                icon: "files",
-                command: "workbench.action.showAllEditorsByMostRecentlyUsed",
-            },
-            {
-                key: "d",
-                name: "Close active buffer",
-                icon: "x",
-                command: "workbench.action.closeActiveEditor",
-            },
-            {
-                key: "h",
-                name: "Move buffer into left window",
-                icon: "triangle-left",
-                command: "workbench.action.moveEditorToLeftGroup",
-            },
-            {
-                key: "j",
-                name: "Move buffer into below window",
-                icon: "triangle-down",
-                command: "workbench.action.moveEditorToBelowGroup",
-            },
-            {
-                key: "k",
-                name: "Move buffer into above window",
-                icon: "triangle-up",
-                command: "workbench.action.moveEditorToAboveGroup",
-            },
-            {
-                key: "l",
-                name: "Move buffer into right window",
-                icon: "triangle-right",
-                command: "workbench.action.moveEditorToRightGroup",
-            },
-            {
-                key: "n",
-                name: "Next buffer",
-                icon: "arrow-down",
-                command: "workbench.action.nextEditor",
-            },
-            {
-                key: "p",
-                name: "Previous buffer",
-                icon: "arrow-up",
-                command: "workbench.action.previousEditor",
-            },
-            {
-                key: "s",
-                name: "Scratch buffer",
-                icon: "note",
-                command: "workbench.action.files.newUntitledFile",
-            },
-            {
-                key: "t",
-                name: "Pin buffer",
-                icon: "pin",
-                command: "workbench.action.pinEditor",
-            },
-            {
-                key: "u",
-                name: "Reopen closed buffer",
-                icon: "history",
-                command: "workbench.action.reopenClosedEditor",
-            },
-            {
-                key: "B",
-                name: "Show all buffers in active window",
-                icon: "files",
-                command: "workbench.action.showEditorsInActiveGroup",
-            },
-            {
-                key: "H",
-                name: "Move buffer into left window",
-                icon: "triangle-left",
-                command: "workbench.action.moveEditorToLeftGroup",
-            },
-            {
-                key: "J",
-                name: "Move buffer into below window",
-                icon: "triangle-down",
-                command: "workbench.action.moveEditorToBelowGroup",
-            },
-            {
-                key: "K",
-                name: "Move buffer into above window",
-                icon: "triangle-up",
-                command: "workbench.action.moveEditorToAboveGroup",
-            },
-            {
-                key: "L",
-                name: "Move buffer into right window",
-                icon: "triangle-right",
-                command: "workbench.action.moveEditorToRightGroup",
-            },
-            {
-                key: "M",
-                name: "Close other buffers",
-                icon: "close-all",
-                command: "workbench.action.closeOtherEditors",
-            },
-            {
-                key: "P",
-                name: "Paste clipboard to buffer",
-                icon: "clippy",
-                commands: ["editor.action.selectAll", "editor.action.clipboardPasteAction"],
-            },
-            {
-                key: "R",
-                name: "Revert the current buffer",
-                icon: "discard",
-                command: "workbench.action.files.revert",
-            },
-            {
-                key: "T",
-                name: "Unpin buffer",
-                icon: "pinned",
-                command: "workbench.action.unpinEditor",
-            },
-            {
-                key: "Y",
-                name: "Copy buffer to clipboard",
-                icon: "clippy",
-                command: "vspacecode.copyWholeBuffer",
-            },
-            {
-                key: "N",
-                name: "+New Buffer",
-                icon: "file-add",
-                menu: {
-                    items: [
-                        // TODO: do this with arrow keys, too
-                        {
-                            key: "h",
-                            name: "New untitled buffer (split left)",
-                            icon: "arrow-small-left",
-                            commands: [
-                                "workbench.action.splitEditorLeft",
-                                "workbench.action.files.newUntitledFile",
-                                "workbench.action.closeOtherEditors",
-                            ],
-                        },
-                        {
-                            key: "j",
-                            name: "New untitled buffer (split down)",
-                            icon: "arrow-small-down",
-                            commands: [
-                                "workbench.action.splitEditorDown",
-                                "workbench.action.files.newUntitledFile",
-                                "workbench.action.closeOtherEditors",
-                            ],
-                        },
-                        {
-                            key: "k",
-                            name: "New untitled buffer (split up)",
-                            icon: "arrow-small-up",
-                            commands: [
-                                "workbench.action.splitEditorUp",
-                                "workbench.action.files.newUntitledFile",
-                                "workbench.action.closeOtherEditors",
-                            ],
-                        },
-                        {
-                            key: "l",
-                            name: "New untitled buffer (split right)",
-                            icon: "arrow-small-right",
-                            commands: [
-                                "workbench.action.splitEditorRight",
-                                "workbench.action.files.newUntitledFile",
-                                "workbench.action.closeOtherEditors",
-                            ],
-                        },
-                        {
-                            key: "n",
-                            name: "New untitled buffer",
-                            icon: "file-add",
-                            command: "workbench.action.files.newUntitledFile",
-                        },
-                    ],
-                },
             },
         ],
     };
