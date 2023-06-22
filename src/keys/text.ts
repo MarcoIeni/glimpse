@@ -99,7 +99,7 @@ export function textKeys(): UserMenu {
             },
             {
                 key: "d",
-                name: "+Delete",
+                name: "Delete",
                 icon: "trash",
                 menu: {
                     items: [
@@ -114,7 +114,7 @@ export function textKeys(): UserMenu {
             },
             {
                 key: "l",
-                name: "+Lines",
+                name: "Lines",
                 icon: "list-flat",
                 menu: {
                     transient: true,
@@ -142,75 +142,6 @@ export function textKeys(): UserMenu {
                             name: "Sort lines in descending order",
                             icon: "chevron-right",
                             command: "editor.action.sortLinesDescending",
-                        },
-                    ],
-                },
-            },
-            {
-                key: "m",
-                name: "+Merge conflict",
-                icon: "git-merge",
-                menu: {
-                    items: [
-                        {
-                            key: "b",
-                            name: "Accept both",
-                            icon: "arrow-both",
-                            command: "merge-conflict.accept.both",
-                        },
-                        {
-                            key: "c",
-                            name: "Accept current",
-                            icon: "arrow-small-right",
-                            command: "merge-conflict.accept.current",
-                        },
-                        {
-                            key: "i",
-                            name: "Accept incoming",
-                            icon: "arrow-small-left",
-                            command: "merge-conflict.accept.incoming",
-                        },
-                        {
-                            key: "k",
-                            name: "Compare current conflict",
-                            icon: "diff",
-                            command: "merge-conflict.compare",
-                        },
-                        {
-                            key: "n",
-                            name: "Next Conflict",
-                            icon: "arrow-down",
-                            command: "merge-conflict.next",
-                        },
-                        {
-                            key: "s",
-                            name: "Accept selection",
-                            icon: "selection",
-                            command: "merge-conflict.accept.selection",
-                        },
-                        {
-                            key: "B",
-                            name: "Accept all both",
-                            icon: "arrow-both",
-                            command: "merge-conflict.accept.all-both",
-                        },
-                        {
-                            key: "C",
-                            name: "Accept all current",
-                            icon: "arrow-right",
-                            command: "merge-conflict.accept.all-current",
-                        },
-                        {
-                            key: "I",
-                            name: "Accept all incoming",
-                            icon: "arrow-left",
-                            command: "merge-conflict.accept.all-incoming",
-                        },
-                        {
-                            key: "N",
-                            name: "Previous Conflict",
-                            icon: "arrow-up",
-                            command: "merge-conflict.previous",
                         },
                     ],
                 },

@@ -1,44 +1,42 @@
-import { UserMenu } from "./keys";
+import { type UserMenu } from "./keys";
 
 export function zoomKeys(): UserMenu {
     return {
         items: [
             {
+                ...zoomIn(),
                 key: "+",
-                name: "Zoom In",
-                command: "workbench.action.zoomIn",
                 menu: zoomTransient(),
             },
             {
+                ...zoomIn(),
                 key: "=",
-                name: "Zoom In",
-                command: "workbench.action.zoomIn",
                 menu: zoomTransient(),
             },
             {
+                ...zoomOut(),
                 key: "-",
-                name: "Zoom Out",
-                command: "workbench.action.zoomOut",
                 menu: zoomTransient(),
             },
             {
                 key: "f",
-                name: "+Frame",
+                name: "Frame",
                 icon: "window",
                 menu: {
                     transient: true,
                     items: [
                         {
                             key: "+",
-                            name: "Zoom in",
-                            icon: "zoom-in",
-                            command: "workbench.action.zoomIn",
+                            ...zoomIn(),
+                        },
+                        {
+                            ...zoomIn(),
+                            key: "=",
+                            menu: zoomTransient(),
                         },
                         {
                             key: "-",
-                            name: "Zoom out",
-                            icon: "zoom-out",
-                            command: "workbench.action.zoomOut",
+                            ...zoomOut(),
                         },
                         {
                             key: "0",
@@ -46,30 +44,12 @@ export function zoomKeys(): UserMenu {
                             icon: "search",
                             command: "workbench.action.zoomReset",
                         },
-                        {
-                            key: "=",
-                            name: "Zoom in",
-                            icon: "zoom-in",
-                            command: "workbench.action.zoomIn",
-                        },
-                        {
-                            key: "j",
-                            name: "Zoom out",
-                            icon: "zoom-out",
-                            command: "workbench.action.zoomOut",
-                        },
-                        {
-                            key: "k",
-                            name: "Zoom in",
-                            icon: "zoom-in",
-                            command: "workbench.action.zoomIn",
-                        },
                     ],
                 },
             },
             {
                 key: "i",
-                name: "+Image preview",
+                name: "Image preview",
                 icon: "eye",
                 menu: {
                     transient: true,
@@ -97,7 +77,7 @@ export function zoomKeys(): UserMenu {
             },
             {
                 key: "x",
-                name: "+Font",
+                name: "Font",
                 icon: "case-sensitive",
                 menu: {
                     items: [
@@ -125,24 +105,12 @@ export function zoomKeys(): UserMenu {
                             icon: "zoom-in",
                             command: "editor.action.fontZoomIn",
                         },
-                        {
-                            key: "j",
-                            name: "Zoom out",
-                            icon: "zoom-out",
-                            command: "editor.action.fontZoomOut",
-                        },
-                        {
-                            key: "k",
-                            name: "Zoom in",
-                            icon: "zoom-in",
-                            command: "editor.action.fontZoomIn",
-                        },
                     ],
                 },
             },
             {
                 key: ".",
-                name: "+Fold",
+                name: "Fold",
                 icon: "fold",
                 menu: {
                     items: [
@@ -211,9 +179,25 @@ function zoomTransient(): UserMenu {
     return {
         transient: true,
         items: [
-            { key: "+", name: "Zoom In", command: "workbench.action.zoomIn" },
-            { key: "=", name: "Zoom In", command: "workbench.action.zoomIn" },
-            { key: "-", name: "Zoom Out", command: "workbench.action.zoomOut" },
+            { ...zoomIn(), key: "+" },
+            { ...zoomIn(), key: "=" },
+            { ...zoomOut(), key: "-" },
         ],
+    };
+}
+
+function zoomIn() {
+    return {
+        name: "Zoom In",
+        command: "workbench.action.zoomIn",
+        icon: "zoom-in",
+    };
+}
+
+function zoomOut() {
+    return {
+        name: "Zoom Out",
+        command: "workbench.action.zoomOut",
+        icon: "zoom-out",
     };
 }

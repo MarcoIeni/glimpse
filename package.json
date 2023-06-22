@@ -10,7 +10,7 @@
         "vscode": "^1.78.0"
     },
     "categories": [
-        "Other"
+        "Keymaps", "Other", "Visualization"
     ],
     "activationEvents": [],
     "main": "./out/extension.js",
@@ -65,5 +65,9 @@
         "prettier": "^2.8.8",
         "typescript": "^5.1.3",
         "@vscode/test-electron": "^2.3.2"
-    }
+    },
+    "sponsor": {
+        "url": "https://github.com/sponsors/MarcoIeni"
+    },
+    "pricing": "Free"
 }

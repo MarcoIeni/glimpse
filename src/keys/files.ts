@@ -1,6 +1,6 @@
 import { type UserMenu } from "./keys";
 
-export function files(): UserMenu {
+export function filesKeys(): UserMenu {
     return {
         items: [
             {
@@ -23,13 +23,13 @@ export function files(): UserMenu {
             },
             {
                 key: "o",
-                name: "+Open with",
+                name: "Open with",
                 icon: "file-code",
                 command: "explorer.openWith",
             },
             {
                 key: "r",
-                name: "+Open recent",
+                name: "Open recent",
                 icon: "clock",
                 command: "workbench.action.openRecent",
             },
@@ -48,10 +48,12 @@ export function files(): UserMenu {
                         {
                             key: "",
                             name: "Show explorer view",
+                            icon: "list-tree",
                             command: "workbench.view.explorer",
                         },
                         {
                             key: "when:sideBarVisible && explorerViewletVisible",
+                            icon: "three-bars",
                             name: "Hide side bar",
                             command: "workbench.action.toggleSidebarVisibility",
                         },
@@ -95,8 +97,9 @@ export function files(): UserMenu {
                 command: "workbench.files.action.showActiveFileInExplorer",
             },
             {
+                // TODO: change `e`
                 key: "e",
-                name: "+Emacs/VSpaceCode",
+                name: "Settings",
                 icon: "settings",
                 menu: {
                     items: [
@@ -153,7 +156,7 @@ export function files(): UserMenu {
             },
             {
                 key: "i",
-                name: "+Indentation",
+                name: "Indent",
                 icon: "arrow-right",
                 menu: {
                     items: [
@@ -198,7 +201,7 @@ export function files(): UserMenu {
             },
             {
                 key: "y",
-                name: "+Yank",
+                name: "Yank",
                 icon: "clippy",
                 menu: {
                     items: [

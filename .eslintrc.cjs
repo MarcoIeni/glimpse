@@ -18,7 +18,6 @@ module.exports = {
         "@typescript-eslint/naming-convention": "warn",
         "@typescript-eslint/semi": "warn",
         "@typescript-eslint/consistent-type-definitions": "off",
-        "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/sort-type-constituents": "warn",
         "@typescript-eslint/no-confusing-void-expression": "warn",
         "@typescript-eslint/explicit-module-boundary-types": "warn",

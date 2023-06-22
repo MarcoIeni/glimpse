@@ -49,7 +49,8 @@ function pick(executor: Executor): void {
     });
     // Allow to select action with enter key.
     executor.quickPick.onDidAccept(() => {
-        executeGlimpse(executor).catch((err) => {
+        const activeItem = executor.quickPick.activeItems[0];
+        executeKey(executor, activeItem.label).catch((err) => {
             console.error("onDidAccept failure", err);
         });
     });
@@ -76,15 +77,11 @@ function prettifyKey(key: string): string {
 }
 
 async function onValueChange(executor: Executor): Promise<void> {
-    console.log("user typed ", executor.quickPick.value);
-    if (executor.quickPick.value.length !== 0) {
-        await executeGlimpse(executor);
-    }
-}
-
-async function executeGlimpse(executor: Executor): Promise<void> {
     const key = executor.quickPick.value;
-    await executeKey(executor, key);
+    console.log("user typed ", key);
+    if (key.length !== 0) {
+        await executeKey(executor, key);
+    }
 }
 
 export async function executeKey(executor: Executor, key: string): Promise<void> {
