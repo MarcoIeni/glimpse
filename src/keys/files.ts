@@ -4,10 +4,16 @@ export function filesKeys(): UserMenu {
     return {
         items: [
             {
+                key: "d",
+                name: "Delete current file",
+                icon: "trash",
+                commands: ["workbench.files.action.showActiveFileInExplorer", "deleteFile"],
+            },
+            {
                 key: "f",
                 name: "Open file/folder",
                 icon: "folder-opened",
-                command: "file-browser.open",
+                command: "revealInExplorer",
             },
             {
                 key: "l",
@@ -28,55 +34,16 @@ export function filesKeys(): UserMenu {
                 command: "explorer.openWith",
             },
             {
+                key: "O",
+                name: "Open in OS",
+                icon: "file-symlink-directory",
+                command: "revealFileInOS",
+            },
+            {
                 key: "r",
                 name: "Open recent",
                 icon: "clock",
                 command: "workbench.action.openRecent",
-            },
-            {
-                key: "s",
-                name: "Save file",
-                icon: "save",
-                command: "workbench.action.files.save",
-            },
-            {
-                key: "t",
-                name: "Toggle tree/explorer view",
-                icon: "list-tree",
-                menu: {
-                    items: [
-                        {
-                            key: "",
-                            name: "Show explorer view",
-                            icon: "list-tree",
-                            command: "workbench.view.explorer",
-                        },
-                        {
-                            key: "when:sideBarVisible && explorerViewletVisible",
-                            icon: "three-bars",
-                            name: "Hide side bar",
-                            command: "workbench.action.toggleSidebarVisibility",
-                        },
-                    ],
-                },
-            },
-            {
-                key: "w",
-                name: "Open active in new window",
-                icon: "window",
-                command: "workbench.action.files.showOpenedFileInNewWindow",
-            },
-            {
-                key: "D",
-                name: "Delete current file",
-                icon: "trash",
-                commands: ["workbench.files.action.showActiveFileInExplorer", "deleteFile"],
-            },
-            {
-                key: "L",
-                name: "Locate file",
-                icon: "file-symlink-directory",
-                command: "revealFileInOS",
             },
             {
                 key: "R",
@@ -85,119 +52,41 @@ export function filesKeys(): UserMenu {
                 commands: ["revealInExplorer", "renameFile"],
             },
             {
+                key: "s",
+                name: "Save file",
+                icon: "save",
+                command: "workbench.action.files.save",
+            },
+            {
                 key: "S",
                 name: "Save all files",
                 icon: "save-all",
                 command: "workbench.action.files.saveAll",
             },
             {
+                key: "t",
+                name: "Toggle tree/explorer view",
+                icon: "list-tree",
+                command: "workbench.view.explorer",
+                // TODO: do this when the explorer is visible to go back to the editor
+                // {
+                //     key: "when:sideBarVisible && explorerViewletVisible",
+                //     icon: "three-bars",
+                //     name: "Hide side bar",
+                //     command: "workbench.action.toggleSidebarVisibility",
+                // },
+            },
+            {
                 key: "T",
-                name: "Show active file in tree/explorer view",
+                name: "Show file in tree/explorer view",
                 icon: "list-tree",
                 command: "workbench.files.action.showActiveFileInExplorer",
             },
             {
-                // TODO: change `e`
-                key: "e",
-                name: "Settings",
-                icon: "settings",
-                menu: {
-                    items: [
-                        {
-                            key: "d",
-                            name: "Open settings",
-                            icon: "settings",
-                            command: "workbench.action.openGlobalSettings",
-                        },
-                        {
-                            key: "k",
-                            name: "Open global key bindings",
-                            icon: "keyboard",
-                            command: "workbench.action.openGlobalKeybindings",
-                        },
-                        {
-                            key: "l",
-                            name: "Open language settings",
-                            icon: "code",
-                            command: "workbench.action.configureLanguageBasedSettings",
-                        },
-                        {
-                            key: "s",
-                            name: "Configure user snippets",
-                            icon: "symbol-snippet",
-                            command: "workbench.action.openSnippets",
-                        },
-                        {
-                            key: "w",
-                            name: "Open workspace settings",
-                            icon: "settings-edit",
-                            command: "workbench.action.openWorkspaceSettings",
-                        },
-                        {
-                            key: "D",
-                            name: "Open settings JSON",
-                            icon: "json",
-                            command: "workbench.action.openSettingsJson",
-                        },
-                        {
-                            key: "K",
-                            name: "Open global key bindings JSON",
-                            icon: "json",
-                            command: "workbench.action.openGlobalKeybindingsFile",
-                        },
-                        {
-                            key: "W",
-                            name: "Open workspace settings JSON",
-                            icon: "json",
-                            command: "workbench.action.openWorkspaceSettingsFile",
-                        },
-                    ],
-                },
-            },
-            {
-                key: "i",
-                name: "Indent",
-                icon: "arrow-right",
-                menu: {
-                    items: [
-                        {
-                            key: "d",
-                            name: "Detect indentation",
-                            icon: "whitespace",
-                            command: "editor.action.detectIndentation",
-                        },
-                        {
-                            key: "i",
-                            name: "Change indentation",
-                            icon: "edit",
-                            command: "changeEditorIndentation",
-                        },
-                        {
-                            key: "r",
-                            name: "Reindent",
-                            icon: "list-flat",
-                            command: "editor.action.reindentlines",
-                        },
-                        {
-                            key: "s",
-                            name: "Convert indentation to spaces",
-                            icon: "arrow-small-right",
-                            command: "editor.action.indentationToSpaces",
-                        },
-                        {
-                            key: "t",
-                            name: "Convert indentation to tabs",
-                            icon: "export",
-                            command: "editor.action.indentationToTabs",
-                        },
-                        {
-                            key: "R",
-                            name: "Reindent selected",
-                            icon: "selection",
-                            command: "editor.action.reindentselectedlines",
-                        },
-                    ],
-                },
+                key: "w",
+                name: "Open file in new window",
+                icon: "window",
+                command: "workbench.action.files.showOpenedFileInNewWindow",
             },
             {
                 key: "y",

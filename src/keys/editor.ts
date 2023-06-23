@@ -4,10 +4,16 @@ export function editorKeys(): UserMenu {
     return {
         items: [
             {
-                key: "d",
+                key: "c",
                 name: "Close active editor",
                 icon: "x",
                 command: "workbench.action.closeActiveEditor",
+            },
+            {
+                key: "C",
+                name: "Close other editors",
+                icon: "close-all",
+                command: "workbench.action.closeOtherEditors",
             },
             {
                 key: "e",
@@ -62,25 +68,25 @@ export function editorKeys(): UserMenu {
                 command: "workbench.action.moveEditorToRightGroup",
             },
             {
-                key: "M",
-                name: "Close other editors",
-                icon: "close-all",
-                command: "workbench.action.closeOtherEditors",
-            },
-            {
                 key: "n",
                 name: "New Editor",
                 icon: "file-add",
                 menu: newEditor(),
             },
             {
-                key: "P",
-                name: "Paste clipboard to editor",
-                icon: "clippy",
-                commands: ["editor.action.selectAll", "editor.action.clipboardPasteAction"],
+                key: "p",
+                name: "Pin editor",
+                icon: "pin",
+                command: "workbench.action.pinEditor",
             },
             {
-                key: "R",
+                key: "P",
+                name: "Unpin editor",
+                icon: "pinned",
+                command: "workbench.action.unpinEditor",
+            },
+            {
+                key: "r",
                 name: "Revert the current editor",
                 icon: "discard",
                 command: "workbench.action.files.revert",
@@ -92,28 +98,10 @@ export function editorKeys(): UserMenu {
                 command: "workbench.action.files.newUntitledFile",
             },
             {
-                key: "t",
-                name: "Pin editor",
-                icon: "pin",
-                command: "workbench.action.pinEditor",
-            },
-            {
                 key: "T",
-                name: "Unpin editor",
-                icon: "pinned",
-                command: "workbench.action.unpinEditor",
-            },
-            {
-                key: "u",
                 name: "Reopen closed editor",
                 icon: "history",
                 command: "workbench.action.reopenClosedEditor",
-            },
-            {
-                key: "Y",
-                name: "Copy editor to clipboard",
-                icon: "clippy",
-                command: "vspacecode.copyWholeBuffer",
             },
             {
                 key: "0",

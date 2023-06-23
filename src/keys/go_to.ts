@@ -4,6 +4,24 @@ export function goToKeys(): UserMenu {
     return {
         items: [
             {
+                key: "b",
+                name: "Go to breadcrumb",
+                icon: "variable",
+                command: "breadcrumbs.focusAndSelect",
+            },
+            {
+                key: "c",
+                name: "Go to previous change",
+                icon: "arrow-up",
+                command: "workbench.action.editor.previousChange",
+            },
+            {
+                key: "C",
+                name: "Go to next change",
+                icon: "arrow-down",
+                command: "workbench.action.editor.nextChange",
+            },
+            {
                 key: "d",
                 name: "Go to declaration",
                 icon: "symbol-struct",
@@ -22,22 +40,16 @@ export function goToKeys(): UserMenu {
                 command: "workbench.files.action.showActiveFileInExplorer",
             },
             {
-                key: "h",
-                name: "Show call hierarchy",
-                icon: "type-hierarchy",
-                command: "references-view.showCallHierarchy",
-            },
-            {
                 key: "g",
                 name: "Go to definition",
                 icon: "symbol-function",
                 command: "editor.action.revealDefinition",
             },
             {
-                key: "r",
-                name: "Go to reference",
-                icon: "symbol-reference",
-                command: "editor.action.goToReferences",
+                key: "h",
+                name: "Show call hierarchy",
+                icon: "type-hierarchy",
+                command: "references-view.showCallHierarchy",
             },
             {
                 key: "i",
@@ -52,16 +64,22 @@ export function goToKeys(): UserMenu {
                 command: "references-view.findImplementations",
             },
             {
-                key: "s",
-                name: "Go to symbol in buffer",
-                icon: "symbol-class",
-                command: "workbench.action.gotoSymbol",
+                key: "r",
+                name: "Go to reference",
+                icon: "symbol-reference",
+                command: "editor.action.goToReferences",
             },
             {
                 key: "R",
                 name: "Find references",
                 icon: "symbol-reference",
                 command: "references-view.findReferences",
+            },
+            {
+                key: "s",
+                name: "Go to symbol in buffer",
+                icon: "symbol-class",
+                command: "workbench.action.gotoSymbol",
             },
             {
                 key: "S",

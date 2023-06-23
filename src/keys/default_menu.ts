@@ -13,14 +13,22 @@ import { textKeys } from "./text";
 import { editorKeys } from "./editor";
 import { commentsKeys } from "./comments";
 import { type UserMenu } from "./keys";
+import { configKeys } from "./config";
+import { indentKeys } from "./indent";
 
 export function defaultMenu(): UserMenu {
     return {
         items: [
             {
                 key: "c",
-                name: "Comment",
+                name: "Configuration",
                 icon: "gear",
+                menu: configKeys(),
+            },
+            {
+                key: "C",
+                name: "Comment",
+                icon: "comment",
                 menu: commentsKeys(),
             },
             {
@@ -48,16 +56,16 @@ export function defaultMenu(): UserMenu {
                 menu: editorKeys(),
             },
             {
-                key: "F",
-                name: "Format",
-                icon: "list-flat",
-                menu: format(),
-            },
-            {
                 key: "f",
                 name: "File",
                 icon: "file",
                 menu: filesKeys(),
+            },
+            {
+                key: "F",
+                name: "Format",
+                icon: "list-flat",
+                menu: format(),
             },
             {
                 key: "g",
@@ -81,13 +89,13 @@ export function defaultMenu(): UserMenu {
                 key: "i",
                 name: "Insert",
                 icon: "question",
-                menu: insert(),
+                menu: insertKeys(),
             },
             {
-                key: "j",
-                name: "Jump/Join/Split",
-                icon: "gather",
-                menu: jumpJoinSplit(),
+                key: "I",
+                name: "Indent",
+                icon: "arrow-right",
+                menu: indentKeys(),
             },
             {
                 key: "p",
@@ -327,7 +335,7 @@ function diffKeys(): UserMenu {
     };
 }
 
-function insert(): UserMenu {
+function insertKeys(): UserMenu {
     return {
         items: [
             {
@@ -352,64 +360,9 @@ function insert(): UserMenu {
     };
 }
 
-function jumpJoinSplit(): UserMenu {
-    return {
-        items: [
-            {
-                key: "c",
-                name: "Jump to previous change",
-                icon: "arrow-up",
-                command: "workbench.action.editor.previousChange",
-            },
-            {
-                key: "i",
-                name: "Jump to symbol in buffer",
-                icon: "symbol-class",
-                command: "workbench.action.gotoSymbol",
-            },
-            {
-                key: "n",
-                name: "Split new line",
-                icon: "whitespace",
-                command: "lineBreakInsert",
-            },
-            {
-                key: "v",
-                name: "Jump to outline/variables",
-                icon: "variable",
-                command: "breadcrumbs.focusAndSelect",
-            },
-            {
-                key: "C",
-                name: "Jump to next change",
-                icon: "arrow-down",
-                command: "workbench.action.editor.nextChange",
-            },
-            {
-                key: "I",
-                name: "Jump to symbol in project",
-                icon: "project",
-                command: "workbench.action.showAllSymbols",
-            },
-        ],
-    };
-}
-
 function format(): UserMenu {
     return {
         items: [
-            {
-                key: "=",
-                name: "Format region or buffer",
-                icon: "list-flat",
-                command: "editor.action.format",
-            },
-            {
-                key: "b",
-                name: "Format buffer",
-                icon: "file",
-                command: "editor.action.formatDocument",
-            },
             {
                 key: "c",
                 name: "Format changes",
@@ -417,16 +370,28 @@ function format(): UserMenu {
                 command: "editor.action.formatChanges",
             },
             {
+                key: "e",
+                name: "Format Editor",
+                icon: "file",
+                command: "editor.action.formatDocument",
+            },
+            {
+                key: "E",
+                name: "Format editor with formatter",
+                icon: "file",
+                command: "editor.action.formatDocument.multiple",
+            },
+            {
+                key: "f",
+                name: "Format region or buffer",
+                icon: "list-flat",
+                command: "editor.action.format",
+            },
+            {
                 key: "s",
                 name: "Format selection",
                 icon: "selection",
                 command: "editor.action.formatSelection",
-            },
-            {
-                key: "B",
-                name: "Format buffer with formatter",
-                icon: "file",
-                command: "editor.action.formatDocument.multiple",
             },
             {
                 key: "S",

@@ -10,7 +10,9 @@
         "vscode": "^1.78.0"
     },
     "categories": [
-        "Keymaps", "Other", "Visualization"
+        "Keymaps",
+        "Other",
+        "Visualization"
     ],
     "activationEvents": [],
     "main": "./out/extension.js",

@@ -1,4 +1,4 @@
-import { UserMenu } from "./keys";
+import { type UserMenu } from "./keys";
 
 export function searchSymbolKeys(): UserMenu {
     return {
