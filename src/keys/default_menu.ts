@@ -501,28 +501,28 @@ function quit(): UserMenu {
                 command: "workbench.action.closeWindow",
             },
             {
-                key: "r",
-                name: "Reload frame",
-                icon: "refresh",
-                command: "workbench.action.reloadWindow",
-            },
-            {
-                key: "s",
-                name: "Save all and close frame",
-                icon: "save-all",
-                commands: ["workbench.action.files.saveAll", "workbench.action.closeWindow"],
-            },
-            {
                 key: "Q",
                 name: "Quit application",
                 icon: "log-out",
                 command: "workbench.action.quit",
             },
             {
+                key: "r",
+                name: "Reload frame",
+                icon: "refresh",
+                command: "workbench.action.reloadWindow",
+            },
+            {
                 key: "R",
                 name: "Reload frame with extensions disabled",
                 icon: "refresh",
                 command: "workbench.action.reloadWindowWithExtensionsDisabled",
+            },
+            {
+                key: "s",
+                name: "Save all and close frame",
+                icon: "save-all",
+                commands: ["workbench.action.files.saveAll", "workbench.action.closeWindow"],
             },
             {
                 key: "w",
