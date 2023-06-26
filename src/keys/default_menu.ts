@@ -15,6 +15,7 @@ import { commentsKeys } from "./comments";
 import { type UserMenu } from "./keys";
 import { configKeys } from "./config";
 import { indentKeys } from "./indent";
+import { formatKeys } from "./format";
 
 export function defaultMenu(): UserMenu {
     return {
@@ -65,19 +66,20 @@ export function defaultMenu(): UserMenu {
                 key: "F",
                 name: "Format",
                 icon: "list-flat",
-                menu: format(),
+                menu: formatKeys(),
             },
+            // TODO: maybe rename to Jump?
             {
                 key: "g",
-                name: "Git",
-                icon: "git-branch",
-                menu: gitKeys(),
-            },
-            {
-                key: "G",
                 name: "Go to",
                 icon: "go-to-file",
                 menu: goToKeys(),
+            },
+            {
+                key: "G",
+                name: "Git",
+                icon: "git-branch",
+                menu: gitKeys(),
             },
             {
                 key: "h",
@@ -360,49 +362,6 @@ function insertKeys(): UserMenu {
     };
 }
 
-function format(): UserMenu {
-    return {
-        items: [
-            {
-                key: "c",
-                name: "Format changes",
-                icon: "diff",
-                command: "editor.action.formatChanges",
-            },
-            {
-                key: "e",
-                name: "Format Editor",
-                icon: "file",
-                command: "editor.action.formatDocument",
-            },
-            {
-                key: "E",
-                name: "Format editor with formatter",
-                icon: "file",
-                command: "editor.action.formatDocument.multiple",
-            },
-            {
-                key: "f",
-                name: "Format region or buffer",
-                icon: "list-flat",
-                command: "editor.action.format",
-            },
-            {
-                key: "s",
-                name: "Format selection",
-                icon: "selection",
-                command: "editor.action.formatSelection",
-            },
-            {
-                key: "S",
-                name: "Format selection with formatter",
-                icon: "selection",
-                command: "editor.action.formatSelection.multiple",
-            },
-        ],
-    };
-}
-
 function refactor(): UserMenu {
     return {
         items: [
@@ -553,22 +512,10 @@ function projects(): UserMenu {
                 command: "workbench.action.quickOpen",
             },
             {
-                key: "l",
-                name: "Switch project",
-                icon: "project",
-                command: "workbench.action.openRecent",
-            },
-            {
                 key: "p",
                 name: "Switch project",
                 icon: "project",
                 command: "workbench.action.openRecent",
-            },
-            {
-                key: "t",
-                name: "Show tree/explorer view",
-                icon: "list-tree",
-                command: "workbench.view.explorer",
             },
             {
                 key: "R",
@@ -643,6 +590,13 @@ function show(): UserMenu {
                 name: "Show explorer",
                 icon: "list-tree",
                 command: "workbench.view.explorer",
+
+                // {
+                //     key: "when:sideBarVisible && explorerViewletVisible",
+                //     icon: "three-bars",
+                //     name: "Hide side bar",
+                //     command: "workbench.action.toggleSidebarVisibility",
+                // },
             },
             {
                 key: "g",
