@@ -11,9 +11,9 @@ export function filesKeys(): UserMenu {
             },
             {
                 key: "f",
-                name: "Open file/folder",
-                icon: "folder-opened",
-                command: "revealInExplorer",
+                name: "Show file in explorer",
+                icon: "list-tree",
+                command: "workbench.files.action.showActiveFileInExplorer",
             },
             {
                 key: "l",
@@ -40,13 +40,19 @@ export function filesKeys(): UserMenu {
                 command: "revealFileInOS",
             },
             {
-                key: "r",
-                name: "Open recent",
-                icon: "clock",
-                command: "workbench.action.openRecent",
+                key: "p",
+                name: "Copy Path of Active File",
+                icon: "edit",
+                command: "copyFilePath",
             },
             {
-                key: "R",
+                key: "P",
+                name: "Copy Relative Path of Active File",
+                icon: "edit",
+                command: "copyRelativeFilePath",
+            },
+            {
+                key: "r",
                 name: "Rename file",
                 icon: "edit",
                 commands: ["revealInExplorer", "renameFile"],
@@ -64,98 +70,10 @@ export function filesKeys(): UserMenu {
                 command: "workbench.action.files.saveAll",
             },
             {
-                key: "t",
-                name: "Toggle tree/explorer view",
-                icon: "list-tree",
-                command: "workbench.view.explorer",
-                // TODO: do this when the explorer is visible to go back to the editor
-                // {
-                //     key: "when:sideBarVisible && explorerViewletVisible",
-                //     icon: "three-bars",
-                //     name: "Hide side bar",
-                //     command: "workbench.action.toggleSidebarVisibility",
-                // },
-            },
-            {
-                key: "T",
-                name: "Show file in tree/explorer view",
-                icon: "list-tree",
-                command: "workbench.files.action.showActiveFileInExplorer",
-            },
-            {
                 key: "w",
                 name: "Open file in new window",
                 icon: "window",
                 command: "workbench.action.files.showOpenedFileInNewWindow",
-            },
-            {
-                key: "y",
-                name: "Yank",
-                icon: "clippy",
-                menu: {
-                    items: [
-                        {
-                            key: "c",
-                            name: "Copy path of active file with line and column",
-                            icon: "list-selection",
-                            command: "vspacecode.copyPathWithLineColumn",
-                        },
-                        {
-                            key: "d",
-                            name: "Copy directory path of the active file",
-                            icon: "file-directory",
-                            command: "vspacecode.copyDirectoryPath",
-                        },
-                        {
-                            key: "l",
-                            name: "Copy path of active file with line",
-                            icon: "list-flat",
-                            command: "vspacecode.copyPathWithLine",
-                        },
-                        {
-                            key: "n",
-                            name: "Copy filename of active file",
-                            icon: "file",
-                            command: "vspacecode.copyFilename",
-                        },
-                        {
-                            key: "y",
-                            name: "Copy path of active file",
-                            icon: "go-to-file",
-                            command: "vspacecode.copyPath",
-                        },
-                        {
-                            key: "C",
-                            name: "Copy relative path of active file with line and column",
-                            icon: "list-selection",
-                            command: "vspacecode.copyRelativePathWithLineColumn",
-                        },
-                        {
-                            key: "D",
-                            name: "Copy relative directory path of the active file",
-                            icon: "file-directory",
-                            command: "vspacecode.copyRelativeDirectoryPath",
-                        },
-                        {
-                            key: "L",
-                            name: "Copy relative path of active file with line",
-                            icon: "list-flat",
-                            command: "vspacecode.copyRelativePathWithLine",
-                        },
-                        {
-                            key: "N",
-                            name: "Copy filename without extension of active file",
-                            icon: "file",
-                            command: "vspacecode.copyFilenameBase",
-                        },
-                        {
-                            key: "Y",
-                            name: "Copy relative path of active file",
-                            icon: "go-to-file",
-                            command: "vspacecode.copyRelativePath",
-                        },
-                    ],
-                },
             },
         ],
     };

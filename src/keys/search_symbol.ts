@@ -29,39 +29,7 @@ export function searchSymbolKeys(): UserMenu {
                 name: "Highlight symbol",
                 icon: "symbol-color",
                 command: "editor.action.wordHighlight.trigger",
-                menu: {
-                    transient: true,
-
-                    items: [
-                        {
-                            key: "/",
-                            name: "Search in project with selection",
-                            icon: "selection",
-                            commands: [
-                                "editor.action.addSelectionToNextFindMatch",
-                                "workbench.action.findInFiles",
-                            ],
-                        },
-                        {
-                            key: "n",
-                            name: "Next occurrence",
-                            icon: "arrow-down",
-                            command: "editor.action.wordHighlight.next",
-                        },
-                        {
-                            key: "p",
-                            name: "Previous occurrence",
-                            icon: "arrow-up",
-                            command: "editor.action.wordHighlight.prev",
-                        },
-                        {
-                            key: "N",
-                            name: "Previous occurrence",
-                            icon: "arrow-up",
-                            command: "editor.action.wordHighlight.prev",
-                        },
-                    ],
-                },
+                menu: highlight(),
             },
             {
                 key: "j",
@@ -116,6 +84,41 @@ export function searchSymbolKeys(): UserMenu {
                     "editor.action.addSelectionToNextFindMatch",
                     "fuzzySearch.activeTextEditorWithCurrentSelection",
                 ],
+            },
+        ],
+    };
+}
+
+function highlight(): UserMenu {
+    return {
+        transient: true,
+        items: [
+            {
+                key: "/",
+                name: "Search in project with selection",
+                icon: "selection",
+                commands: [
+                    "editor.action.addSelectionToNextFindMatch",
+                    "workbench.action.findInFiles",
+                ],
+            },
+            {
+                key: "n",
+                name: "Next occurrence",
+                icon: "arrow-down",
+                command: "editor.action.wordHighlight.next",
+            },
+            {
+                key: "p",
+                name: "Previous occurrence",
+                icon: "arrow-up",
+                command: "editor.action.wordHighlight.prev",
+            },
+            {
+                key: "N",
+                name: "Previous occurrence",
+                icon: "arrow-up",
+                command: "editor.action.wordHighlight.prev",
             },
         ],
     };

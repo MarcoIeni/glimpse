@@ -22,14 +22,15 @@ export async function newExecutor(context: vscode.ExtensionContext): Promise<Exe
 export function glimpseRun(executor: Executor): void {
     executor.menu = executor.userMenu;
     try {
-        pick(executor);
+        pick(executor, "Glimpse");
     } catch (err) {
         console.error("Failed to run Glimpse", err);
     }
 }
 
-function pick(executor: Executor): void {
+function pick(executor: Executor, menuTitle: string): void {
     executor.quickPick = vscode.window.createQuickPick();
+    executor.quickPick.title = menuTitle;
 
     // Fill quick pick options.
     const options = [];
@@ -91,14 +92,14 @@ export async function executeKey(executor: Executor, key: string): Promise<void>
         if ("commands" in item) {
             await executeCommands(item.commands);
             if (executor.menu.transient) {
-                pick(executor);
+                pick(executor, item.name);
             }
         }
 
         if ("menu" in item) {
             // open the submenu
             executor.menu = item.menu;
-            pick(executor);
+            pick(executor, item.name);
         }
     }
 }

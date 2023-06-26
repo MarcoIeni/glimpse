@@ -4,6 +4,18 @@ export function gitKeys(): UserMenu {
     return {
         items: [
             {
+                key: "a",
+                icon: "file-add",
+                name: "Stage Changes",
+                command: "git.stageSelectedRanges",
+            },
+            {
+                key: "A",
+                icon: "file-add",
+                name: "Stage Selected Ranges",
+                command: "git.stageSelectedRanges",
+            },
+            {
                 key: "b",
                 name: "Checkout",
                 icon: "repo",
@@ -23,9 +35,9 @@ export function gitKeys(): UserMenu {
             },
             {
                 key: "d",
-                name: "Delete Branch",
+                name: "Delete",
                 icon: "close",
-                command: "git.deleteBranch",
+                menu: gitDelete(),
             },
             {
                 key: "f",
@@ -82,16 +94,16 @@ export function gitKeys(): UserMenu {
                 command: "workbench.view.scm",
             },
             {
-                key: "S",
-                icon: "file-add",
-                name: "Stage",
-                command: "git.stage",
-            },
-            {
-                key: "U",
+                key: "u",
                 name: "Unstage",
                 icon: "file",
                 command: "git.unstage",
+            },
+            {
+                key: "U",
+                name: "Unstage Selected Ranges",
+                icon: "file",
+                command: "git.unstageSelectedRanges",
             },
         ],
     };
@@ -159,6 +171,31 @@ function mergeConflict(): UserMenu {
                 name: "Accept selection",
                 icon: "selection",
                 command: "merge-conflict.accept.selection",
+            },
+        ],
+    };
+}
+
+function gitDelete(): UserMenu {
+    return {
+        items: [
+            {
+                key: "b",
+                name: "Delete Branch",
+                icon: "repo",
+                command: "git.deleteBranch",
+            },
+            {
+                key: "t",
+                name: "Delete Tag",
+                icon: "tag",
+                command: "git.deleteTag",
+            },
+            {
+                key: "T",
+                name: "Delete Remote Tag",
+                icon: "repo-forked",
+                command: "git.deleteRemoteTag",
             },
         ],
     };

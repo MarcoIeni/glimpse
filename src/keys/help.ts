@@ -9,13 +9,13 @@ export function helpKeys(): UserMenu {
                 icon: "book",
                 command: "workbench.action.openDocumentationUrl",
             },
-            {
-                key: "D",
-                name: "Open Glimpse Documentation",
-                icon: "book",
-                // TODO: open glimpse docs
-                command: "vspacecode.openDocumentationUrl",
-            },
+            // TODO: open glimpse docs
+            // {
+            //     key: "D",
+            //     name: "Open Glimpse Documentation",
+            //     icon: "book",
+            //     command: "glimpse.openDocumentationUrl",
+            // },
             {
                 key: "h",
                 name: "Describe thing at point",
