@@ -489,20 +489,14 @@ function quit(): UserMenu {
     return {
         items: [
             {
-                key: "f",
-                name: "Close frame",
-                icon: "close",
-                command: "workbench.action.closeWindow",
-            },
-            {
                 key: "q",
-                name: "Close frame",
+                name: "Quit VSCode instance",
                 icon: "close",
                 command: "workbench.action.closeWindow",
             },
             {
                 key: "Q",
-                name: "Quit application",
+                name: "Quit all VSCode instances",
                 icon: "log-out",
                 command: "workbench.action.quit",
             },
