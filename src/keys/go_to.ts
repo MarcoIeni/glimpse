@@ -34,12 +34,6 @@ export function goToKeys(): UserMenu {
                 command: "workbench.actions.view.problems",
             },
             {
-                key: "f",
-                name: "Go to file in explorer",
-                icon: "file",
-                command: "workbench.files.action.showActiveFileInExplorer",
-            },
-            {
                 key: "g",
                 name: "Go to definition",
                 icon: "symbol-function",
