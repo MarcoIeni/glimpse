@@ -16,6 +16,7 @@ import { type UserMenu } from "./keys";
 import { configKeys } from "./config";
 import { indentKeys } from "./indent";
 import { formatKeys } from "./format";
+import { peekKeys } from "./peek";
 
 export function defaultMenu(): UserMenu {
     return {
@@ -109,7 +110,7 @@ export function defaultMenu(): UserMenu {
                 key: "P",
                 name: "Peek",
                 icon: "eye",
-                menu: peek(),
+                menu: peekKeys(),
             },
             {
                 key: "q",
@@ -411,49 +412,6 @@ function refactor(): UserMenu {
                 name: "Execute source action",
                 icon: "lightbulb",
                 command: "editor.action.sourceAction",
-            },
-        ],
-    };
-}
-
-function peek(): UserMenu {
-    return {
-        items: [
-            {
-                key: "d",
-                name: "Peek declaration",
-                icon: "symbol-struct",
-                command: "editor.action.peekDeclaration",
-            },
-            {
-                key: "h",
-                name: "Peek call hierarchy",
-                icon: "type-hierarchy",
-                command: "editor.showCallHierarchy",
-            },
-            {
-                key: "i",
-                name: "Peek implementations",
-                icon: "symbol-module",
-                command: "editor.action.peekImplementation",
-            },
-            {
-                key: "p",
-                name: "Peek definition",
-                icon: "symbol-function",
-                command: "editor.action.peekDefinition",
-            },
-            {
-                key: "r",
-                name: "Peek references",
-                icon: "symbol-reference",
-                command: "editor.action.referenceSearch.trigger",
-            },
-            {
-                key: "t",
-                name: "Peek type definition",
-                icon: "symbol-struct",
-                command: "editor.action.peekTypeDefinition",
             },
         ],
     };
