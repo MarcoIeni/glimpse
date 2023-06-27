@@ -4,18 +4,6 @@ export function textKeys(): UserMenu {
     return {
         items: [
             {
-                key: ".",
-                name: "Quick fix",
-                icon: "lightbulb-autofix",
-                command: "editor.action.quickFix",
-            },
-            {
-                key: "a",
-                name: "Find all references",
-                icon: "references",
-                command: "editor.action.referenceSearch.trigger",
-            },
-            {
                 key: "i",
                 name: "Organize Imports",
                 icon: "selection",

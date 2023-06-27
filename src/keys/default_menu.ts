@@ -17,6 +17,10 @@ import { configKeys } from "./config";
 import { indentKeys } from "./indent";
 import { formatKeys } from "./format";
 import { peekKeys } from "./peek";
+import { quitKeys } from "./quit";
+import { projectKeys } from "./project";
+import { refactorKeys } from "./refactor";
+import { commentLine, searchSelectionInProject, showProblems, showTerminal } from "./common";
 
 export function defaultMenu(): UserMenu {
     return {
@@ -104,7 +108,7 @@ export function defaultMenu(): UserMenu {
                 key: "p",
                 name: "Project",
                 icon: "project",
-                menu: projects(),
+                menu: projectKeys(),
             },
             {
                 key: "P",
@@ -116,17 +120,17 @@ export function defaultMenu(): UserMenu {
                 key: "q",
                 name: "Quit",
                 icon: "x",
-                menu: quit(),
+                menu: quitKeys(),
             },
             {
                 key: "r",
                 name: "Refactor",
                 icon: "edit",
-                menu: refactor(),
+                menu: refactorKeys(),
             },
             {
                 key: "s",
-                name: "Search/Symbol",
+                name: "Search",
                 icon: "search",
                 menu: searchSymbolKeys(),
             },
@@ -176,10 +180,8 @@ export function defaultMenu(): UserMenu {
                 ],
             },
             {
+                ...showTerminal(),
                 key: "!",
-                name: "Show terminal",
-                icon: "terminal",
-                command: "workbench.action.terminal.focus",
             },
             {
                 key: '"',
@@ -188,20 +190,12 @@ export function defaultMenu(): UserMenu {
                 command: "workbench.action.terminal.openNativeConsole",
             },
             {
+                ...showTerminal(),
                 key: "'",
-                name: "Show terminal",
-                icon: "terminal",
-                command: "workbench.action.terminal.focus",
             },
             {
+                ...searchSelectionInProject(),
                 key: "*",
-                name: "Search",
-                icon: "search",
-                commands: [
-                    "editor.action.addSelectionToNextFindMatch",
-                    "workbench.action.findInFiles",
-                    "search.action.focusSearchList",
-                ],
             },
             {
                 key: ":",
@@ -216,10 +210,8 @@ export function defaultMenu(): UserMenu {
                 command: "workbench.action.findInFiles",
             },
             {
+                ...commentLine(),
                 key: ";",
-                name: "Toggle comment",
-                icon: "comment",
-                command: "editor.action.commentLine",
             },
             {
                 key: "v",
@@ -363,60 +355,6 @@ function insertKeys(): UserMenu {
     };
 }
 
-function refactor(): UserMenu {
-    return {
-        items: [
-            {
-                key: ".",
-                name: "Quick fix",
-                icon: "lightbulb-autofix",
-                command: "editor.action.quickFix",
-            },
-            {
-                key: "a",
-                name: "Execute code actions",
-                icon: "lightbulb",
-                command: "editor.action.codeAction",
-            },
-            {
-                key: "e",
-                name: "Extract to function or variable",
-                icon: "gather",
-                command: {
-                    id: "editor.action.codeAction",
-                    args: {
-                        kind: "refactor.extract",
-                    },
-                },
-            },
-            {
-                key: "i",
-                name: "Organize imports",
-                icon: "edit",
-                command: "editor.action.organizeImports",
-            },
-            {
-                key: "r",
-                name: "Rename Symbol",
-                icon: "symbol-keyword",
-                command: "editor.action.rename",
-            },
-            {
-                key: "R",
-                name: "Refactor actions",
-                icon: "edit",
-                command: "editor.action.refactor",
-            },
-            {
-                key: "s",
-                name: "Execute source action",
-                icon: "lightbulb",
-                command: "editor.action.sourceAction",
-            },
-        ],
-    };
-}
-
 function tests(): UserMenu {
     return {
         items: [
@@ -427,7 +365,13 @@ function tests(): UserMenu {
                 command: "testing.runAll",
             },
             {
-                key: "b",
+                key: "A",
+                name: "Debug all tests",
+                icon: "bug",
+                command: "testing.debugAll",
+            },
+            {
+                key: "f",
                 name: "Run current test file",
                 icon: "file",
                 command: "testing.runCurrentFile",
@@ -445,84 +389,10 @@ function tests(): UserMenu {
                 command: "testing.runSelected",
             },
             {
-                key: "A",
-                name: "Debug all tests",
-                icon: "bug",
-                command: "testing.debugAll",
-            },
-            {
                 key: "T",
                 name: "Select and debug test",
                 icon: "debug-alt",
                 command: "testing.debugSelected",
-            },
-        ],
-    };
-}
-
-function projects(): UserMenu {
-    return {
-        items: [
-            {
-                key: "f",
-                name: "Find file in project",
-                icon: "file",
-                command: "workbench.action.quickOpen",
-            },
-            {
-                key: "p",
-                name: "Switch project",
-                icon: "project",
-                command: "workbench.action.openRecent",
-            },
-            {
-                key: "R",
-                name: "Replace in files",
-                icon: "find-replace",
-                command: "workbench.action.replaceInFiles",
-            },
-        ],
-    };
-}
-
-function quit(): UserMenu {
-    return {
-        items: [
-            {
-                key: "q",
-                name: "Quit VSCode instance",
-                icon: "close",
-                command: "workbench.action.closeWindow",
-            },
-            {
-                key: "Q",
-                name: "Quit all VSCode instances",
-                icon: "log-out",
-                command: "workbench.action.quit",
-            },
-            {
-                key: "r",
-                name: "Reload frame",
-                icon: "refresh",
-                command: "workbench.action.reloadWindow",
-            },
-            {
-                key: "R",
-                name: "Reload frame with extensions disabled",
-                icon: "refresh",
-                command: "workbench.action.reloadWindowWithExtensionsDisabled",
-            },
-            {
-                key: "s",
-                name: "Save all and close frame",
-                icon: "save-all",
-                commands: ["workbench.action.files.saveAll", "workbench.action.closeWindow"],
-            },
-            {
-                key: "w",
-                name: "Close workspace",
-                icon: "close-all",
-                command: "workbench.action.closeFolder",
             },
         ],
     };
@@ -551,6 +421,12 @@ function show(): UserMenu {
                 // },
             },
             {
+                key: "E",
+                name: "Show extensions",
+                icon: "extensions",
+                command: "workbench.view.extensions",
+            },
+            {
                 key: "g",
                 name: "Show source control",
                 icon: "source-control",
@@ -569,10 +445,8 @@ function show(): UserMenu {
                 command: "workbench.action.output.toggleOutput",
             },
             {
+                ...showProblems(),
                 key: "p",
-                name: "Show problem",
-                icon: "error",
-                command: "workbench.actions.view.problems",
             },
             {
                 key: "r",
@@ -591,12 +465,6 @@ function show(): UserMenu {
                 name: "Show test",
                 icon: "beaker",
                 command: "workbench.view.extension.test",
-            },
-            {
-                key: "x",
-                name: "Show extensions",
-                icon: "extensions",
-                command: "workbench.view.extensions",
             },
         ],
     };

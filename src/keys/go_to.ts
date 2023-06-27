@@ -28,12 +28,6 @@ export function goToKeys(): UserMenu {
                 command: "editor.action.revealDeclaration",
             },
             {
-                key: "e",
-                name: "Go to errors/problems",
-                icon: "error",
-                command: "workbench.actions.view.problems",
-            },
-            {
                 key: "g",
                 name: "Go to definition",
                 icon: "symbol-function",

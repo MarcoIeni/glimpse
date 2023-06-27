@@ -105,12 +105,14 @@ export async function executeKey(executor: Executor, key: string): Promise<void>
 }
 
 async function executeCommands(commands: Command[]): Promise<void> {
+    console.log("executing command", JSON.stringify(commands));
     for (const cmd of commands) {
         if (typeof cmd === "string") {
             await vscode.commands.executeCommand(cmd);
-        } else if ("id" in commands && "args" in commands) {
-            const commandId = commands.id as string;
-            const args = commands.args;
+        } else if ("id" in cmd && "args" in cmd) {
+            const commandId = cmd.id;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const args = cmd.args;
             if (Array.isArray(args)) {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 await vscode.commands.executeCommand(commandId, ...args);

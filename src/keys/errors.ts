@@ -1,3 +1,4 @@
+import { showProblems } from "./common";
 import { type UserMenu } from "./keys";
 
 export function errorKeys(): UserMenu {
@@ -10,10 +11,10 @@ export function errorKeys(): UserMenu {
                 command: "editor.action.showHover",
             },
             {
+                ...showProblems(),
                 key: "E",
                 name: "Show all errors",
                 icon: "list-flat",
-                command: "workbench.actions.view.problems",
             },
             {
                 key: "f",

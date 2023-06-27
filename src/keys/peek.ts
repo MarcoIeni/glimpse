@@ -34,10 +34,17 @@ export function peekKeys(): UserMenu {
                 command: "editor.action.referenceSearch.trigger",
             },
             {
+                key: "R",
+                name: "Search all references in side bar",
+                icon: "references",
+                command: "references-view.find",
+            },
+            {
                 key: "t",
                 name: "Peek type definition",
                 icon: "symbol-struct",
                 command: "editor.action.peekTypeDefinition",
             },
-
-        ]};}
+        ],
+    };
+}

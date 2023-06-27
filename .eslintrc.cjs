@@ -20,7 +20,6 @@ module.exports = {
         "@typescript-eslint/consistent-type-definitions": "off",
         "@typescript-eslint/sort-type-constituents": "warn",
         "@typescript-eslint/no-confusing-void-expression": "warn",
-        "@typescript-eslint/explicit-module-boundary-types": "warn",
         "@typescript-eslint/consistent-type-imports": "warn",
         curly: "warn",
         eqeqeq: "warn",
