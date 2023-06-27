@@ -4,73 +4,30 @@ export function windowKeys(): UserMenu {
     return {
         items: [
             {
-                key: "-",
-                name: "Split window below",
-                icon: "split-vertical",
-                command: "workbench.action.splitEditorDown",
+                ...shrinkWindow(),
+                menu: resizeWindow(),
             },
             {
-                key: "/",
-                name: "Split window right",
-                icon: "split-horizontal",
-                command: "workbench.action.splitEditor",
+                ...enlargeWindow(),
+                menu: resizeWindow(),
             },
             {
-                key: "=",
-                name: "Reset window sizes",
-                icon: "move",
-                command: "workbench.action.evenEditorWidths",
-            },
-            {
-                key: "[",
-                name: "Shrink window",
-                icon: "remove",
-                command: "workbench.action.decreaseViewSize",
-                menu: {
-                    items: [
-                        {
-                            key: "[",
-                            name: "Shrink window",
-                            icon: "remove",
-                            command: "workbench.action.decreaseViewSize",
-                        },
-                        {
-                            key: "]",
-                            name: "Enlarge window",
-                            icon: "add",
-                            command: "workbench.action.increaseViewSize",
-                        },
-                    ],
-                },
-            },
-            {
-                key: "]",
-                name: "Enlarge window",
-                icon: "add",
-                command: "workbench.action.increaseViewSize",
-                menu: {
-                    transient: true,
-                    items: [
-                        {
-                            key: "[",
-                            name: "Shrink window",
-                            icon: "remove",
-                            command: "workbench.action.decreaseViewSize",
-                        },
-                        {
-                            key: "]",
-                            name: "Enlarge window",
-                            icon: "add",
-                            command: "workbench.action.increaseViewSize",
-                        },
-                    ],
-                },
-            },
-            {
-                key: "d",
+                key: "c",
                 name: "Close window",
                 icon: "close",
                 command: "workbench.action.closeEditorsInGroup",
+            },
+            {
+                key: "C",
+                name: "Close all other windows",
+                icon: "close-all",
+                command: "workbench.action.closeEditorsInOtherGroups",
+            },
+            {
+                key: "F",
+                name: "Open new empty frame",
+                icon: "empty-window",
+                command: "workbench.action.newWindow",
             },
             {
                 key: "h",
@@ -79,10 +36,22 @@ export function windowKeys(): UserMenu {
                 command: "workbench.action.focusPreviousGroup",
             },
             {
+                key: "H",
+                name: "Move window left",
+                icon: "triangle-left",
+                command: "workbench.action.moveActiveEditorGroupLeft",
+            },
+            {
                 key: "j",
                 name: "Focus window down",
                 icon: "arrow-down",
                 command: "workbench.action.focusBelowGroup",
+            },
+            {
+                key: "J",
+                name: "Move window down",
+                icon: "triangle-down",
+                command: "workbench.action.moveActiveEditorGroupDown",
             },
             {
                 key: "k",
@@ -91,16 +60,34 @@ export function windowKeys(): UserMenu {
                 command: "workbench.action.focusAboveGroup",
             },
             {
+                key: "K",
+                name: "Move window up",
+                icon: "triangle-up",
+                command: "workbench.action.moveActiveEditorGroupUp",
+            },
+            {
                 key: "l",
                 name: "Focus window right",
                 icon: "arrow-right",
                 command: "workbench.action.focusNextGroup",
             },
             {
+                key: "L",
+                name: "Move window right",
+                icon: "triangle-right",
+                command: "workbench.action.moveActiveEditorGroupRight",
+            },
+            {
                 key: "m",
                 name: "Maximize window",
                 icon: "chrome-maximize",
                 command: "workbench.action.toggleEditorWidths",
+            },
+            {
+                key: "M",
+                name: "Maximize window and hide side bar",
+                icon: "screen-full",
+                command: "workbench.action.maximizeEditor",
             },
             {
                 key: "n",
@@ -113,6 +100,12 @@ export function windowKeys(): UserMenu {
                 name: "Switch frame",
                 icon: "multiple-windows",
                 command: "workbench.action.quickSwitchWindow",
+            },
+            {
+                key: "r",
+                name: "Reset window sizes",
+                icon: "move",
+                command: "workbench.action.evenEditorWidths",
             },
             {
                 key: "s",
@@ -133,6 +126,12 @@ export function windowKeys(): UserMenu {
                 command: "workbench.action.focusNextGroup",
             },
             {
+                key: "W",
+                name: "Focus previous window",
+                icon: "arrow-small-up",
+                command: "workbench.action.focusPreviousGroup",
+            },
+            {
                 key: "x",
                 name: "Close all windows",
                 icon: "close-all",
@@ -144,54 +143,30 @@ export function windowKeys(): UserMenu {
                 icon: "combine",
                 command: "workbench.action.joinAllGroups",
             },
-            {
-                key: "D",
-                name: "Close all other windows",
-                icon: "close-all",
-                command: "workbench.action.closeEditorsInOtherGroups",
-            },
-            {
-                key: "F",
-                name: "Open new empty frame",
-                icon: "empty-window",
-                command: "workbench.action.newWindow",
-            },
-            {
-                key: "H",
-                name: "Move window left",
-                icon: "triangle-left",
-                command: "workbench.action.moveActiveEditorGroupLeft",
-            },
-            {
-                key: "J",
-                name: "Move window down",
-                icon: "triangle-down",
-                command: "workbench.action.moveActiveEditorGroupDown",
-            },
-            {
-                key: "K",
-                name: "Move window up",
-                icon: "triangle-up",
-                command: "workbench.action.moveActiveEditorGroupUp",
-            },
-            {
-                key: "L",
-                name: "Move window right",
-                icon: "triangle-right",
-                command: "workbench.action.moveActiveEditorGroupRight",
-            },
-            {
-                key: "M",
-                name: "Maximize window and hide side bar",
-                icon: "screen-full",
-                command: "workbench.action.maximizeEditor",
-            },
-            {
-                key: "W",
-                name: "Focus previous window",
-                icon: "arrow-small-up",
-                command: "workbench.action.focusPreviousGroup",
-            },
         ],
+    };
+}
+
+function resizeWindow(): UserMenu {
+    return {
+        items: [shrinkWindow(), enlargeWindow()],
+    };
+}
+
+function shrinkWindow() {
+    return {
+        key: "-",
+        name: "Shrink window",
+        icon: "remove",
+        command: "workbench.action.decreaseViewSize",
+    };
+}
+
+function enlargeWindow() {
+    return {
+        key: "+",
+        name: "Enlarge window",
+        icon: "add",
+        command: "workbench.action.increaseViewSize",
     };
 }
