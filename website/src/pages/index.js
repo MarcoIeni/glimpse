@@ -18,6 +18,15 @@ function HomepageHeader() {
                     <Link className="button button--secondary button--lg" to="/docs/intro">
                         Get Started️
                     </Link>
+                    <span className={styles.indexCtasGitHubButtonWrapper}>
+                        <iframe
+                            className={styles.indexCtasGitHubButton}
+                            src="https://ghbtns.com/github-btn.html?user=MarcoIeni&amp;repo=glimpse&amp;type=star&amp;count=true&amp;size=large"
+                            width={160}
+                            height={30}
+                            title="GitHub Stars"
+                        />
+                    </span>
                 </div>
             </div>
         </header>
@@ -28,7 +37,7 @@ export default function Home() {
     const { siteConfig } = useDocusaurusContext();
     return (
         <Layout
-            title={`Hello from ${siteConfig.title}`}
+            title={`${siteConfig.title} VSCode extension`}
             description="Mnemonic key bindings for VSCode commands"
         >
             <HomepageHeader />
