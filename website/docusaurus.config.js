@@ -99,7 +99,7 @@ const config = {
                     },
                     {
                         href: "https://github.com/MarcoIeni/Glimpse",
-                        'aria-label': "GitHub",
+                        "aria-label": "GitHub",
                         className: "header-github-link",
                         position: "right",
                     },
