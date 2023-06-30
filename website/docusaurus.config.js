@@ -71,7 +71,7 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            // Replace with your project's social card
+            // TODO Replace with your project's social card
             image: "img/docusaurus-social-card.jpg",
             announcementBar: {
                 id: "announcementBar-2", // Increment on change
@@ -89,6 +89,13 @@ const config = {
                         sidebarId: "tutorialSidebar",
                         position: "left",
                         label: "Docs",
+                    },
+                    {
+                        type: "docSidebar",
+                        sidebarId: "tutorialSidebar",
+                        href: "/pricing",
+                        position: "left",
+                        label: "Pricing",
                     },
                     {
                         href: "https://github.com/MarcoIeni/Glimpse",

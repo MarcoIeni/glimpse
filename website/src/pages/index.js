@@ -13,12 +13,20 @@ function HomepageHeader() {
         <header className={clsx("hero hero--primary", styles.heroBanner)}>
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title}</h1>
+            <img alt="Glimpse Logo" src="img/icon.jpeg" width="600" height="600" />
                 <p className="hero__subtitle">{siteConfig.tagline}</p>
                 <div className={styles.buttons}>
-                    <Link className="button button--secondary button--lg" to="/docs/intro">
+                    <Link
+                        style={{ marginRight: 10 }}
+                        className="button button--secondary button--lg"
+                        to="/docs/intro"
+                    >
                         Get Started️
                     </Link>
-                    <span className={styles.indexCtasGitHubButtonWrapper}>
+                    <span
+                        className={styles.indexCtasGitHubButtonWrapper}
+                        style={{ marginLeft: 10 }}
+                    >
                         <iframe
                             className={styles.indexCtasGitHubButton}
                             src="https://ghbtns.com/github-btn.html?user=MarcoIeni&amp;repo=glimpse&amp;type=star&amp;count=true&amp;size=large"
