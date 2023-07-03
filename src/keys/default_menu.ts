@@ -346,6 +346,12 @@ function insertKeys(): UserMenu {
                 command: "editor.action.insertLineBefore",
             },
             {
+                key: "p",
+                name: "Paste as",
+                icon: "files",
+                command: "editor.action.pasteAs",
+            },
+            {
                 key: "s",
                 name: "Insert snippet",
                 icon: "symbol-snippet",
