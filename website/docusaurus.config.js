@@ -71,7 +71,7 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            image: "img/glimpse-social-card.jpg",
+            image: "img/glimpse-social-card.png",
             announcementBar: {
                 id: "announcementBar-1", // Increment on change
                 content: `⭐️ If you like Glimpse, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/MarcoIeni/glimpse">GitHub</a> and follow the author on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/MarcoIeni">Twitter ${TwitterSvg}</a>`,
