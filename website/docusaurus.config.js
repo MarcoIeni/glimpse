@@ -74,14 +74,14 @@ const config = {
             // TODO Replace with your project's social card
             image: "img/docusaurus-social-card.jpg",
             announcementBar: {
-                id: "announcementBar-2", // Increment on change
+                id: "announcementBar-1", // Increment on change
                 content: `⭐️ If you like Glimpse, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/MarcoIeni/glimpse">GitHub</a> and follow the author on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/MarcoIeni">Twitter ${TwitterSvg}</a>`,
             },
             navbar: {
                 title: "Glimpse",
                 logo: {
                     alt: "Glimpse Logo",
-                    src: "img/logo.svg",
+                    src: "img/icon_small.png",
                 },
                 items: [
                     {
@@ -96,6 +96,11 @@ const config = {
                         href: "/pricing",
                         position: "left",
                         label: "Pricing",
+                    },
+                    {
+                        label: "💖 Sponsor",
+                        href: "https://github.com/sponsors/MarcoIeni",
+                        position: "right",
                     },
                     {
                         href: "https://github.com/MarcoIeni/Glimpse",
@@ -123,6 +128,10 @@ const config = {
                             {
                                 label: "Twitter",
                                 href: "https://twitter.com/MarcoIeni",
+                            },
+                            {
+                                label: "LinkedIn",
+                                href: "https://www.linkedin.com/in/marcoieni/",
                             },
                         ],
                     },
