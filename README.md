@@ -1,4 +1,4 @@
-![glimpse-logo](icon.jpeg)
+![glimpse-logo](icon.png)
 
 # Glimpse
 
@@ -30,6 +30,21 @@ This extension contributes the following settings:
 
 ## Credits
 
+<details>
+  <summary>Codebase</summary>
+
 Parts of the codebase are inspired by:
 - [VSpaceCode](https://github.com/VSpaceCode/VSpaceCode)
 - [vscode-which-key](https://github.com/VSpaceCode/vscode-which-key)
+</details>
+
+<details>
+  <summary>Logo</summary>
+
+The logo was generated using [Bing image creator](https://www.bing.com/create). Prompt:
+
+> orange G letter in the middle of blue and salmon keyboard keys. cute. Comfy. Speedy. Cartoonish. Glamorous. logo. contains shiny stars.
+
+[Ambra Lucia Colombo](https://www.linkedin.com/in/ambralcolombo/) edited the image to correct AI defects.
+
+</details>
