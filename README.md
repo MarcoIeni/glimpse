@@ -43,9 +43,7 @@ Parts of the codebase are inspired by:
 
 The logo was generated using [Bing image creator](https://www.bing.com/create). Prompt:
 
-  ```txt
-  orange G letter in the middle of blue and salmon keyboard keys. cute. Comfy. Speedy. Cartoonish. Glamorous. logo. contains shiny stars.
-  ```
+> orange G letter in the middle of blue and salmon keyboard keys. cute. Comfy. Speedy. Cartoonish. Glamorous. logo. contains shiny stars.
 
 [Ambra Lucia Colombo](https://www.linkedin.com/in/ambralcolombo/) edited the image to correct AI defects.
 
