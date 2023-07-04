@@ -1,4 +1,4 @@
-![glimpse-logo](icon.png)
+![glimpse-logo](website/static/img/glimpse-social-card.png)
 
 # Glimpse
 

@@ -5,31 +5,31 @@ export function quitKeys(): UserMenu {
         items: [
             {
                 key: "q",
-                name: "Quit VSCode instance",
+                name: "Quit VSCode window",
                 icon: "close",
                 command: "workbench.action.closeWindow",
             },
             {
                 key: "Q",
-                name: "Quit all VSCode instances",
+                name: "Quit all VSCode windows",
                 icon: "log-out",
                 command: "workbench.action.quit",
             },
             {
                 key: "r",
-                name: "Reload frame",
+                name: "Reload window",
                 icon: "refresh",
                 command: "workbench.action.reloadWindow",
             },
             {
                 key: "R",
-                name: "Reload frame with extensions disabled",
+                name: "Reload window with extensions disabled",
                 icon: "refresh",
                 command: "workbench.action.reloadWindowWithExtensionsDisabled",
             },
             {
                 key: "s",
-                name: "Save all and close frame",
+                name: "Save all and close window",
                 icon: "save-all",
                 commands: ["workbench.action.files.saveAll", "workbench.action.closeWindow"],
             },

@@ -19,33 +19,10 @@ export function zoomKeys(): UserMenu {
                 menu: zoomTransient(),
             },
             {
-                key: "f",
-                name: "Frame",
-                icon: "window",
-                menu: {
-                    transient: true,
-                    items: [
-                        {
-                            key: "+",
-                            ...zoomIn(),
-                        },
-                        {
-                            ...zoomIn(),
-                            key: "=",
-                            menu: zoomTransient(),
-                        },
-                        {
-                            key: "-",
-                            ...zoomOut(),
-                        },
-                        {
-                            key: "0",
-                            name: "Reset zoom",
-                            icon: "search",
-                            command: "workbench.action.zoomReset",
-                        },
-                    ],
-                },
+                key: "0",
+                name: "Reset zoom",
+                icon: "search",
+                command: "workbench.action.zoomReset",
             },
             {
                 key: "i",
@@ -76,16 +53,15 @@ export function zoomKeys(): UserMenu {
                 },
             },
             {
-                key: "x",
+                key: "f",
                 name: "Font",
                 icon: "case-sensitive",
                 menu: {
+                    transient: true,
                     items: [
                         {
+                            ...fontZoomIn(),
                             key: "+",
-                            name: "Zoom in",
-                            icon: "zoom-in",
-                            command: "editor.action.fontZoomIn",
                         },
                         {
                             key: "-",
@@ -100,16 +76,14 @@ export function zoomKeys(): UserMenu {
                             command: "editor.action.fontZoomReset",
                         },
                         {
+                            ...fontZoomIn(),
                             key: "=",
-                            name: "Zoom in",
-                            icon: "zoom-in",
-                            command: "editor.action.fontZoomIn",
                         },
                     ],
                 },
             },
             {
-                key: ".",
+                key: "F",
                 name: "Fold",
                 icon: "fold",
                 menu: {
@@ -139,6 +113,12 @@ export function zoomKeys(): UserMenu {
                             command: "editor.foldAllMarkerRegions",
                         },
                         {
+                            key: "G",
+                            name: "Open: all regions",
+                            icon: "unfold",
+                            command: "editor.unfoldAllMarkerRegions",
+                        },
+                        {
                             key: "m",
                             name: "Close: all",
                             icon: "fold",
@@ -151,22 +131,16 @@ export function zoomKeys(): UserMenu {
                             command: "editor.unfold",
                         },
                         {
-                            key: "r",
-                            name: "Open: all",
-                            icon: "unfold",
-                            command: "editor.unfoldAll",
-                        },
-                        {
-                            key: "G",
-                            name: "Open: all regions",
-                            icon: "unfold",
-                            command: "editor.unfoldAllMarkerRegions",
-                        },
-                        {
                             key: "O",
                             name: "Open: recursively",
                             icon: "unfold",
                             command: "editor.unfoldRecursively",
+                        },
+                        {
+                            key: "r",
+                            name: "Open: all",
+                            icon: "unfold",
+                            command: "editor.unfoldAll",
                         },
                     ],
                 },
@@ -199,5 +173,13 @@ function zoomOut() {
         name: "Zoom Out",
         command: "workbench.action.zoomOut",
         icon: "zoom-out",
+    };
+}
+
+function fontZoomIn() {
+    return {
+        name: "Zoom In",
+        icon: "zoom-in",
+        command: "editor.action.fontZoomIn",
     };
 }

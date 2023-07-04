@@ -4,100 +4,105 @@ export function windowKeys(): UserMenu {
     return {
         items: [
             {
-                ...shrinkWindow(),
-                menu: resizeWindow(),
+                ...shrinkGroup(),
+                menu: resizeGroup(),
             },
             {
-                ...enlargeWindow(),
-                menu: resizeWindow(),
+                ...enlargeGroup(),
+                menu: resizeGroup(),
+            },
+            {
+                ...enlargeGroup(),
+                key: "=",
+                menu: resizeGroup(),
             },
             {
                 key: "c",
-                name: "Close window",
+                name: "Close group",
                 icon: "close",
                 command: "workbench.action.closeEditorsInGroup",
             },
             {
                 key: "C",
-                name: "Close all other windows",
+                name: "Close all other groups",
                 icon: "close-all",
                 command: "workbench.action.closeEditorsInOtherGroups",
             },
             {
-                key: "F",
-                name: "Open new empty frame",
-                icon: "empty-window",
-                command: "workbench.action.newWindow",
-            },
-            {
                 key: "h",
-                name: "Focus window left",
+                name: "Focus group left",
                 icon: "arrow-left",
                 command: "workbench.action.focusPreviousGroup",
             },
             {
                 key: "H",
-                name: "Move window left",
+                name: "Move in group left",
                 icon: "triangle-left",
                 command: "workbench.action.moveActiveEditorGroupLeft",
             },
             {
                 key: "j",
-                name: "Focus window down",
+                name: "Focus group down",
                 icon: "arrow-down",
                 command: "workbench.action.focusBelowGroup",
             },
             {
                 key: "J",
-                name: "Move window down",
+                name: "Move in group down",
                 icon: "triangle-down",
                 command: "workbench.action.moveActiveEditorGroupDown",
             },
             {
                 key: "k",
-                name: "Focus window up",
+                name: "Focus group up",
                 icon: "arrow-up",
                 command: "workbench.action.focusAboveGroup",
             },
             {
                 key: "K",
-                name: "Move window up",
+                name: "Move in group up",
                 icon: "triangle-up",
                 command: "workbench.action.moveActiveEditorGroupUp",
             },
             {
                 key: "l",
-                name: "Focus window right",
+                name: "Focus group right",
                 icon: "arrow-right",
                 command: "workbench.action.focusNextGroup",
             },
             {
                 key: "L",
-                name: "Move window right",
+                name: "Move in group right",
                 icon: "triangle-right",
                 command: "workbench.action.moveActiveEditorGroupRight",
             },
             {
                 key: "m",
-                name: "Maximize window",
+                name: "Maximize group",
                 icon: "chrome-maximize",
                 command: "workbench.action.toggleEditorWidths",
             },
             {
                 key: "M",
-                name: "Maximize window and hide side bar",
+                name: "Maximize group and hide side bar",
                 icon: "screen-full",
                 command: "workbench.action.maximizeEditor",
             },
             {
                 key: "n",
-                name: "Duplicate workspace in new frame",
+                name: "Duplicate workspace in new window",
                 icon: "window",
                 command: "workbench.action.duplicateWorkspaceInNewWindow",
             },
             {
+                key: "N",
+                name: "Open new VSCode window",
+                icon: "empty-window",
+                command: "workbench.action.newWindow",
+            },
+            {
                 key: "o",
-                name: "Switch frame",
+                name: "Switch VSCode window",
                 icon: "multiple-windows",
                 command: "workbench.action.quickSwitchWindow",
             },
@@ -115,31 +120,31 @@ export function windowKeys(): UserMenu {
             },
             {
                 key: "v",
-                name: "Split window right",
+                name: "Split group right",
                 icon: "split-horizontal",
                 command: "workbench.action.splitEditor",
             },
             {
                 key: "w",
-                name: "Focus next window",
+                name: "Focus group right",
                 icon: "arrow-small-down",
                 command: "workbench.action.focusNextGroup",
             },
             {
                 key: "W",
-                name: "Focus previous window",
+                name: "Focus group left",
                 icon: "arrow-small-up",
                 command: "workbench.action.focusPreviousGroup",
             },
             {
                 key: "x",
-                name: "Close all windows",
+                name: "Close all groups",
                 icon: "close-all",
                 command: "workbench.action.closeAllGroups",
             },
             {
                 key: "z",
-                name: "Combine all buffers",
+                name: "Join all groups",
                 icon: "combine",
                 command: "workbench.action.joinAllGroups",
             },
@@ -147,25 +152,26 @@ export function windowKeys(): UserMenu {
     };
 }
 
-function resizeWindow(): UserMenu {
+function resizeGroup(): UserMenu {
     return {
-        items: [shrinkWindow(), enlargeWindow()],
+        items: [shrinkGroup(), enlargeGroup(), { ...enlargeGroup(), key: "=" }],
+        transient: true,
     };
 }
 
-function shrinkWindow() {
+function shrinkGroup() {
     return {
         key: "-",
-        name: "Shrink window",
+        name: "Shrink group",
         icon: "remove",
         command: "workbench.action.decreaseViewSize",
     };
 }
 
-function enlargeWindow() {
+function enlargeGroup() {
     return {
         key: "+",
-        name: "Enlarge window",
+        name: "Enlarge group",
         icon: "add",
         command: "workbench.action.increaseViewSize",
     };
