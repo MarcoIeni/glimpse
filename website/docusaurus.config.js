@@ -122,7 +122,7 @@ const config = {
                         ],
                     },
                     {
-                        title: "Social",
+                        title: "Author",
                         items: [
                             {
                                 label: "Twitter",

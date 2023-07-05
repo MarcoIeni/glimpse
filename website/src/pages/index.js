@@ -12,15 +12,15 @@ function HomepageHeader() {
     return (
         <header className={clsx("hero hero--primary", styles.heroBanner)}>
             <div className="container">
-                <h1 className="hero__title">{siteConfig.title}</h1>
+                <h1 className="hero__title">
+                    ✨ {siteConfig.title} ✨
+                </h1>
                 <img
                     alt="Glimpse Logo"
-                    className={styles.mainLogo}
                     src="img/icon.png"
-                    width="500"
-                    height="500"
+                    style={{ maxHeight: 500, maxWidth: "100%" }}
                 />
-                <p className="hero__subtitle">{siteConfig.tagline}</p>
+                <p className="hero__subtitle"><b>Mnemonic</b> key bindings for <b>VSCode</b> commands ⌨️</p>
                 <div className={styles.buttons}>
                     <Link
                         style={{ marginRight: 10 }}

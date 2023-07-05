@@ -165,6 +165,14 @@ export function defaultMenu(): UserMenu {
                 menu: textKeys(),
             },
             {
+                key: "v",
+                name: "Select/expand region",
+                icon: "selection",
+                command: "editor.action.smartSelect.grow",
+                menu: selectExpand(),
+            },
+            { key: "z", name: "Zoom/Fold", icon: "zoom-in", menu: zoomKeys() },
+            {
                 key: " ",
                 name: "Commands",
                 icon: "rocket",
@@ -198,29 +206,21 @@ export function defaultMenu(): UserMenu {
                 key: "*",
             },
             {
-                key: ":",
-                name: "Task",
-                icon: "tasklist",
-                menu: tasksKeys(),
-            },
-            {
                 key: "/",
                 name: "Search in project",
                 icon: "search",
                 command: "workbench.action.findInFiles",
             },
             {
+                key: ":",
+                name: "Task",
+                icon: "tasklist",
+                menu: tasksKeys(),
+            },
+            {
                 ...commentLine(),
                 key: ";",
             },
-            {
-                key: "v",
-                name: "Select/expand region",
-                icon: "selection",
-                command: "editor.action.smartSelect.grow",
-                menu: selectExpand(),
-            },
-            { key: "z", name: "Zoom/Fold", icon: "zoom-in", menu: zoomKeys() },
             {
                 key: "0",
                 name: "Focus on files explorer",
