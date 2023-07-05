@@ -1,6 +1,9 @@
 ![glimpse-logo](website/static/img/glimpse-social-card.png)
 
-# Glimpse
+[![Website](https://img.shields.io/website?label=glimpse.ieni.dev&url=https%3A%2F%2Fglimpse.ieni.dev)](https://glimpse.ieni.dev)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/ieni.glimpse)](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/ieni.glimpse)](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse)
+[![Ratings](https://img.shields.io/visual-studio-marketplace/r/ieni.glimpse)](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse)
 
 Still experimental. Not ready for use.
 Come back later. 👀
