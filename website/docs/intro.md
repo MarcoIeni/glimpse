@@ -10,3 +10,5 @@ Glimpse doesn't require you to memorize key bindings. Instead, it shows you the 
 E.g. when pressing `<glimpse_leader> f`, Glimpse shows you all the key bindings related to files.
 
 ![Files key bindings](img/file_keys.png)
+
+Assuming `<glimpse_leader>` is `space`, you can press `space f d` to delete the current file.

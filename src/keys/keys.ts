@@ -1,4 +1,4 @@
-import type * as vscode from "vscode";
+import * as vscode from "vscode";
 import { configPath } from "../config";
 import { defaultMenu } from "./default_menu";
 
@@ -69,11 +69,19 @@ type UserKey = KeyDescription &
 export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     const originalMenu = defaultMenu();
     const configFilePath = configPath(context);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const userModule = await import(configFilePath.fsPath);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    const userSpecificMenu = userModule(originalMenu) as UserMenu;
-    return fromUserMenu(userSpecificMenu);
+    try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const userModule = await import(configFilePath.fsPath);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        const userSpecificMenu = userModule(originalMenu) as UserMenu;
+        return fromUserMenu(userSpecificMenu);
+    } catch (err) {
+        const errStr = err as string;
+        const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
+        console.error(msg);
+        void vscode.window.showErrorMessage(msg);
+        return fromUserMenu(originalMenu);
+    }
 }
 
 function fromUserMenu(userMenu: UserMenu): Menu {

@@ -1,6 +1,48 @@
 import * as vscode from "vscode";
 
 const defaultConfig = `// Edit the default glimpse menu using javascript.
+// We use jsdoc to provide autocomplete and type checking.
+// If the types are not working as expected,
+// delete this file, restart glimpse and run the \`Glimpse: Configure\` command again.
+
+/**
+ * A VSCode command.
+ * @typedef { string |
+ *            { id: string; args: any[] | any }
+ * } Command
+ */
+
+/**
+ * Glimpse menu.
+ * @typedef {{
+ *     transient?: boolean;
+ *     items: UserKey[]
+ * }} UserMenu
+ */
+
+/**
+ * Glimpse menu.
+ * @typedef {{ command: Command } | { commands: Command[] }} CommandAndArgs
+ */
+
+/**
+ * Glimpse menu.
+ * @typedef { CommandAndArgs | { menu: UserMenu } | (CommandAndArgs & { menu: UserMenu} ) } UserCommandOrSubmenu
+ */
+
+/**
+ * Glimpse key.
+ * @typedef {{
+ *     icon?: string,
+ *     name: string,
+ *     key: string,
+ * } & UserCommandOrSubmenu} UserKey
+ */
+
+/**
+ * @param { UserMenu } menu
+ * @returns { UserMenu }
+ */
 module.exports = function editConfig(menu) {
     return menu;
 }`;

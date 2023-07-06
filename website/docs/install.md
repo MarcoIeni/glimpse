@@ -40,7 +40,7 @@ In this example, we use the `space` key:
 If you don't use the Vim extension, press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
 
 Next, select the key you want to use to trigger Glimpse.
-In this example, we use the `space` key:
+In this example, we use the `alt+space` key:
 
 ```json
 {
