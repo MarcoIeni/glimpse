@@ -64,6 +64,10 @@ export function zoomKeys(): UserMenu {
                             key: "+",
                         },
                         {
+                            ...fontZoomIn(),
+                            key: "=",
+                        },
+                        {
                             key: "-",
                             name: "Zoom out",
                             icon: "zoom-out",
@@ -74,10 +78,6 @@ export function zoomKeys(): UserMenu {
                             name: "Reset zoom",
                             icon: "search",
                             command: "editor.action.fontZoomReset",
-                        },
-                        {
-                            ...fontZoomIn(),
-                            key: "=",
                         },
                     ],
                 },

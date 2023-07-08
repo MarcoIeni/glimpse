@@ -4,16 +4,16 @@ export function windowKeys(): UserMenu {
     return {
         items: [
             {
-                ...shrinkGroup(),
-                menu: resizeGroup(),
-            },
-            {
                 ...enlargeGroup(),
                 menu: resizeGroup(),
             },
             {
                 ...enlargeGroup(),
                 key: "=",
+                menu: resizeGroup(),
+            },
+            {
+                ...shrinkGroup(),
                 menu: resizeGroup(),
             },
             {
