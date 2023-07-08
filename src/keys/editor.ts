@@ -23,7 +23,7 @@ export function editorKeys(): UserMenu {
             },
             {
                 key: "E",
-                name: "Show all editors in active window",
+                name: "Show all editors in active group",
                 icon: "files",
                 command: "workbench.action.showEditorsInActiveGroup",
             },
@@ -33,7 +33,7 @@ export function editorKeys(): UserMenu {
             },
             {
                 key: "H",
-                name: "Move editor into left window",
+                name: "Move editor into left group",
                 icon: "triangle-left",
                 command: "workbench.action.moveEditorToLeftGroup",
             },
@@ -43,7 +43,7 @@ export function editorKeys(): UserMenu {
             },
             {
                 key: "J",
-                name: "Move editor into below window",
+                name: "Move editor into below group",
                 icon: "triangle-down",
                 command: "workbench.action.moveEditorToBelowGroup",
             },
@@ -53,7 +53,7 @@ export function editorKeys(): UserMenu {
             },
             {
                 key: "K",
-                name: "Move editor into above window",
+                name: "Move editor into above group",
                 icon: "triangle-up",
                 command: "workbench.action.moveEditorToAboveGroup",
             },
@@ -63,7 +63,7 @@ export function editorKeys(): UserMenu {
             },
             {
                 key: "L",
-                name: "Move editor into right window",
+                name: "Move editor into right group",
                 icon: "triangle-right",
                 command: "workbench.action.moveEditorToRightGroup",
             },
@@ -111,13 +111,13 @@ export function editorKeys(): UserMenu {
             },
             {
                 key: "0",
-                name: "First editor in window",
+                name: "First editor in group",
                 icon: "arrow-both",
                 command: "workbench.action.firstEditorInGroup",
             },
             {
                 key: "$",
-                name: "Last editor in window",
+                name: "Last editor in group",
                 icon: "arrow-both",
                 command: "workbench.action.lastEditorInGroup",
             },

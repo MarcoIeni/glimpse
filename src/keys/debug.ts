@@ -78,7 +78,7 @@ export function debugKeys(): UserMenu {
             },
             {
                 key: "w",
-                name: "Focus on watch window",
+                name: "Focus on watch view",
                 icon: "eye-watch",
                 command: "workbench.debug.action.focusWatchView",
             },
