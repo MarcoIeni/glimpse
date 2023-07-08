@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# Why Glimpse
+# Why
 
-> There are too many VSCode extensions already. Why create another one?
+> There are too many VSCode extensions already. Why creating another one?
 
 Hey, I'm [Marco](https://ieni.dev), the author of Glimpse. 👋
 I'm glad you asked. 😎
