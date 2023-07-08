@@ -108,19 +108,19 @@ export function windowKeys(): UserMenu {
             },
             {
                 key: "r",
-                name: "Reset window sizes",
+                name: "Reset editor widths",
                 icon: "move",
                 command: "workbench.action.evenEditorWidths",
             },
             {
                 key: "s",
-                name: "Split window below",
+                name: "Split editor down",
                 icon: "split-vertical",
                 command: "workbench.action.splitEditorDown",
             },
             {
                 key: "v",
-                name: "Split group right",
+                name: "Split editor right",
                 icon: "split-horizontal",
                 command: "workbench.action.splitEditor",
             },
