@@ -2,7 +2,7 @@
     "name": "glimpse",
     "displayName": "glimpse",
     "description": "Mnemonic key bindings for VSCode commands",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "publisher": "ieni",
     "license": "MIT",
     "icon": "icon.png",
