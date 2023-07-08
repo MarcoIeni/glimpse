@@ -69,7 +69,13 @@ export function editorKeys(): UserMenu {
             },
             {
                 key: "n",
-                name: "New Editor",
+                name: "New Untitled Editor",
+                icon: "file-add",
+                command: "workbench.action.files.newUntitledFile",
+            },
+            {
+                key: "N",
+                name: "New Editor in other Group",
                 icon: "file-add",
                 menu: newEditor(),
             },
@@ -161,12 +167,6 @@ function newEditor() {
                     "workbench.action.files.newUntitledFile",
                     "workbench.action.closeOtherEditors",
                 ],
-            },
-            {
-                key: "n",
-                name: "New untitled editor",
-                icon: "file-add",
-                command: "workbench.action.files.newUntitledFile",
             },
         ],
     };

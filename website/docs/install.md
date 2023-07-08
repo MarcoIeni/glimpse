@@ -5,46 +5,32 @@ sidebar_position: 2
 # Install
 
 1. Install the [Glimpse](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse) VSCode extension.
-2. Verify that the extension is installed by pressing `Ctrl+Shift+P` to open the command palette and searching for `Glimpse: Run`.
+2. Verify that the extension is correctly installed by pressing `Ctrl+Shift+P` to open the command palette and searching for `Glimpse: Run`.
 
-Running glimpse from the command palette isn't very convenient —
-let's configure a key binding to trigger `Glimpse: Run`.
+Running Glimpse from the command palette isn't ergonomic —
+let's configure a shortcut to trigger `Glimpse: Run`.
 
+## Glimpse keyboard shortcut
 
-## Vim users
+Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
 
-If you use the [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) extension,
-press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open User Settings (JSON)`.
+- If you use the [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) extension and you don't want to use a special modifier (like `alt` or `ctrl`), add the following:
 
-Next, select the key you want to use to trigger Glimpse in "normal" and "visual" mode.
-In this example, we use the `space` key:
+  ```json
+  {
+      "key": "space",
+      "command": "glimpse.run",
+      "when": "((editorTextFocus && vim.active && (vim.mode =~ /^(Normal|Visual|VisualLine|VisualBlock).*$/)) || (((activeEditorGroupEmpty && focusedView == '') || inWelcome || sideBarFocus) && !inputFocus)) && !glimpseVisible"
+  }
+  ```
 
+- If you don't use the Vim extension, add the following:
 
-```json
-"vim.normalModeKeyBindingsNonRecursive": [
-    {
-        "before": [ "<space>" ],
-        "commands": [ "glimpse.run" ]
-    },
-],
-"vim.visualModeKeyBindingsNonRecursive": [
-    {
-        "before": [ "<space>" ],
-        "commands": [ "glimpse.run" ]
-    },
-]
-```
+  ```json
+  {
+      "key": "alt+space",
+      "command": "glimpse.run",
+  }
+  ```
 
-## Non-Vim users
-
-If you don't use the Vim extension, press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
-
-Next, select the key you want to use to trigger Glimpse.
-In this example, we use the `alt+space` key:
-
-```json
-{
-    "key": "alt+space",
-    "command": "glimpse.run",
-}
-```
+Feel free to change the key binding (`"key"`) to your liking.
