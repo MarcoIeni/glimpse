@@ -21,6 +21,12 @@ export function searchSymbolKeys(): UserMenu {
                 ...searchSelectionInProject(),
                 key: "P",
             },
+            {
+                key: "r",
+                name: "Replace",
+                icon: "replace",
+                command: "editor.action.startFindReplaceAction",
+            },
         ],
     };
 }

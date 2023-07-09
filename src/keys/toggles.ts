@@ -40,6 +40,12 @@ export function toggleKeys(): UserMenu {
                 command: "workbench.action.selectIconTheme",
             },
             {
+                key: "m",
+                name: "Toggle minimap",
+                icon: "list-selection",
+                command: "editor.action.toggleMinimap",
+            },
+            {
                 key: "p",
                 name: "Toggle panel visibility",
                 icon: "output",
