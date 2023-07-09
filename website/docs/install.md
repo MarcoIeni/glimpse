@@ -31,7 +31,7 @@ Add the following:
 }
 ```
 
-## [VSCodeVim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) users
+### [VSCodeVim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) users
 
 Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
 Add the following:
@@ -70,4 +70,30 @@ Add the following:
         },
     ]
 }
+```
+
+### [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) users
+
+Add the following to your `init.vim`:
+
+```vim
+if exists('g:vscode')
+    " VSCode extension config
+    nnoremap <Space> <Cmd>call VSCodeNotify('glimpse.run')<CR>
+    vnoremap <Space> <Cmd>call VSCodeNotify('glimpse.run')<CR>
+else
+    " ordinary Neovim config
+endif
+```
+
+Or to your `init.lua`:
+
+```lua
+if vim.g.vscode then
+    -- VSCode extension config
+    vim.keymap.set("n", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.run')<CR>]])
+    vim.keymap.set("v", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.run')<CR>]])
+else
+    -- ordinary Neovim config
+end
 ```
