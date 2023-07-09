@@ -13,6 +13,9 @@ To edit the default configuration file, press `Ctrl+Shift+P` to open the command
 After editing the configuration file, you need to reload the window for the changes to take effect.
 To do so, press `Ctrl+Shift+P` to open the command palette and search for `Developer: Reload Window`, or press `q r` from Glimpse.
 
+In the following sections, there are some examples of what you can do with the configuration file.
+Remember that you can use any `javascript` code, so the sky is the limit!
+
 ## Add a key binding to the top menu
 
 ```js
@@ -26,6 +29,55 @@ module.exports = function editConfig(menu) {
 
   return menu;
 };
+```
+
+## Add a key binding a submenu
+
+```js
+module.exports = function editConfig(menu) {
+  const errorMenu = subMenu(menu, "e");
+  errorMenu.items.push({
+    name: "Auto Fix",
+    key: "a",
+    icon: "lightbulb",
+    command: "editor.action.autoFix",
+  });
+
+  return menu;
+};
+
+/**
+ * @param { UserMenu } userMenu
+ * @param { string } key
+ * @returns { UserMenu }
+ */
+function subMenu(menu, key) {
+  for (const item of menu.items) {
+    if (item.key === key && "menu" in item) {
+      return item.menu;
+    }
+  }
+  throw new Error(`No submenu for key ${key}`);
+}
+```
+
+## Delete a key from a menu
+
+```js
+module.exports = function editConfig(menu) {
+  deleteKey(menu, "*");
+  return menu;
+};
+
+/**
+ * Delete a key from a menu
+ * @param { UserMenu } userMenu
+ * @param { string } key
+ * @returns { UserMenu }
+ */
+function deleteKey(userMenu, key) {
+  userMenu.items = userMenu.items.filter((item) => item.key !== key);
+}
 ```
 
 ## Sorting menu items alphabetically
@@ -77,3 +129,18 @@ function isKeyLetter(key) {
 ```
 
 ## Overwrite the entire menu
+
+```js
+module.exports = function editConfig(menu) {
+  return {
+    items: [
+      {
+        name: "Auto Fix",
+        key: "a",
+        icon: "lightbulb",
+        command: "editor.action.autoFix",
+      },
+    ],
+  };
+};
+```
