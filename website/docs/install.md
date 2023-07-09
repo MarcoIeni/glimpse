@@ -12,25 +12,62 @@ let's configure a shortcut to trigger `Glimpse: Run`.
 
 ## Glimpse keyboard shortcut
 
+In the following, we edit the VSCode configuration to run Glimpse with:
+
+- `alt+space` key for non-Vim users
+- `space` key for Vim users
+
+Feel free to change the key binding to your liking.
+
+### Non-Vim users
+
 Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
+Add the following:
 
-- If you use the [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) extension and you don't want to use a special modifier (like `alt` or `ctrl`), add the following:
+```json
+{
+    "key": "alt+space",
+    "command": "glimpse.run",
+}
+```
 
-  ```json
-  {
-      "key": "space",
-      "command": "glimpse.run",
-      "when": "((editorTextFocus && vim.active && (vim.mode =~ /^(Normal|Visual|VisualLine|VisualBlock).*$/)) || (((activeEditorGroupEmpty && focusedView == '') || inWelcome || sideBarFocus) && !inputFocus)) && !glimpseVisible"
-  }
-  ```
+## [VSCodeVim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) users
 
-- If you don't use the Vim extension, add the following:
+Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
+Add the following:
 
-  ```json
-  {
-      "key": "alt+space",
-      "command": "glimpse.run",
-  }
-  ```
+```json
+{
+    "key": "space",
+    "command": "glimpse.run",
+    "when": "((activeEditorGroupEmpty && focusedView == '') || inWelcome || sideBarFocus) && !inputFocus && !glimpseVisible"
+}
+```
 
-Feel free to change the key binding (`"key"`) to your liking.
+Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open User Settings (JSON)`.
+Add the following:
+
+```json
+{
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "glimpse.run"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "glimpse.run"
+            ]
+        },
+    ]
+}
+```
