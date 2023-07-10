@@ -15,8 +15,8 @@
         "Visualization"
     ],
     "bugs": {
-		"url": "https://github.com/MarcoIeni/glimpse/issues"
-	},
+        "url": "https://github.com/MarcoIeni/glimpse/issues"
+    },
     "activationEvents": [],
     "main": "./dist/extension-node",
     "browser": "./dist/extension-web",
