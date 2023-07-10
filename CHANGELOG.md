@@ -4,6 +4,14 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.0](https://github.com/MarcoIeni/glimpse/compare/v0.0.6...v0.1.0) (2023-07-10)
+
+
+### Features
+
+* add `s r` and `t m` ([9208ecc](https://github.com/MarcoIeni/glimpse/commit/9208ecc73f07ac74e502f16e4a77c30e23c0e8d2))
+* make web compatible ([#49](https://github.com/MarcoIeni/glimpse/issues/49)) ([6f232b0](https://github.com/MarcoIeni/glimpse/commit/6f232b0ba336f24f7a0ae0b935cb9820128d2e43))
+
 ## [0.0.6](https://github.com/MarcoIeni/glimpse/compare/v0.0.5...v0.0.6) (2023-07-08)
 
 
