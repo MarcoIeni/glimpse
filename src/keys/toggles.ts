@@ -42,7 +42,7 @@ export function toggleKeys(): UserMenu {
             {
                 key: "m",
                 name: "Toggle minimap",
-                icon: "list-selection",
+                icon: "symbol-ruler",
                 command: "editor.action.toggleMinimap",
             },
             {
