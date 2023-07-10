@@ -46,8 +46,8 @@
     },
     "scripts": {
         "vscode:prepublish": "webpack --mode production",
-        "compile-web": "webpack",
-        "watch-web": "webpack --watch",
+        "compile": "webpack",
+        "watch": "webpack --watch",
         "pretest": "npm run compile && npm run lint",
         "lint": "eslint src --ext ts",
         "format": "prettier --write .",
