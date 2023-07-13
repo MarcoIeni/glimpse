@@ -51,6 +51,19 @@ export function configPath(context: vscode.ExtensionContext): vscode.Uri {
     return vscode.Uri.joinPath(context.globalStorageUri, "config.js");
 }
 
+export async function pathExists(path: vscode.Uri): Promise<boolean> {
+    try {
+        console.log("checking if path exists", path);
+        // if path doesn't exist, this will throw an error
+        await vscode.workspace.fs.stat(path);
+        console.log("path exists", path);
+        return true;
+    } catch (err) {
+        console.log("path not exists", path);
+        return false;
+    }
+}
+
 export async function glimpseConfigure(context: vscode.ExtensionContext): Promise<void> {
     try {
         const storageUri = context.globalStorageUri;
@@ -63,10 +76,8 @@ export async function glimpseConfigure(context: vscode.ExtensionContext): Promis
 }
 
 async function createDirIfDoesntExist(dir: vscode.Uri): Promise<void> {
-    try {
-        // if dir doesn't exist, this will throw an error
-        await vscode.workspace.fs.stat(dir);
-    } catch (err) {
+    const dirExists = await pathExists(dir);
+    if (!dirExists) {
         await vscode.workspace.fs.createDirectory(dir);
     }
 }
