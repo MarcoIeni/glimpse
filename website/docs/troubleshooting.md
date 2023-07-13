@@ -56,7 +56,7 @@ Example:
 ]
 ```
 
-In order to solve it, remove the conflicting vim bindings from your `settings.json`.
+In order to solve it, remove the conflicting Vim bindings from your `settings.json`.
 
 ### Virtual Machine or slow hardware
 
@@ -65,4 +65,4 @@ If you are working on limiting resources consider using [VSCode remote](https://
 ### Other conflicts
 
 Try to remove all the extensions except glimpse, and clean your `settings.json`
-and `keybindings.json` files in order to spot some weird conflicts.
+and `keybindings.json` files to spot some weird conflicts.
