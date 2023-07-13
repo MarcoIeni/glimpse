@@ -4,6 +4,13 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.1](https://github.com/MarcoIeni/glimpse/compare/v0.1.0...v0.1.1) (2023-07-13)
+
+
+### Bug Fixes
+
+* display name with capital letter ([8222ded](https://github.com/MarcoIeni/glimpse/commit/8222dedec9260cdbde44abde552421bc43730cd4))
+
 ## [0.1.0](https://github.com/MarcoIeni/glimpse/compare/v0.0.6...v0.1.0) (2023-07-10)
 
 
