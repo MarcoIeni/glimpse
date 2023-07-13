@@ -19,19 +19,19 @@ Disable the "Add period with double-space" option.
 ![Setting to disable](img/double-space.png)
 
 If you don't use this feature, disabling it should fix this issue.
-Otherwise, add the following overrides to your `settings.json` as a workaround:
+Otherwise, add `.` to open the glimpse menu in your [configuration](configuration#add-a-key-binding-to-the-top-menu):
 
-```json title="settings.json"
-{
-  "vspacecode.bindingOverrides": [
-      {
-          "keys": ["."],
-          "name": "Commands...",
-          "type": "command",
-          "command": "workbench.action.showCommands"
-      }
-  ]
-}
+```js
+module.exports = function editConfig(menu) {
+  menu.items.push({
+    name: "Commands",
+    key: ".",
+    icon: "rocket",
+    command: "workbench.action.showCommands",
+  });
+
+  return menu;
+};
 ```
 
 ## Unresponsive menu activation
