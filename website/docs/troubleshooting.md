@@ -1,0 +1,68 @@
+---
+sidebar_position: 5
+---
+
+# Troubleshooting
+
+## SPC SPC doesn't work as expected on Mac OS
+
+When pressing `SPC SPC` quickly on macOS, sometimes glimpse doesn't recognize it.
+
+This problem is due to a keyboard settings on macOS that add a period with double-space.
+
+Open "System Settings" -> "Keyboard" -> "Input Sources" -> "Edit..."
+
+![Input Source settings](img/input_sources.png)
+
+Disable the "Add period with double-space" option.
+
+![Setting to disable](img/double-space.png)
+
+If you don't use this feature, disabling it should fix this issue.
+Otherwise, add the following overrides to your `settings.json` as a workaround:
+
+```json title="settings.json"
+{
+  "vspacecode.bindingOverrides": [
+      {
+          "keys": ["."],
+          "name": "Commands...",
+          "type": "command",
+          "command": "workbench.action.showCommands"
+      }
+  ]
+}
+```
+
+## Unresponsive menu activation
+
+If you press `<spc>` on an editor and the glimpse menu doesn't appear immediately, you might have one of the following problems.
+
+### Conflicting vim binding
+
+If in your `settings.json` file you have a vim binding that starts with `<spc>`, vim will wait for the second input when `<spc>` is pressed.
+Example:
+
+```json title="settings.json"
+"vim.normalModeKeyBindingsNonRecursive": [
+  {
+    "before": [" ", "d"],
+    "after": ["d", "d"]
+  },
+  {
+    "before": ["<space>"],
+    "commands": ["glimpse.run"]
+  }
+]
+```
+
+In order to solve it, remove the conflicting vim bindings from your `settings.json`.
+
+### Virtual Machine or slow hardware
+
+If you are working on limiting resources consider using [VSCode remote](https://code.visualstudio.com/docs/remote/remote-overview)
+
+### Other conflicts
+
+Try to remove all the extensions except glimpse, and clean your `settings.json`
+and `keybindings.json` files in order to spot some weird conflicts.
