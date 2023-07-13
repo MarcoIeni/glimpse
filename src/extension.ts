@@ -23,21 +23,21 @@ async function activateExtension(context: vscode.ExtensionContext): Promise<void
     context.subscriptions.push(
         vscode.commands.registerCommand("glimpse.run", () => {
             glimpseRun(executor);
-        })
+        }),
     );
     context.subscriptions.push(
         vscode.commands.registerCommand("glimpse.configure", () => {
             glimpseConfigure(context).catch((err) => {
                 console.error("Failed to run async Glimpse configure", err);
             });
-        })
+        }),
     );
     context.subscriptions.push(
         vscode.commands.registerCommand("glimpse.triggerKey", () => {
             executeKey(executor, "\t").catch((err) => {
                 console.error("Failed to run async Glimpse triggerKey", err);
             });
-        })
+        }),
     );
 }
 
