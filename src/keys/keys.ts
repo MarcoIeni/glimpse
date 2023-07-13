@@ -72,9 +72,17 @@ export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     if (!(await pathExists(configFilePath))) {
         return fromUserMenu(originalMenu);
     }
+    const currentDirectory = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
+    if (currentDirectory) {
+        console.info(`currentDirectory: ${currentDirectory}`);
+    }
     try {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const userModule = await import(configFilePath.fsPath);
+        if (!currentDirectory) {
+            throw new Error("currentDirectory is undefined");
+        }
+        const myConfig = `${currentDirectory}/glimpse.js`;
+        const userModule = await import(myConfig);
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         const userSpecificMenu = userModule(originalMenu) as UserMenu;
         return fromUserMenu(userSpecificMenu);
