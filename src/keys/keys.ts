@@ -37,7 +37,7 @@ type UserCommandOrSubmenu =
       });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Command = string | { id: string; args: any[] | any };
+export type Command = string | { id: string; args: any };
 
 export function keyDescription(key: Key): string {
     let description = "";

@@ -8,7 +8,7 @@ const defaultConfig = `// Edit the default glimpse menu using javascript.
 /**
  * A VSCode command.
  * @typedef { string |
- *            { id: string; args: any[] | any }
+ *            { id: string; args: any }
  * } Command
  */
 
