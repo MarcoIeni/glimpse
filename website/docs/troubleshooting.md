@@ -6,9 +6,9 @@ sidebar_position: 5
 
 ## SPC SPC doesn't work as expected on Mac OS
 
-When pressing `SPC SPC` quickly on macOS, sometimes glimpse doesn't recognize it.
+When pressing `SPC SPC` quickly on macOS, sometimes Glimpse doesn't recognize it.
 
-This problem is due to a keyboard settings on macOS that add a period with double-space.
+This problem is due to a keyboard setting on macOS that adds a period with double space.
 
 Open "System Settings" -> "Keyboard" -> "Input Sources" -> "Edit..."
 
