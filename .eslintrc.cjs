@@ -28,6 +28,7 @@ module.exports = {
     },
     ignorePatterns: ["out", "dist", "**/*.d.ts", ".eslintrc.cjs"],
     env: {
+        // needed to solve errors in webpack config
         node: true,
     },
 };
