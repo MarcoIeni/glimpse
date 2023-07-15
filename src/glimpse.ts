@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { type Menu, keyDescription, menu, type Command } from "./keys/keys";
+import { keyDescription, menu, type Command, type Menu } from "./keys/keys";
 
 export type Executor = {
     menu: Menu;
@@ -86,9 +86,9 @@ async function onValueChange(executor: Executor): Promise<void> {
 }
 
 export async function executeKey(executor: Executor, key: string): Promise<void> {
-    executor.quickPick.dispose();
     const item = executor.menu.items.get(key);
     if (item) {
+        executor.quickPick.dispose();
         if ("commands" in item) {
             await executeCommands(item.commands);
             if (executor.menu.transient) {
