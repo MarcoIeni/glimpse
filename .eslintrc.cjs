@@ -27,4 +27,7 @@ module.exports = {
         semi: "off",
     },
     ignorePatterns: ["out", "dist", "**/*.d.ts", ".eslintrc.cjs"],
+    env: {
+        node: true,
+    },
 };
