@@ -4,6 +4,19 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.2.0](https://github.com/MarcoIeni/glimpse/compare/v0.1.0...v0.2.0) (2023-07-15)
+
+
+### Features
+
+* don't close menu if key does not exist ([#69](https://github.com/MarcoIeni/glimpse/issues/69)) ([6a26142](https://github.com/MarcoIeni/glimpse/commit/6a2614247ab0452ba8e9248f298355d433f07032))
+
+
+### Bug Fixes
+
+* async loading javascript config file ([#74](https://github.com/MarcoIeni/glimpse/issues/74)) ([b2b2aed](https://github.com/MarcoIeni/glimpse/commit/b2b2aede5b3cd48b4c31b24f5b1fed8b25fcc51d))
+* display name with capital letter ([8222ded](https://github.com/MarcoIeni/glimpse/commit/8222dedec9260cdbde44abde552421bc43730cd4))
+
 ## [0.1.0](https://github.com/MarcoIeni/glimpse/compare/v0.0.6...v0.1.0) (2023-07-10)
 
 
