@@ -66,12 +66,21 @@ type UserKey = KeyDescription &
         key: string;
     };
 
+/**
+ * Load custom module with simple require and absolute path
+ *  Taken by https://github.com/webpack/webpack/issues/6680#issuecomment-644910348
+ * @param {string} path
+ */
+const requireDynamically = (path: string) =>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    eval(`require('${path.split("\\").join("/")}');`);
+
 export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     const originalMenu = defaultMenu();
     const configFilePath = configPath(context);
     try {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const userModule = await import(configFilePath.fsPath);
+        const userModule = await requireDynamically(configFilePath.fsPath);
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         const userSpecificMenu = userModule(originalMenu) as UserMenu;
         return fromUserMenu(userSpecificMenu);
