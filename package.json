@@ -18,7 +18,7 @@
         "url": "https://github.com/MarcoIeni/glimpse/issues"
     },
     "activationEvents": [],
-    "main": "./dist/extension-node",
+    "main": "./dist/extension-node.js",
     "browser": "./dist/extension-web",
     "contributes": {
         "keybindings": [
