@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { configPath } from "../config";
+import { configPath, pathExists } from "../config";
 import { defaultMenu } from "./default_menu";
 
 export type Key = CommandOrSubmenu & KeyDescription;
@@ -78,6 +78,9 @@ const requireDynamically = (path: string) =>
 export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     const originalMenu = defaultMenu();
     const configFilePath = configPath(context);
+    if (!(await pathExists(configFilePath))) {
+        return fromUserMenu(originalMenu);
+    }
     try {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const userModule = await requireDynamically(configFilePath.fsPath);
