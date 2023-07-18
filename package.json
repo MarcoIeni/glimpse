@@ -31,8 +31,8 @@
         ],
         "commands": [
             {
-                "command": "glimpse.run",
-                "title": "Glimpse: Run"
+                "command": "glimpse.menu",
+                "title": "Glimpse: Menu"
             },
             {
                 "command": "glimpse.configure",
