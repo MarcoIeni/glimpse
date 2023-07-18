@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { executeKey, glimpseRun, newExecutor } from "./glimpse";
+import { executeKey, glimpseRun as glimpseMenu, newExecutor } from "./glimpse";
 import { glimpseConfigure } from "./config";
 
 // This method is called when the extension is activated.
@@ -21,8 +21,8 @@ async function activateExtension(context: vscode.ExtensionContext): Promise<void
 
     // The commandId parameter must match the command field in package.json
     context.subscriptions.push(
-        vscode.commands.registerCommand("glimpse.run", () => {
-            glimpseRun(executor);
+        vscode.commands.registerCommand("glimpse.menu", () => {
+            glimpseMenu(executor);
         }),
     );
     context.subscriptions.push(

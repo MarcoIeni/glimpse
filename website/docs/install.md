@@ -27,7 +27,7 @@ Add the following:
 ```json
 {
     "key": "alt+space",
-    "command": "glimpse.run",
+    "command": "glimpse.menu",
 }
 ```
 
@@ -39,7 +39,7 @@ Add the following:
 ```json
 {
     "key": "space",
-    "command": "glimpse.run",
+    "command": "glimpse.menu",
     "when": "((activeEditorGroupEmpty && focusedView == '') || inWelcome || sideBarFocus) && !inputFocus && !glimpseVisible"
 }
 ```
@@ -55,7 +55,7 @@ Add the following:
                 "<space>"
             ],
             "commands": [
-                "glimpse.run"
+                "glimpse.menu"
             ]
         },
     ],
@@ -65,7 +65,7 @@ Add the following:
                 "<space>"
             ],
             "commands": [
-                "glimpse.run"
+                "glimpse.menu"
             ]
         },
     ]
@@ -79,8 +79,8 @@ Add the following to your `init.vim`:
 ```vim
 if exists('g:vscode')
     " VSCode extension config
-    nnoremap <Space> <Cmd>call VSCodeNotify('glimpse.run')<CR>
-    vnoremap <Space> <Cmd>call VSCodeNotify('glimpse.run')<CR>
+    nnoremap <Space> <Cmd>call VSCodeNotify('glimpse.menu')<CR>
+    vnoremap <Space> <Cmd>call VSCodeNotify('glimpse.menu')<CR>
 else
     " ordinary Neovim config
 endif
@@ -91,8 +91,8 @@ Or to your `init.lua`:
 ```lua
 if vim.g.vscode then
     -- VSCode extension config
-    vim.keymap.set("n", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.run')<CR>]])
-    vim.keymap.set("v", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.run')<CR>]])
+    vim.keymap.set("n", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.menu')<CR>]])
+    vim.keymap.set("v", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.menu')<CR>]])
 else
     -- ordinary Neovim config
 end
