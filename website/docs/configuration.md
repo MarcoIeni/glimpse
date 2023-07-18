@@ -147,6 +147,29 @@ module.exports = function editConfig(menu) {
 };
 ```
 
+### Edit a key
+
+```js
+module.exports = function editConfig(menu) {
+  getKey(menu, "c").icon = "arrow-left";
+  return menu;
+};
+
+/**
+ * @param { UserMenu } userMenu
+ * @param { string } key
+ * @returns { UserMenu }
+ */
+function getKey(menu, key) {
+  for (const item of menu.items) {
+    if (item.key === key) {
+      return item;
+    }
+  }
+  throw new Error(`No key ${key}`);
+}
+```
+
 ## Icons
 
 Keys have an optional `icon` property.
