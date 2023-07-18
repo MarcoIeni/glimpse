@@ -11,7 +11,7 @@ export function errorKeys(): UserMenu {
                 command: "editor.action.showHover",
             },
             {
-                ...showProblems(),
+                ...showProblems,
                 key: "E",
                 name: "Show all errors",
                 icon: "list-flat",
@@ -50,7 +50,7 @@ export function errorKeys(): UserMenu {
     };
 }
 
-function errorTransient() {
+function errorTransient(): UserMenu {
     return {
         transient: true,
         items: [
