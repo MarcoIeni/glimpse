@@ -63,8 +63,8 @@ export type UserMenu = {
 };
 
 export type UserKey = UserKeyBase & {
-        key: string;
-    };
+    key: string;
+};
 
 export type UserKeyBase = KeyDescription & UserCommandOrSubmenu;
 
