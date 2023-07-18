@@ -6,7 +6,7 @@ export function goToKeys(): UserMenu {
             {
                 key: "b",
                 name: "Go to breadcrumb",
-                icon: "symbol-variable",
+                icon: "variable",
                 command: "breadcrumbs.focusAndSelect",
             },
             {
@@ -24,7 +24,7 @@ export function goToKeys(): UserMenu {
             {
                 key: "d",
                 name: "Go to declaration",
-                icon: "symbol-structure",
+                icon: "symbol-struct",
                 command: "editor.action.revealDeclaration",
             },
             {
