@@ -51,7 +51,7 @@ Example:
   },
   {
     "before": ["<space>"],
-    "commands": ["glimpse.run"]
+    "commands": ["glimpse.menu"]
   }
 ]
 ```
