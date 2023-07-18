@@ -62,7 +62,7 @@ export type UserMenu = {
     items: UserKey[];
 };
 
-type UserKey = KeyDescription &
+export type UserKey = KeyDescription &
     UserCommandOrSubmenu & {
         key: string;
     };
