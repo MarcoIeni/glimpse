@@ -150,4 +150,4 @@ module.exports = function editConfig(menu) {
 ## Icons
 
 Keys have an optional `icon` property.
-You can use any icon from [vscode-codicons](https://icon-sets.iconify.design/codicon/).
+You can use any icon from [codicon](https://icon-sets.iconify.design/codicon/).
