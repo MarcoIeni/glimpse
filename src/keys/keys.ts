@@ -1,12 +1,13 @@
 import * as vscode from "vscode";
 import { configPath, pathExists } from "../config";
 import { defaultMenu } from "./default_menu";
+import { type Icon } from "../icons";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
 type KeyDescription = {
     /** icon displayed in the name */
-    icon?: string;
+    icon?: Icon;
     /** name of the key */
     name: string;
 };
