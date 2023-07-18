@@ -18,7 +18,7 @@ export function searchSymbolKeys(): UserMenu {
                 command: "workbench.action.findInFiles",
             },
             {
-                ...searchSelectionInProject(),
+                ...searchSelectionInProject,
                 key: "P",
             },
             {

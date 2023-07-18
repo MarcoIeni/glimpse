@@ -188,7 +188,7 @@ export function defaultMenu(): UserMenu {
                 ],
             },
             {
-                ...showTerminal(),
+                ...showTerminal,
                 key: "!",
             },
             {
@@ -198,11 +198,11 @@ export function defaultMenu(): UserMenu {
                 command: "workbench.action.terminal.openNativeConsole",
             },
             {
-                ...showTerminal(),
+                ...showTerminal,
                 key: "'",
             },
             {
-                ...searchSelectionInProject(),
+                ...searchSelectionInProject,
                 key: "*",
             },
             {
@@ -218,7 +218,7 @@ export function defaultMenu(): UserMenu {
                 menu: tasksKeys(),
             },
             {
-                ...commentLine(),
+                ...commentLine,
                 key: ";",
             },
             {
@@ -451,7 +451,7 @@ function show(): UserMenu {
                 command: "workbench.action.output.toggleOutput",
             },
             {
-                ...showProblems(),
+                ...showProblems,
                 key: "p",
             },
             {

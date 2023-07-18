@@ -85,14 +85,14 @@ export function debugKeys(): UserMenu {
             {
                 key: "W",
                 name: "Add to watch",
-                icon: "watch-expressions-add",
+                icon: "add",
                 command: "editor.debug.action.selectionToWatch",
             },
         ],
     };
 }
 
-function breakpoint() {
+function breakpoint(): UserMenu {
     return {
         items: [
             {

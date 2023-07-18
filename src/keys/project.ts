@@ -18,7 +18,7 @@ export function projectKeys(): UserMenu {
             {
                 key: "R",
                 name: "Replace in files",
-                icon: "find-replace",
+                icon: "replace",
                 command: "workbench.action.replaceInFiles",
             },
         ],

@@ -174,3 +174,5 @@ function getKey(menu, key) {
 
 Keys have an optional `icon` property.
 You can use any icon from [codicon](https://icon-sets.iconify.design/codicon/).
+
+See also VSCode icons [docs](https://code.visualstudio.com/api/references/icons-in-labels).

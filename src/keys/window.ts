@@ -166,7 +166,9 @@ const enlargeGroup: UserKey = {
     command: "workbench.action.increaseViewSize",
 };
 
+const enlargeWithEqual: UserKey = { ...enlargeGroup, key: "=" };
+
 const resizeGroup: UserMenu = {
-    items: [shrinkGroup, enlargeGroup, { ...enlargeGroup, key: "=" }],
+    items: [shrinkGroup, enlargeGroup, enlargeWithEqual],
     transient: true,
 };

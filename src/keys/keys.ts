@@ -62,10 +62,11 @@ export type UserMenu = {
     items: UserKey[];
 };
 
-export type UserKey = KeyDescription &
-    UserCommandOrSubmenu & {
+export type UserKey = UserKeyBase & {
         key: string;
     };
+
+export type UserKeyBase = KeyDescription & UserCommandOrSubmenu;
 
 /**
  * Load custom module with simple require and absolute path
