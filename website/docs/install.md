@@ -21,15 +21,26 @@ Feel free to change the key binding to your liking.
 
 ### Non-Vim users
 
-Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
-Add the following:
+You can set the shortcut in two ways: by editing the JSON configuration file or by using the VSCode UI.
 
-```json
-{
-    "key": "alt+space",
-    "command": "glimpse.menu",
-}
-```
+#### Configuration File
+
+To set the shortcut via the JSON configuration file:
+- Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
+- Add the following:
+  ```json
+  {
+      "key": "alt+space",
+      "command": "glimpse.menu",
+  }
+  ```
+
+#### VSCode UI
+
+To set the shortcut the VSCode UI:
+- Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts`.
+- Search for `glimpse.menu`.
+- Double click on the row to edit the shortcut.
 
 ### [VSCodeVim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) users
 
