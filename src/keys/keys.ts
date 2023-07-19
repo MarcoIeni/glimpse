@@ -1,12 +1,13 @@
 import * as vscode from "vscode";
 import { configPath, pathExists } from "../config";
 import { defaultMenu } from "./default_menu";
+import { type Icon } from "../icons";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
 type KeyDescription = {
     /** icon displayed in the name */
-    icon?: string;
+    icon?: Icon;
     /** name of the key */
     name: string;
 };
@@ -61,10 +62,11 @@ export type UserMenu = {
     items: UserKey[];
 };
 
-type UserKey = KeyDescription &
-    UserCommandOrSubmenu & {
-        key: string;
-    };
+export type UserKey = UserKeyBase & {
+    key: string;
+};
+
+export type UserKeyBase = KeyDescription & UserCommandOrSubmenu;
 
 /**
  * Load custom module with simple require and absolute path

@@ -1,20 +1,20 @@
-import { type UserMenu } from "./keys";
+import { type UserKey, type UserMenu } from "./keys";
 
 export function windowKeys(): UserMenu {
     return {
         items: [
             {
-                ...enlargeGroup(),
-                menu: resizeGroup(),
+                ...enlargeGroup,
+                menu: resizeGroup,
             },
             {
-                ...enlargeGroup(),
+                ...enlargeGroup,
                 key: "=",
-                menu: resizeGroup(),
+                menu: resizeGroup,
             },
             {
-                ...shrinkGroup(),
-                menu: resizeGroup(),
+                ...shrinkGroup,
+                menu: resizeGroup,
             },
             {
                 key: "c",
@@ -152,27 +152,23 @@ export function windowKeys(): UserMenu {
     };
 }
 
-function resizeGroup(): UserMenu {
-    return {
-        items: [shrinkGroup(), enlargeGroup(), { ...enlargeGroup(), key: "=" }],
-        transient: true,
-    };
-}
+const shrinkGroup: UserKey = {
+    key: "-",
+    name: "Shrink group",
+    icon: "remove",
+    command: "workbench.action.decreaseViewSize",
+};
 
-function shrinkGroup() {
-    return {
-        key: "-",
-        name: "Shrink group",
-        icon: "remove",
-        command: "workbench.action.decreaseViewSize",
-    };
-}
+const enlargeGroup: UserKey = {
+    key: "+",
+    name: "Enlarge group",
+    icon: "add",
+    command: "workbench.action.increaseViewSize",
+};
 
-function enlargeGroup() {
-    return {
-        key: "+",
-        name: "Enlarge group",
-        icon: "add",
-        command: "workbench.action.increaseViewSize",
-    };
-}
+const enlargeWithEqual: UserKey = { ...enlargeGroup, key: "=" };
+
+const resizeGroup: UserMenu = {
+    items: [shrinkGroup, enlargeGroup, enlargeWithEqual],
+    transient: true,
+};

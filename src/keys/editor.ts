@@ -1,4 +1,4 @@
-import { type UserMenu } from "./keys";
+import { type UserKeyBase, type UserMenu } from "./keys";
 
 export function editorKeys(): UserMenu {
     return {
@@ -28,7 +28,7 @@ export function editorKeys(): UserMenu {
                 command: "workbench.action.showEditorsInActiveGroup",
             },
             {
-                ...prevEditor(),
+                ...prevEditor,
                 key: "h",
             },
             {
@@ -38,7 +38,7 @@ export function editorKeys(): UserMenu {
                 command: "workbench.action.moveEditorToLeftGroup",
             },
             {
-                ...nextEditor(),
+                ...nextEditor,
                 key: "j",
             },
             {
@@ -48,7 +48,7 @@ export function editorKeys(): UserMenu {
                 command: "workbench.action.moveEditorToBelowGroup",
             },
             {
-                ...prevEditor(),
+                ...prevEditor,
                 key: "k",
             },
             {
@@ -58,7 +58,7 @@ export function editorKeys(): UserMenu {
                 command: "workbench.action.moveEditorToAboveGroup",
             },
             {
-                ...nextEditor(),
+                ...nextEditor,
                 key: "l",
             },
             {
@@ -77,7 +77,7 @@ export function editorKeys(): UserMenu {
                 key: "N",
                 name: "New Editor in other Group",
                 icon: "file-add",
-                menu: newEditor(),
+                menu: newEditor,
             },
             {
                 key: "p",
@@ -125,65 +125,59 @@ export function editorKeys(): UserMenu {
     };
 }
 
-function newEditor() {
-    return {
-        items: [
-            {
-                key: "h",
-                name: "New untitled editor (split left)",
-                icon: "arrow-small-left",
-                commands: [
-                    "workbench.action.splitEditorLeft",
-                    "workbench.action.files.newUntitledFile",
-                    "workbench.action.closeOtherEditors",
-                ],
-            },
-            {
-                key: "j",
-                name: "New untitled editor (split down)",
-                icon: "arrow-small-down",
-                commands: [
-                    "workbench.action.splitEditorDown",
-                    "workbench.action.files.newUntitledFile",
-                    "workbench.action.closeOtherEditors",
-                ],
-            },
-            {
-                key: "k",
-                name: "New untitled editor (split up)",
-                icon: "arrow-small-up",
-                commands: [
-                    "workbench.action.splitEditorUp",
-                    "workbench.action.files.newUntitledFile",
-                    "workbench.action.closeOtherEditors",
-                ],
-            },
-            {
-                key: "l",
-                name: "New untitled editor (split right)",
-                icon: "arrow-small-right",
-                commands: [
-                    "workbench.action.splitEditorRight",
-                    "workbench.action.files.newUntitledFile",
-                    "workbench.action.closeOtherEditors",
-                ],
-            },
-        ],
-    };
-}
+const newEditor: UserMenu = {
+    items: [
+        {
+            key: "h",
+            name: "New untitled editor (split left)",
+            icon: "arrow-small-left",
+            commands: [
+                "workbench.action.splitEditorLeft",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors",
+            ],
+        },
+        {
+            key: "j",
+            name: "New untitled editor (split down)",
+            icon: "arrow-small-down",
+            commands: [
+                "workbench.action.splitEditorDown",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors",
+            ],
+        },
+        {
+            key: "k",
+            name: "New untitled editor (split up)",
+            icon: "arrow-small-up",
+            commands: [
+                "workbench.action.splitEditorUp",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors",
+            ],
+        },
+        {
+            key: "l",
+            name: "New untitled editor (split right)",
+            icon: "arrow-small-right",
+            commands: [
+                "workbench.action.splitEditorRight",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors",
+            ],
+        },
+    ],
+};
 
-function prevEditor() {
-    return {
-        name: "Previous editor",
-        icon: "arrow-up",
-        command: "workbench.action.previousEditor",
-    };
-}
+const prevEditor: UserKeyBase = {
+    name: "Previous editor",
+    icon: "arrow-up",
+    command: "workbench.action.previousEditor",
+};
 
-function nextEditor() {
-    return {
-        name: "Next editor",
-        icon: "arrow-down",
-        command: "workbench.action.nextEditor",
-    };
-}
+const nextEditor: UserKeyBase = {
+    name: "Next editor",
+    icon: "arrow-down",
+    command: "workbench.action.nextEditor",
+};

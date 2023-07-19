@@ -12,7 +12,7 @@ import { toggleKeys } from "./toggles";
 import { textKeys } from "./text";
 import { editorKeys } from "./editor";
 import { commentsKeys } from "./comments";
-import { type UserMenu } from "./keys";
+import { type UserKey, type UserMenu } from "./keys";
 import { configKeys } from "./config";
 import { indentKeys } from "./indent";
 import { formatKeys } from "./format";
@@ -21,262 +21,282 @@ import { quitKeys } from "./quit";
 import { projectKeys } from "./project";
 import { refactorKeys } from "./refactor";
 import { commentLine, searchSelectionInProject, showProblems, showTerminal } from "./common";
+import { ghCopilotKeys } from "./gh_copilot";
 
 export function defaultMenu(): UserMenu {
-    return {
-        items: [
-            {
-                key: "c",
-                name: "Configuration",
-                icon: "gear",
-                menu: configKeys(),
-            },
-            {
-                key: "C",
-                name: "Comment",
-                icon: "comment",
-                menu: commentsKeys(),
-            },
-            {
-                key: "d",
-                name: "Debug",
-                icon: "bug",
-                menu: debugKeys(),
-            },
-            {
-                key: "D",
-                name: "Diff/Compare",
-                icon: "diff",
-                menu: diffKeys(),
-            },
-            {
-                key: "e",
-                name: "Error",
-                icon: "error",
-                menu: errorKeys(),
-            },
-            {
-                key: "E",
-                name: "Editor",
-                icon: "file",
-                menu: editorKeys(),
-            },
-            {
-                key: "f",
-                name: "File",
-                icon: "file",
-                menu: filesKeys(),
-            },
-            {
-                key: "F",
-                name: "Format",
-                icon: "list-flat",
-                menu: formatKeys(),
-            },
-            // TODO: maybe rename to Jump?
-            {
-                key: "g",
-                name: "Go to",
-                icon: "go-to-file",
-                menu: goToKeys(),
-            },
-            {
-                key: "G",
-                name: "Git",
-                icon: "git-branch",
-                menu: gitKeys(),
-            },
-            {
-                key: "h",
-                name: "Help",
-                icon: "question",
-                menu: helpKeys(),
-            },
-            {
-                key: "i",
-                name: "Insert",
-                icon: "question",
-                menu: insertKeys(),
-            },
-            {
-                key: "I",
-                name: "Indent",
-                icon: "arrow-right",
-                menu: indentKeys(),
-            },
-            {
-                key: "p",
-                name: "Project",
-                icon: "project",
-                menu: projectKeys(),
-            },
-            {
-                key: "P",
-                name: "Peek",
-                icon: "eye",
-                menu: peekKeys(),
-            },
-            {
-                key: "q",
-                name: "Quit",
-                icon: "x",
-                menu: quitKeys(),
-            },
-            {
-                key: "r",
-                name: "Refactor",
-                icon: "edit",
-                menu: refactorKeys(),
-            },
-            {
-                key: "s",
-                name: "Search",
-                icon: "search",
-                menu: searchSymbolKeys(),
-            },
-            {
-                key: "S",
-                name: "Show",
-                icon: "info",
-                menu: show(),
-            },
-            {
-                key: "t",
-                name: "Toogle",
-                icon: "settings",
-                menu: toggleKeys(),
-            },
-            {
-                key: "T",
-                name: "Test",
-                icon: "beaker",
-                menu: tests(),
-            },
-            {
-                key: "w",
-                name: "Window/Group",
-                icon: "split-horizontal",
-                menu: windowKeys(),
-            },
-            {
-                key: "x",
-                name: "Text",
-                icon: "symbol-text",
-                menu: textKeys(),
-            },
-            {
-                key: "v",
-                name: "Select/expand region",
-                icon: "selection",
-                command: "editor.action.smartSelect.grow",
-                menu: selectExpand(),
-            },
-            { key: "z", name: "Zoom/Fold", icon: "zoom-in", menu: zoomKeys() },
-            {
-                key: " ",
-                name: "Commands",
-                icon: "rocket",
-                command: "workbench.action.showCommands",
-            },
-            {
-                key: "\t",
-                icon: "go-to-file",
-                name: "Last editor",
-                commands: [
-                    "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
-                    "list.select",
-                ],
-            },
-            {
-                ...showTerminal(),
-                key: "!",
-            },
-            {
-                key: '"',
-                name: "Open new external terminal",
-                icon: "chevron-right",
-                command: "workbench.action.terminal.openNativeConsole",
-            },
-            {
-                ...showTerminal(),
-                key: "'",
-            },
-            {
-                ...searchSelectionInProject(),
-                key: "*",
-            },
-            {
-                key: "/",
-                name: "Search in project",
-                icon: "search",
-                command: "workbench.action.findInFiles",
-            },
-            {
-                key: ":",
-                name: "Task",
-                icon: "tasklist",
-                menu: tasksKeys(),
-            },
-            {
-                ...commentLine(),
-                key: ";",
-            },
-            {
-                key: "0",
-                name: "Focus on files explorer",
-                icon: "list-tree",
-                command: "workbench.files.action.focusFilesExplorer",
-            },
-            {
-                key: "1",
-                name: "Focus 1st editor group",
-                icon: "files",
-                command: "workbench.action.focusFirstEditorGroup",
-            },
-            {
-                key: "2",
-                name: "Focus 2nd editor group",
-                icon: "files",
-                command: "workbench.action.focusSecondEditorGroup",
-            },
-            {
-                key: "3",
-                name: "Focus 3rd editor group",
-                icon: "files",
-                command: "workbench.action.focusThirdEditorGroup",
-            },
-            {
-                key: "4",
-                name: "Focus 4th editor group",
-                icon: "files",
-                command: "workbench.action.focusFourthEditorGroup",
-            },
-            {
-                key: "5",
-                name: "Focus 5th editor group",
-                icon: "files",
-                command: "workbench.action.focusFifthEditorGroup",
-            },
-            {
-                key: "6",
-                name: "Focus 6th editor group",
-                icon: "files",
-                command: "workbench.action.focusSixthEditorGroup",
-            },
-            {
-                key: "7",
-                name: "Focus 7th editor group",
-                icon: "files",
-                command: "workbench.action.focusSeventhEditorGroup",
-            },
-            {
-                key: "8",
-                name: "Focus 8th editor group",
-                icon: "files",
-                command: "workbench.action.focusEighthEditorGroup",
-            },
-        ],
+    // TODO: rename to G
+    const githubCopilotKeys: UserKey[] = [];
+    const ghCopilot = ghCopilotKeys();
+    if (ghCopilot) {
+        githubCopilotKeys.push({
+            key: "j",
+            name: "GitHub Copilot",
+            icon: "github",
+            menu: ghCopilot,
+        });
+    }
+
+    const firstKeys: UserKey[] = [
+        {
+            key: "c",
+            name: "Configuration",
+            icon: "gear",
+            menu: configKeys(),
+        },
+        {
+            key: "C",
+            name: "Comment",
+            icon: "comment",
+            menu: commentsKeys(),
+        },
+        {
+            key: "d",
+            name: "Debug",
+            icon: "bug",
+            menu: debugKeys(),
+        },
+        {
+            key: "D",
+            name: "Diff/Compare",
+            icon: "diff",
+            menu: diffKeys(),
+        },
+        {
+            key: "e",
+            name: "Error",
+            icon: "error",
+            menu: errorKeys(),
+        },
+        {
+            key: "E",
+            name: "Editor",
+            icon: "file",
+            menu: editorKeys(),
+        },
+        {
+            key: "f",
+            name: "File",
+            icon: "file",
+            menu: filesKeys(),
+        },
+        {
+            key: "F",
+            name: "Format",
+            icon: "list-flat",
+            menu: formatKeys(),
+        },
+        // TODO: maybe rename to Jump?
+        {
+            key: "g",
+            name: "Go to",
+            icon: "go-to-file",
+            menu: goToKeys(),
+        },
+        {
+            key: "G",
+            name: "Git",
+            icon: "git-branch",
+            menu: gitKeys(),
+        },
+        {
+            key: "h",
+            name: "Help",
+            icon: "question",
+            menu: helpKeys(),
+        },
+    ];
+
+    const secondKeys: UserKey[] = [
+        {
+            key: "i",
+            name: "Insert",
+            icon: "question",
+            menu: insertKeys(),
+        },
+        {
+            key: "I",
+            name: "Indent",
+            icon: "arrow-right",
+            menu: indentKeys(),
+        },
+        {
+            key: "p",
+            name: "Project",
+            icon: "project",
+            menu: projectKeys(),
+        },
+        {
+            key: "P",
+            name: "Peek",
+            icon: "eye",
+            menu: peekKeys(),
+        },
+        {
+            key: "q",
+            name: "Quit",
+            icon: "x",
+            menu: quitKeys(),
+        },
+        {
+            key: "r",
+            name: "Refactor",
+            icon: "edit",
+            menu: refactorKeys(),
+        },
+        {
+            key: "s",
+            name: "Search",
+            icon: "search",
+            menu: searchSymbolKeys(),
+        },
+        {
+            key: "S",
+            name: "Show",
+            icon: "info",
+            menu: show(),
+        },
+        {
+            key: "t",
+            name: "Toogle",
+            icon: "settings",
+            menu: toggleKeys(),
+        },
+        {
+            key: "T",
+            name: "Test",
+            icon: "beaker",
+            menu: tests(),
+        },
+        {
+            key: "w",
+            name: "Window/Group",
+            icon: "split-horizontal",
+            menu: windowKeys(),
+        },
+        {
+            key: "x",
+            name: "Text",
+            icon: "symbol-text",
+            menu: textKeys(),
+        },
+        {
+            key: "v",
+            name: "Select/expand region",
+            icon: "selection",
+            command: "editor.action.smartSelect.grow",
+            menu: selectExpand(),
+        },
+        { key: "z", name: "Zoom/Fold", icon: "zoom-in", menu: zoomKeys() },
+        {
+            key: " ",
+            name: "Commands",
+            icon: "rocket",
+            command: "workbench.action.showCommands",
+        },
+        {
+            key: "\t",
+            icon: "go-to-file",
+            name: "Last editor",
+            commands: [
+                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+                "list.select",
+            ],
+        },
+        {
+            ...showTerminal,
+            key: "!",
+        },
+        {
+            key: '"',
+            name: "Open new external terminal",
+            icon: "chevron-right",
+            command: "workbench.action.terminal.openNativeConsole",
+        },
+        {
+            ...showTerminal,
+            key: "'",
+        },
+        {
+            ...searchSelectionInProject,
+            key: "*",
+        },
+        {
+            key: "/",
+            name: "Search in project",
+            icon: "search",
+            command: "workbench.action.findInFiles",
+        },
+        {
+            key: ":",
+            name: "Task",
+            icon: "tasklist",
+            menu: tasksKeys(),
+        },
+        {
+            ...commentLine,
+            key: ";",
+        },
+        {
+            key: "0",
+            name: "Focus on files explorer",
+            icon: "list-tree",
+            command: "workbench.files.action.focusFilesExplorer",
+        },
+        {
+            key: "1",
+            name: "Focus 1st editor group",
+            icon: "files",
+            command: "workbench.action.focusFirstEditorGroup",
+        },
+        {
+            key: "2",
+            name: "Focus 2nd editor group",
+            icon: "files",
+            command: "workbench.action.focusSecondEditorGroup",
+        },
+        {
+            key: "3",
+            name: "Focus 3rd editor group",
+            icon: "files",
+            command: "workbench.action.focusThirdEditorGroup",
+        },
+        {
+            key: "4",
+            name: "Focus 4th editor group",
+            icon: "files",
+            command: "workbench.action.focusFourthEditorGroup",
+        },
+        {
+            key: "5",
+            name: "Focus 5th editor group",
+            icon: "files",
+            command: "workbench.action.focusFifthEditorGroup",
+        },
+        {
+            key: "6",
+            name: "Focus 6th editor group",
+            icon: "files",
+            command: "workbench.action.focusSixthEditorGroup",
+        },
+        {
+            key: "7",
+            name: "Focus 7th editor group",
+            icon: "files",
+            command: "workbench.action.focusSeventhEditorGroup",
+        },
+        {
+            key: "8",
+            name: "Focus 8th editor group",
+            icon: "files",
+            command: "workbench.action.focusEighthEditorGroup",
+        },
+    ];
+
+    const menu: UserMenu = {
+        items: [...firstKeys, ...githubCopilotKeys, ...secondKeys],
     };
+
+    return menu;
 }
 
 function selectExpand(): UserMenu {
@@ -451,7 +471,7 @@ function show(): UserMenu {
                 command: "workbench.action.output.toggleOutput",
             },
             {
-                ...showProblems(),
+                ...showProblems,
                 key: "p",
             },
             {

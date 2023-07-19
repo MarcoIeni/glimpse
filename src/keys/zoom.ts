@@ -1,22 +1,23 @@
+import { type Icon } from "../icons";
 import { type UserMenu } from "./keys";
 
 export function zoomKeys(): UserMenu {
     return {
         items: [
             {
-                ...zoomIn(),
+                ...zoomIn,
                 key: "+",
-                menu: zoomTransient(),
+                menu: zoomTransient,
             },
             {
-                ...zoomIn(),
+                ...zoomIn,
                 key: "=",
-                menu: zoomTransient(),
+                menu: zoomTransient,
             },
             {
-                ...zoomOut(),
+                ...zoomOut,
                 key: "-",
-                menu: zoomTransient(),
+                menu: zoomTransient,
             },
             {
                 key: "0",
@@ -60,11 +61,11 @@ export function zoomKeys(): UserMenu {
                     transient: true,
                     items: [
                         {
-                            ...fontZoomIn(),
+                            ...fontZoomIn,
                             key: "+",
                         },
                         {
-                            ...fontZoomIn(),
+                            ...fontZoomIn,
                             key: "=",
                         },
                         {
@@ -149,37 +150,29 @@ export function zoomKeys(): UserMenu {
     };
 }
 
-function zoomTransient(): UserMenu {
-    return {
-        transient: true,
-        items: [
-            { ...zoomIn(), key: "+" },
-            { ...zoomIn(), key: "=" },
-            { ...zoomOut(), key: "-" },
-        ],
-    };
-}
+const zoomIn = {
+    name: "Zoom In",
+    command: "workbench.action.zoomIn",
+    icon: "zoom-in" as Icon,
+};
 
-function zoomIn() {
-    return {
-        name: "Zoom In",
-        command: "workbench.action.zoomIn",
-        icon: "zoom-in",
-    };
-}
+const zoomOut = {
+    name: "Zoom Out",
+    command: "workbench.action.zoomOut",
+    icon: "zoom-out" as Icon,
+};
 
-function zoomOut() {
-    return {
-        name: "Zoom Out",
-        command: "workbench.action.zoomOut",
-        icon: "zoom-out",
-    };
-}
+const fontZoomIn = {
+    name: "Zoom In",
+    icon: "zoom-in" as Icon,
+    command: "editor.action.fontZoomIn",
+};
 
-function fontZoomIn() {
-    return {
-        name: "Zoom In",
-        icon: "zoom-in",
-        command: "editor.action.fontZoomIn",
-    };
-}
+const zoomTransient: UserMenu = {
+    transient: true,
+    items: [
+        { ...zoomIn, key: "+" },
+        { ...zoomIn, key: "=" },
+        { ...zoomOut, key: "-" },
+    ],
+};

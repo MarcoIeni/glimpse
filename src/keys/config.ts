@@ -42,7 +42,7 @@ export function configKeys(): UserMenu {
             {
                 key: "w",
                 name: "Open workspace settings",
-                icon: "settings-edit",
+                icon: "edit",
                 command: "workbench.action.openWorkspaceSettings",
             },
             {

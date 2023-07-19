@@ -1,35 +1,29 @@
-export function searchSelectionInProject() {
-    return {
-        name: "Search Selection in Project",
-        icon: "selection",
-        commands: [
-            "editor.action.addSelectionToNextFindMatch",
-            "workbench.action.findInFiles",
-            "search.action.focusSearchList",
-        ],
-    };
-}
+import { type UserKeyBase } from "./keys";
 
-export function showTerminal() {
-    return {
-        name: "Show terminal",
-        icon: "terminal",
-        command: "workbench.action.terminal.focus",
-    };
-}
+export const searchSelectionInProject: UserKeyBase = {
+    name: "Search Selection in Project",
+    icon: "selection",
+    commands: [
+        "editor.action.addSelectionToNextFindMatch",
+        "workbench.action.findInFiles",
+        "search.action.focusSearchList",
+    ],
+};
 
-export function commentLine() {
-    return {
-        name: "Toggle comment",
-        icon: "comment",
-        command: "editor.action.commentLine",
-    };
-}
+export const showTerminal: UserKeyBase = {
+    name: "Show terminal",
+    icon: "terminal",
+    command: "workbench.action.terminal.focus",
+};
 
-export function showProblems() {
-    return {
-        name: "Show problems",
-        icon: "error",
-        command: "workbench.actions.view.problems",
-    };
-}
+export const commentLine: UserKeyBase = {
+    name: "Toggle comment",
+    icon: "comment",
+    command: "editor.action.commentLine",
+};
+
+export const showProblems: UserKeyBase = {
+    name: "Show problems",
+    icon: "error",
+    command: "workbench.actions.view.problems",
+};

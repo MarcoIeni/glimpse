@@ -1,4 +1,4 @@
-import { type UserMenu } from "./keys";
+import { UserKey, type UserMenu } from "./keys";
 
 export function textKeys(): UserMenu {
     return {
@@ -45,7 +45,7 @@ export function textKeys(): UserMenu {
     };
 }
 
-function linesMenu() {
+function linesMenu(): UserMenu {
     return {
         items: [
             {
@@ -76,14 +76,14 @@ function linesMenu() {
     };
 }
 
-function moveLines() {
+function moveLines(): UserMenu {
     return {
         transient: true,
         items: [moveLinesDown(), moveLinesUp()],
     };
 }
 
-function moveLinesDown() {
+function moveLinesDown(): UserKey {
     return {
         key: "j",
         name: "Move lines down",
@@ -92,7 +92,7 @@ function moveLinesDown() {
     };
 }
 
-function moveLinesUp() {
+function moveLinesUp(): UserKey {
     return {
         key: "k",
         name: "Move lines up",
