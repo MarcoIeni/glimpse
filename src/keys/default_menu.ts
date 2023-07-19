@@ -12,7 +12,7 @@ import { toggleKeys } from "./toggles";
 import { textKeys } from "./text";
 import { editorKeys } from "./editor";
 import { commentsKeys } from "./comments";
-import { type UserKey, type UserMenu } from "./keys";
+import { type UserKey, type UserMenu } from "../keys";
 import { configKeys } from "./config";
 import { indentKeys } from "./indent";
 import { formatKeys } from "./format";

@@ -1,5 +1,5 @@
 import { type Icon } from "../icons";
-import { type UserMenu } from "./keys";
+import { type UserMenu } from "../keys";
 
 export function zoomKeys(): UserMenu {
     return {

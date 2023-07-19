@@ -1,4 +1,4 @@
-import { type UserKeyBase, type UserMenu } from "./keys";
+import { type UserKeyBase, type UserMenu } from "../keys";
 
 export function editorKeys(): UserMenu {
     return {

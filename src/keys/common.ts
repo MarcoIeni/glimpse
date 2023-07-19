@@ -1,4 +1,4 @@
-import { type UserKeyBase } from "./keys";
+import { type UserKeyBase } from "../keys";
 
 export const searchSelectionInProject: UserKeyBase = {
     name: "Search Selection in Project",

@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { keyDescription, menu, type Command, type Menu } from "./keys/keys";
+import { keyDescription, menu, type Command, type Menu } from "./keys";
 
 export type Executor = {
     menu: Menu;
