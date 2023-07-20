@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { configPath, pathExists } from "../config";
-import { defaultMenu } from "./default_menu";
-import { type Icon } from "../icons";
+import { configPath, pathExists } from "./config";
+import { defaultMenu } from "./keys/default_menu";
+import { type Icon } from "./icons";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 

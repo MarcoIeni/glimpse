@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { type UserMenu } from "./keys";
+import { type UserMenu } from "../keys";
 
 /**
  * Returns an object containing the key bindings for GitHub Copilot.

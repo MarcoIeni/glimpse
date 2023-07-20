@@ -1,4 +1,4 @@
-import { type UserMenu } from "./keys";
+import { type UserMenu } from "../keys";
 
 export function tasksKeys(): UserMenu {
     return {

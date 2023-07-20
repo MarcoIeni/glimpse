@@ -1,5 +1,5 @@
 import { showProblems } from "./common";
-import { type UserMenu } from "./keys";
+import { type UserMenu } from "../keys";
 
 export function errorKeys(): UserMenu {
     return {

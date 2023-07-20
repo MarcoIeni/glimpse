@@ -49,7 +49,7 @@
         "compile": "webpack",
         "watch": "webpack --watch",
         "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
+        "lint": "eslint src --ext ts --max-warnings=0",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "test": "node ./out/test/runTest.js"
