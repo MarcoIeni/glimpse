@@ -4,21 +4,21 @@ import styles from "./styles.module.css";
 
 const FeatureList = [
     {
-        title: "Discoverable 🔎",
-        description: (
-            <>
-                Discover new VSCode Commands you wish you knew before, and execute them easily from
-                your keyboard.
-            </>
-        ),
-    },
-    {
         title: "Mnemonic 💡",
         description: (
             <>
                 Glimpse organizes the most useful VSCode Commands by mnemonic keys, like{" "}
                 <code>f</code> for file and <code>p</code> for project. If you use Vim motions,
                 you'll feel right at home.
+            </>
+        ),
+    },
+    {
+        title: "Discoverable 🔎",
+        description: (
+            <>
+                Discover new VSCode Commands you wish you knew before, and execute them easily from
+                your keyboard.
             </>
         ),
     },

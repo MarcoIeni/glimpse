@@ -5,10 +5,12 @@ sidebar_position: 2
 # Install
 
 1. Install the [Glimpse](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse) VSCode extension.
-2. Verify that the extension is correctly installed by pressing `Ctrl+Shift+P` to open the command palette and searching for `Glimpse: Run`.
+2. Verify that the extension is correctly installed by pressing `Ctrl+Shift+P` to open the command palette and searching for `Glimpse: Menu`.
 
-Running Glimpse from the command palette isn't ergonomic —
-let's configure a shortcut to trigger `Glimpse: Run`.
+Congrats, you ran Glimpse for the first time! 🎉
+
+However, running Glimpse from the command palette isn't ergonomic —
+let's configure a shortcut to trigger `Glimpse: Menu`.
 
 ## Glimpse keyboard shortcut
 

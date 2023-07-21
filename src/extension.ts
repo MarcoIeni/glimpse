@@ -39,9 +39,15 @@ async function activateExtension(context: vscode.ExtensionContext): Promise<void
             });
         }),
     );
+    context.subscriptions.push(vscode.commands.registerCommand("glimpse.openDocs", openDocs));
 }
 
 // This method is called when the extension is deactivated
 export function deactivate(): void {
     Logger.info("deactivate Glimpse");
+}
+
+function openDocs() {
+    const docsUri = vscode.Uri.parse("https://glimpse.ieni.dev/docs");
+    return vscode.env.openExternal(docsUri);
 }

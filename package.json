@@ -37,6 +37,10 @@
             {
                 "command": "glimpse.configure",
                 "title": "Glimpse: Configure"
+            },
+            {
+                "command": "glimpse.openDocs",
+                "title": "Glimpse: Open Docs"
             }
         ]
     },
@@ -52,7 +56,8 @@
         "lint": "eslint src --ext ts --max-warnings=0",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "test": "node ./out/test/runTest.js"
+        "test": "node ./out/test/runTest.js",
+        "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. ."
     },
     "devDependencies": {
         "@types/vscode": "^1.79.1",

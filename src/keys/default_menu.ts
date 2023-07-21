@@ -24,12 +24,11 @@ import { commentLine, searchSelectionInProject, showProblems, showTerminal } fro
 import { ghCopilotKeys } from "./gh_copilot";
 
 export function defaultMenu(): UserMenu {
-    // TODO: rename to G
     const githubCopilotKeys: UserKey[] = [];
     const ghCopilot = ghCopilotKeys();
     if (ghCopilot) {
         githubCopilotKeys.push({
-            key: "j",
+            key: "G",
             name: "GitHub Copilot",
             icon: "github",
             menu: ghCopilot,
@@ -85,28 +84,21 @@ export function defaultMenu(): UserMenu {
             icon: "list-flat",
             menu: formatKeys(),
         },
-        // TODO: maybe rename to Jump?
         {
             key: "g",
-            name: "Go to",
-            icon: "go-to-file",
-            menu: goToKeys(),
-        },
-        {
-            key: "G",
             name: "Git",
             icon: "git-branch",
             menu: gitKeys(),
         },
+    ];
+
+    const secondKeys: UserKey[] = [
         {
             key: "h",
             name: "Help",
             icon: "question",
             menu: helpKeys(),
         },
-    ];
-
-    const secondKeys: UserKey[] = [
         {
             key: "i",
             name: "Insert",
@@ -118,6 +110,12 @@ export function defaultMenu(): UserMenu {
             name: "Indent",
             icon: "arrow-right",
             menu: indentKeys(),
+        },
+        {
+            key: "j",
+            name: "Jump",
+            icon: "go-to-file",
+            menu: goToKeys(),
         },
         {
             key: "p",
