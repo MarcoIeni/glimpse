@@ -27,6 +27,12 @@ export function searchSymbolKeys(): UserMenu {
                 icon: "replace",
                 command: "editor.action.startFindReplaceAction",
             },
+            {
+                key: "R",
+                name: "Replace in files",
+                icon: "replace",
+                command: "workbench.action.replaceInFiles",
+            },
         ],
     };
 }

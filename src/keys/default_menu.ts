@@ -13,7 +13,7 @@ import { textKeys } from "./text";
 import { editorKeys } from "./editor";
 import { commentsKeys } from "./comments";
 import { type UserKey, type UserMenu } from "../keys";
-import { configKeys } from "./config";
+import { configKeys } from "./configKeys";
 import { indentKeys } from "./indent";
 import { formatKeys } from "./format";
 import { peekKeys } from "./peek";

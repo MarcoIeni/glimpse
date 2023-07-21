@@ -16,6 +16,12 @@ export function configKeys(): UserMenu {
                 command: "workbench.action.openSettingsJson",
             },
             {
+                key: "g",
+                name: "Glimpse: Configure",
+                icon: "star",
+                command: "glimpse.configure",
+            },
+            {
                 key: "k",
                 name: "Open global key bindings",
                 icon: "keyboard",

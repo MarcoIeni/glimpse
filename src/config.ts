@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { Logger, notifyError } from "./logger";
 
 const defaultConfig = `// Edit the default glimpse menu using javascript.
 // We use jsdoc to provide autocomplete and type checking.
@@ -68,7 +69,8 @@ export async function glimpseConfigure(context: vscode.ExtensionContext): Promis
         const configFilePath = configPath(context);
         await openConfig(configFilePath);
     } catch (err) {
-        console.error("Failed to run Glimpse configure", err);
+        const errStr = err as string;
+        notifyError("Failed to run Glimpse configure" + errStr);
     }
 }
 
@@ -83,9 +85,9 @@ async function createFileIfDoesntExist(file: vscode.Uri, content: string): Promi
     try {
         // if file doesn't exist, this will throw an error
         await vscode.workspace.fs.stat(file);
-        console.log("config file already exists");
+        Logger.info("config file already exists");
     } catch (err) {
-        console.log("creating file", file);
+        Logger.info("creating file " + file.toString());
         await vscode.workspace.fs.writeFile(file, Buffer.from(content));
         // wait a while so that we avoid the error "file not found" in vscode
         await sleep(1000);

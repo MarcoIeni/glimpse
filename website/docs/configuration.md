@@ -18,6 +18,9 @@ To do so, press `Ctrl+Shift+P` to open the command palette and search for `Devel
 In the following sections, there are some examples of what you can do with the configuration file.
 Remember that you can use any `javascript` code, so the sky is the limit!
 
+Also, take a look at the [keys](https://github.com/MarcoIeni/glimpse/tree/main/src/keys)
+repository directory to take inspiration from the default configuration.
+
 ### Add a key binding to the top menu
 
 ```js

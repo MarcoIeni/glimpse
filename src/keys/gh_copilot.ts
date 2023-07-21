@@ -11,33 +11,39 @@ export function ghCopilotKeys(): UserMenu | null {
             return {
                 items: [
                     {
+                        key: "c",
+                        name: "Copilot Chat",
+                        icon: "comment",
+                        command: "workbench.panel.chatSidebar.copilot",
+                    },
+                    {
                         key: "e",
                         name: "Explain this",
-                        icon: "book",
+                        icon: "info",
                         command: "github.copilot.interactiveEditor.explain",
                     },
                     {
                         key: "f",
                         name: "Fix this",
-                        icon: "book",
+                        icon: "lightbulb",
                         command: "github.copilot.interactiveEditor.fix",
                     },
                     {
                         key: "g",
                         name: "Generate",
-                        icon: "book",
+                        icon: "beaker",
                         menu: generate,
                     },
                     {
                         key: "o",
                         name: "Open Completions Panel",
-                        icon: "book",
+                        icon: "octoface",
                         command: "github.copilot.generate",
                     },
                     {
                         key: "t",
                         name: "Toggle (Enable/Disable) Copilot",
-                        icon: "book",
+                        icon: "circle-slash",
                         command: "github.copilot.toggleCopilot",
                     },
                 ],
@@ -58,13 +64,13 @@ const generate: UserMenu = {
         {
             key: "g",
             name: "Generate This",
-            icon: "book",
+            icon: "beaker",
             command: "github.copilot.interactiveEditor.generate",
         },
         {
             key: "t",
             name: "Generate Tests",
-            icon: "book",
+            icon: "circuit-board",
             command: "github.copilot.interactiveEditor.generateTests",
         },
     ],

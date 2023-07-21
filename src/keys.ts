@@ -1,7 +1,8 @@
-import * as vscode from "vscode";
+import type * as vscode from "vscode";
 import { configPath, pathExists } from "./config";
 import { defaultMenu } from "./keys/default_menu";
 import { type Icon } from "./icons";
+import { notifyError } from "./logger";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
@@ -92,8 +93,7 @@ export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     } catch (err) {
         const errStr = err as string;
         const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
-        console.error(msg);
-        void vscode.window.showErrorMessage(msg);
+        notifyError(msg);
         return fromUserMenu(originalMenu);
     }
 }

@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { keyDescription, menu, type Command, type Menu } from "./keys";
+import { Logger, notifyError } from "./logger";
 
 export type Executor = {
     menu: Menu;
@@ -24,7 +25,8 @@ export function glimpseRun(executor: Executor): void {
     try {
         pick(executor, "Glimpse");
     } catch (err) {
-        console.error("Failed to run Glimpse", err);
+        const errStr = err as string;
+        notifyError("Failed to run Glimpse" + errStr);
     }
 }
 
@@ -45,25 +47,25 @@ function pick(executor: Executor, menuTitle: string): void {
     // Allow to select action by key press.
     executor.quickPick.onDidChangeValue(() => {
         onValueChange(executor).catch((err) => {
-            console.error("onDidChangeValue failure", err);
+            Logger.error("onDidChangeValue failure" + err);
         });
     });
     // Allow to select action with enter key.
     executor.quickPick.onDidAccept(() => {
         const activeItem = executor.quickPick.activeItems[0];
         executeKey(executor, activeItem.label).catch((err) => {
-            console.error("onDidAccept failure", err);
+            Logger.error("onDidAccept failure" + err);
         });
     });
     executor.quickPick.onDidHide(() => {
         executor.quickPick.dispose();
         setGlimpseVisible(false).catch((err) => {
-            console.error("Failed setting Glimpse Invisible", err);
+            Logger.error("Failed setting Glimpse Invisible" + err);
         });
     });
     executor.quickPick.show();
     setGlimpseVisible(true).catch((err) => {
-        console.error("Failed setting Glimpse Visible", err);
+        Logger.error("Failed setting Glimpse Visible" + err);
     });
 }
 
@@ -79,7 +81,7 @@ function prettifyKey(key: string): string {
 
 async function onValueChange(executor: Executor): Promise<void> {
     const key = executor.quickPick.value;
-    console.log("user typed ", key);
+    Logger.info("user typed " + key);
     if (key.length !== 0) {
         await executeKey(executor, key);
     }
@@ -105,7 +107,7 @@ export async function executeKey(executor: Executor, key: string): Promise<void>
 }
 
 async function executeCommands(commands: Command[]): Promise<void> {
-    console.log("executing command", JSON.stringify(commands));
+    Logger.info("executing command " + JSON.stringify(commands));
     for (const cmd of commands) {
         if (typeof cmd === "string") {
             await vscode.commands.executeCommand(cmd);

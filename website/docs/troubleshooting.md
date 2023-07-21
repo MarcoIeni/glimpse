@@ -4,6 +4,11 @@ sidebar_position: 6
 
 # Troubleshooting
 
+## See Glimpse logs
+
+1. Press `Ctrl+Shift+P` and select `Developer: Show Logs...`
+2. Select `Glimpse`.
+
 ## SPC SPC doesn't work as expected on Mac OS
 
 When pressing `SPC SPC` quickly on macOS, sometimes Glimpse doesn't recognize it.
