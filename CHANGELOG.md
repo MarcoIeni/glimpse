@@ -4,6 +4,13 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.4.1](https://github.com/MarcoIeni/glimpse/compare/v0.4.0...v0.4.1) (2023-07-22)
+
+
+### Bug Fixes
+
+* web configuration ([8fd5799](https://github.com/MarcoIeni/glimpse/commit/8fd5799d60026a642e113931456388e1659a270c))
+
 ## [0.4.0](https://github.com/MarcoIeni/glimpse/compare/v0.3.0...v0.4.0) (2023-07-21)
 
 
