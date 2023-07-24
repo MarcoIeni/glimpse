@@ -4,6 +4,13 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.5.0](https://github.com/MarcoIeni/glimpse/compare/v0.4.1...v0.5.0) (2023-07-24)
+
+
+### Features
+
+* publish to open vsx ([ee58791](https://github.com/MarcoIeni/glimpse/commit/ee587916ad2841f5abe02c140a842202cf5e0b0a))
+
 ## [0.4.1](https://github.com/MarcoIeni/glimpse/compare/v0.4.0...v0.4.1) (2023-07-22)
 
 
