@@ -69,21 +69,11 @@ export type UserKey = UserKeyBase & {
 
 export type UserKeyBase = KeyDescription & UserCommandOrSubmenu;
 
-/**
- * Load custom module with simple require and absolute path
- *  Taken by https://github.com/webpack/webpack/issues/6680#issuecomment-644910348
- * @param {string} path
- */
-const requireDynamically = (path: string) =>
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    eval(`require('${path.split("\\").join("/")}');`);
-
 export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     const originalMenu = defaultMenu();
     const configFilePath = configPath(context);
     const configExists = await pathExists(configFilePath);
-    Logger.info("config exists " + configExists);
-    Logger.info("path: " + configFilePath.fsPath + " vs " + configFilePath.toString());
+    Logger.info("config path " + configFilePath.toString() + " exists: " + configExists);
 
     if (!configExists) {
         return fromUserMenu(originalMenu);
@@ -91,14 +81,15 @@ export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     try {
         // read the content of configFilePath
         await vscode.workspace.fs.readFile(configFilePath).then((content) => {
-            Logger.debug("config file content: " + utf8ArrayToStr(content));
+            const fileContent =utf8ArrayToStr(content);
+            Logger.debug("config file content: " + fileContent);
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const userModule = eval(fileContent);
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+            const userSpecificMenu = userModule(originalMenu) as UserMenu;
+            return fromUserMenu(userSpecificMenu);
         });
-
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const userModule = await requireDynamically(configFilePath.toString());
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        const userSpecificMenu = userModule(originalMenu) as UserMenu;
-        return fromUserMenu(userSpecificMenu);
+        return fromUserMenu(originalMenu);
     } catch (err) {
         const errStr = err as string;
         const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
