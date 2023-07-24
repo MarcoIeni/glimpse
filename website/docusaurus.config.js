@@ -135,11 +135,15 @@ const config = {
                         ],
                     },
                     {
-                        title: "Marketplace",
+                        title: "Download Extension",
                         items: [
                             {
-                                label: "VSCode Extension",
+                                label: "VSCode Marketplace",
                                 href: "https://marketplace.visualstudio.com/items?itemName=ieni.glimpse",
+                            },
+                            {
+                                label: "Open VSX",
+                                href: "https://open-vsx.org/extension/ieni/glimpse",
                             },
                         ],
                     },
