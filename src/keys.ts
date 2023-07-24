@@ -1,8 +1,9 @@
-import type * as vscode from "vscode";
+import * as vscode from "vscode";
 import { configPath, pathExists } from "./config";
 import { defaultMenu } from "./keys/default_menu";
 import { type Icon } from "./icons";
-import { notifyError } from "./logger";
+import { Logger, notifyError } from "./logger";
+import { utf8ArrayToStr } from "./utf8ToStr";
 
 export type Key = CommandOrSubmenu & KeyDescription;
 
@@ -69,33 +70,31 @@ export type UserKey = UserKeyBase & {
 
 export type UserKeyBase = KeyDescription & UserCommandOrSubmenu;
 
-/**
- * Load custom module with simple require and absolute path
- *  Taken by https://github.com/webpack/webpack/issues/6680#issuecomment-644910348
- * @param {string} path
- */
-const requireDynamically = (path: string) =>
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    eval(`require('${path.split("\\").join("/")}');`);
-
 export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     const originalMenu = defaultMenu();
     const configFilePath = configPath(context);
-    if (!(await pathExists(configFilePath))) {
-        return fromUserMenu(originalMenu);
+    const configExists = await pathExists(configFilePath);
+    Logger.info("config path " + configFilePath.toString() + " exists: " + configExists);
+
+    if (configExists) {
+        try {
+            await vscode.workspace.fs.readFile(configFilePath).then((content) => {
+                // read the content of configFilePath
+                const fileContent = utf8ArrayToStr(content);
+                Logger.debug("config file content: " + fileContent);
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                const userModule = eval(fileContent);
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+                const userSpecificMenu = userModule(originalMenu) as UserMenu;
+                return fromUserMenu(userSpecificMenu);
+            });
+        } catch (err) {
+            const errStr = err as string;
+            const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
+            notifyError(msg);
+        }
     }
-    try {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const userModule = await requireDynamically(configFilePath.fsPath);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        const userSpecificMenu = userModule(originalMenu) as UserMenu;
-        return fromUserMenu(userSpecificMenu);
-    } catch (err) {
-        const errStr = err as string;
-        const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
-        notifyError(msg);
-        return fromUserMenu(originalMenu);
-    }
+    return fromUserMenu(originalMenu);
 }
 
 function fromUserMenu(userMenu: UserMenu): Menu {
