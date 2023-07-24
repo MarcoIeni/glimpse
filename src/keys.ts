@@ -76,24 +76,23 @@ export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
     const configExists = await pathExists(configFilePath);
     Logger.info("config path " + configFilePath.toString() + " exists: " + configExists);
 
-    if (!configExists) {
-        return fromUserMenu(originalMenu);
-    }
-    try {
-        await vscode.workspace.fs.readFile(configFilePath).then((content) => {
-            // read the content of configFilePath
-            const fileContent = utf8ArrayToStr(content);
-            Logger.debug("config file content: " + fileContent);
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            const userModule = eval(fileContent);
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-            const userSpecificMenu = userModule(originalMenu) as UserMenu;
-            return fromUserMenu(userSpecificMenu);
-        });
-    } catch (err) {
-        const errStr = err as string;
-        const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
-        notifyError(msg);
+    if (configExists) {
+        try {
+            await vscode.workspace.fs.readFile(configFilePath).then((content) => {
+                // read the content of configFilePath
+                const fileContent = utf8ArrayToStr(content);
+                Logger.debug("config file content: " + fileContent);
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                const userModule = eval(fileContent);
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+                const userSpecificMenu = userModule(originalMenu) as UserMenu;
+                return fromUserMenu(userSpecificMenu);
+            });
+        } catch (err) {
+            const errStr = err as string;
+            const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
+            notifyError(msg);
+        }
     }
     return fromUserMenu(originalMenu);
 }
