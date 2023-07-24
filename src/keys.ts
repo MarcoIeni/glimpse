@@ -90,13 +90,12 @@ export async function menu(context: vscode.ExtensionContext): Promise<Menu> {
             const userSpecificMenu = userModule(originalMenu) as UserMenu;
             return fromUserMenu(userSpecificMenu);
         });
-        return fromUserMenu(originalMenu);
     } catch (err) {
         const errStr = err as string;
         const msg = `Failed to read user configuration. Using default Glimpse configuration. Error: ${errStr}`;
         notifyError(msg);
-        return fromUserMenu(originalMenu);
     }
+    return fromUserMenu(originalMenu);
 }
 
 function fromUserMenu(userMenu: UserMenu): Menu {
