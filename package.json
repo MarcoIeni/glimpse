@@ -57,7 +57,8 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "test": "node ./out/test/runTest.js",
-        "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. ."
+        "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. .",
+        "write-keybindings": "node src/keysToDocs.js"
     },
     "devDependencies": {
         "@types/vscode": "^1.79.1",
