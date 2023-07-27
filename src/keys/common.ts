@@ -1,7 +1,7 @@
 import { type UserKeyBase } from "../keys";
 
-export const searchSelectionInProject: UserKeyBase = {
-    name: "Search Selection in Project",
+export const searchSelectionInFiles: UserKeyBase = {
+    name: "Search Selection in Files",
     icon: "selection",
     commands: [
         "editor.action.addSelectionToNextFindMatch",
