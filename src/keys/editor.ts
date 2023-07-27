@@ -172,12 +172,12 @@ const newEditor: UserMenu = {
 
 const prevEditor: UserKeyBase = {
     name: "Previous editor",
-    icon: "arrow-up",
+    icon: "arrow-left",
     command: "workbench.action.previousEditor",
 };
 
 const nextEditor: UserKeyBase = {
     name: "Next editor",
-    icon: "arrow-down",
+    icon: "arrow-right",
     command: "workbench.action.nextEditor",
 };
