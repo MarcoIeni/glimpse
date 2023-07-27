@@ -31,3 +31,4 @@ jobs:
                   title: "docs: update keybindings"
                   commit-message: "docs: update keybindings"
                   body: "Opened by [keybindings.yml](https://github.com/MarcoIeni/glimpse/blob/main/.github/workflows/keybindings.yml) GitHub Action"
+                  token: ${{ secrets.GLIMPSE_RELEASE_PLEASE }}
