@@ -29,7 +29,7 @@ function commandsFromMenu(menu: UserMenu, prevKeys: string[]): string {
                 docs += commandToString(i.command) + " |\n";
             }
             if ("commands" in i) {
-                docs += "[ " + i.commands.map(commandToString).join(", ") + " ] |\n";
+                docs += "\\[ " + i.commands.map(commandToString).join(", ") + " \\] |\n";
             }
         }
     }

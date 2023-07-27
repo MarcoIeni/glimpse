@@ -7,11 +7,11 @@ In the following, you will find the default Glimpse key bindings.
 | --- | ------------ | ---------- |
 | v | Select/expand region | `editor.action.smartSelect.grow` |
 | ␣ | Commands | `workbench.action.showCommands` |
-| ↹ | Last editor | [ `workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup`, `list.select` ] |
+| ↹ | Last editor | \[ `workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup`, `list.select` \] |
 | ! | Show terminal | `workbench.action.terminal.focus` |
 | " | Open new external terminal | `workbench.action.terminal.openNativeConsole` |
 | ' | Show terminal | `workbench.action.terminal.focus` |
-| * | Search Selection in Project | [ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` ] |
+| * | Search Selection in Project | \[ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` \] |
 | / | Search in project | `workbench.action.findInFiles` |
 | ; | Toggle comment | `editor.action.commentLine` |
 | 0 | Focus on files explorer | `workbench.files.action.focusFilesExplorer` |
@@ -154,16 +154,16 @@ In the following, you will find the default Glimpse key bindings.
 
 | Key | Command name | Command Id |
 | --- | ------------ | ---------- |
-| E h | New untitled editor (split left) | [ `workbench.action.splitEditorLeft`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
-| E j | New untitled editor (split down) | [ `workbench.action.splitEditorDown`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
-| E k | New untitled editor (split up) | [ `workbench.action.splitEditorUp`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
-| E l | New untitled editor (split right) | [ `workbench.action.splitEditorRight`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
+| E h | New untitled editor (split left) | \[ `workbench.action.splitEditorLeft`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` \] |
+| E j | New untitled editor (split down) | \[ `workbench.action.splitEditorDown`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` \] |
+| E k | New untitled editor (split up) | \[ `workbench.action.splitEditorUp`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` \] |
+| E l | New untitled editor (split right) | \[ `workbench.action.splitEditorRight`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` \] |
 
 ## File
 
 | Key | Command name | Command Id |
 | --- | ------------ | ---------- |
-| d | Delete current file | [ `workbench.files.action.showActiveFileInExplorer`, `deleteFile` ] |
+| d | Delete current file | \[ `workbench.files.action.showActiveFileInExplorer`, `deleteFile` \] |
 | f | Show file in explorer | `workbench.files.action.showActiveFileInExplorer` |
 | l | Change file language | `workbench.action.editor.changeLanguageMode` |
 | n | New file | `explorer.newFile` |
@@ -171,7 +171,7 @@ In the following, you will find the default Glimpse key bindings.
 | O | Open in OS | `revealFileInOS` |
 | p | Copy Path of Active File | `copyFilePath` |
 | P | Copy Relative Path of Active File | `copyRelativeFilePath` |
-| r | Rename file | [ `revealInExplorer`, `renameFile` ] |
+| r | Rename file | \[ `revealInExplorer`, `renameFile` \] |
 | s | Save file | `workbench.action.files.save` |
 | S | Save all files | `workbench.action.files.saveAll` |
 | w | Open file in new window | `workbench.action.files.showOpenedFileInNewWindow` |
@@ -325,7 +325,7 @@ In the following, you will find the default Glimpse key bindings.
 | Q | Quit all VSCode windows | `workbench.action.quit` |
 | r | Reload window | `workbench.action.reloadWindow` |
 | R | Reload window with extensions disabled | `workbench.action.reloadWindowWithExtensionsDisabled` |
-| s | Save all and close window | [ `workbench.action.files.saveAll`, `workbench.action.closeWindow` ] |
+| s | Save all and close window | \[ `workbench.action.files.saveAll`, `workbench.action.closeWindow` \] |
 | w | Close workspace | `workbench.action.closeFolder` |
 
 ## Refactor
@@ -346,7 +346,7 @@ In the following, you will find the default Glimpse key bindings.
 | c | Clear Search Results | `search.action.clearSearchResults` |
 | h | Highlight symbol | `editor.action.wordHighlight.trigger` |
 | p | Search in project | `workbench.action.findInFiles` |
-| P | Search Selection in Project | [ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` ] |
+| P | Search Selection in Project | \[ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` \] |
 | r | Replace | `editor.action.startFindReplaceAction` |
 | R | Replace in files | `workbench.action.replaceInFiles` |
 
