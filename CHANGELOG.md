@@ -4,6 +4,13 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.7.0](https://github.com/MarcoIeni/glimpse/compare/v0.6.0...v0.7.0) (2023-07-27)
+
+
+### Features
+
+* `s e` opens new search editor ([f434647](https://github.com/MarcoIeni/glimpse/commit/f4346476bbe1220cf5850a61a4b30160bf245539))
+
 ## [0.6.0](https://github.com/MarcoIeni/glimpse/compare/v0.5.0...v0.6.0) (2023-07-25)
 
 
