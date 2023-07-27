@@ -16,8 +16,8 @@ Here are the default Glimpse key bindings.
 | ! | Show terminal | `workbench.action.terminal.focus` |
 | " | Open new external terminal | `workbench.action.terminal.openNativeConsole` |
 | ' | Show terminal | `workbench.action.terminal.focus` |
-| * | Search Selection in Project | \[ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` \] |
-| / | Search in project | `workbench.action.findInFiles` |
+| * | Search Selection in Files | \[ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` \] |
+| / | Search in files | `workbench.action.findInFiles` |
 | ; | Toggle comment | `editor.action.commentLine` |
 | 0 | Focus on files explorer | `workbench.files.action.focusFilesExplorer` |
 | 1 | Focus 1st editor group | `workbench.action.focusFirstEditorGroup` |
@@ -169,7 +169,8 @@ Here are the default Glimpse key bindings.
 | Key | Name | Command |
 | --- | ---- | ------- |
 | f d | Delete current file | \[ `workbench.files.action.showActiveFileInExplorer`, `deleteFile` \] |
-| f f | Show file in explorer | `workbench.files.action.showActiveFileInExplorer` |
+| f e | Show file in explorer | `workbench.files.action.showActiveFileInExplorer` |
+| f f | Find file | `workbench.action.quickOpen` |
 | f l | Change file language | `workbench.action.editor.changeLanguageMode` |
 | f n | New file | `explorer.newFile` |
 | f o | Open with | `explorer.openWith` |
@@ -188,7 +189,7 @@ Here are the default Glimpse key bindings.
 | F c | Format changes | `editor.action.formatChanges` |
 | F e | Format Editor | `editor.action.formatDocument` |
 | F E | Format editor with formatter | `editor.action.formatDocument.multiple` |
-| F f | Format region or buffer | `editor.action.format` |
+| F f | Format region or editor | `editor.action.format` |
 | F s | Format selection | `editor.action.formatSelection` |
 | F S | Format selection with formatter | `editor.action.formatSelection.multiple` |
 
@@ -298,34 +299,27 @@ Here are the default Glimpse key bindings.
 | j I | Find implementations | `references-view.findImplementations` |
 | j r | Go to reference | `editor.action.goToReferences` |
 | j R | Find references | `references-view.findReferences` |
-| j s | Go to symbol in buffer | `workbench.action.gotoSymbol` |
-| j S | Go to symbol in project | `workbench.action.showAllSymbols` |
+| j s | Go to symbol in editor | `workbench.action.gotoSymbol` |
+| j S | Go to symbol in files | `workbench.action.showAllSymbols` |
 | j t | Go to type definition | `editor.action.goToTypeDefinition` |
-
-## Project
-
-| Key | Name | Command |
-| --- | ---- | ------- |
-| p f | Find file in project | `workbench.action.quickOpen` |
-| p p | Switch project | `workbench.action.openRecent` |
-| p R | Replace in files | `workbench.action.replaceInFiles` |
 
 ## Peek
 
 | Key | Name | Command |
 | --- | ---- | ------- |
-| P d | Peek declaration | `editor.action.peekDeclaration` |
-| P h | Peek call hierarchy | `editor.showCallHierarchy` |
-| P i | Peek implementations | `editor.action.peekImplementation` |
-| P p | Peek definition | `editor.action.peekDefinition` |
-| P r | Peek references | `editor.action.referenceSearch.trigger` |
-| P R | Search all references in side bar | `references-view.find` |
-| P t | Peek type definition | `editor.action.peekTypeDefinition` |
+| p d | Peek declaration | `editor.action.peekDeclaration` |
+| p h | Peek call hierarchy | `editor.showCallHierarchy` |
+| p i | Peek implementations | `editor.action.peekImplementation` |
+| p p | Peek definition | `editor.action.peekDefinition` |
+| p r | Peek references | `editor.action.referenceSearch.trigger` |
+| p R | Search all references in side bar | `references-view.find` |
+| p t | Peek type definition | `editor.action.peekTypeDefinition` |
 
 ## Quit
 
 | Key | Name | Command |
 | --- | ---- | ------- |
+| q f | Open recent folder | `workbench.action.openRecent` |
 | q q | Quit VSCode window | `workbench.action.closeWindow` |
 | q Q | Quit all VSCode windows | `workbench.action.quit` |
 | q r | Reload window | `workbench.action.reloadWindow` |
@@ -351,10 +345,11 @@ Here are the default Glimpse key bindings.
 | s c | Clear Search Results | `search.action.clearSearchResults` |
 | s e | Search Editor: New | `search.action.openNewEditor` |
 | s h | Highlight symbol | `editor.action.wordHighlight.trigger` |
-| s p | Search in project | `workbench.action.findInFiles` |
-| s P | Search Selection in Project | \[ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` \] |
+| s s | Search | `actions.find` |
+| s S | Search in files | `workbench.action.findInFiles` |
 | s r | Replace | `editor.action.startFindReplaceAction` |
 | s R | Replace in files | `workbench.action.replaceInFiles` |
+| s * | Search Selection in Files | \[ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` \] |
 
 ### Highlight symbol
 
