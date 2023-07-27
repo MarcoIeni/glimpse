@@ -1,10 +1,11 @@
 /// I can't simply import vscode because when building the keybindings.md file, vscode is not available.
-let vscode: { extensions: { all: [{ id: string }] } } | null = null;
+let vscode: { extensions: { all: [{ id: string }] } } | null;
 try {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     vscode = require("vscode");
 } catch (error) {
-    console.log('The "vscode" module is not available.');
+    // we are building the docs
+    vscode = null;
 }
 import { type UserMenu } from "../keys";
 
