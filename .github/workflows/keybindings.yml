@@ -1,0 +1,32 @@
+name: CI
+
+permissions:
+    contents: write
+    pull-requests: write
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    update-keybindings:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Set up node.js
+              uses: actions/setup-node@v3
+
+            - name: Restore dependencies
+              run: npm ci
+
+            - name: Generate keybindings
+              run: npm run write-keybindings
+
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v5
+              with:
+                title: "docs: update keybindings"
+                commit-message: "docs: update keybindings"
