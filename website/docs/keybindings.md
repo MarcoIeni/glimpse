@@ -65,6 +65,37 @@ In the following, you will find the default Glimpse key bindings.
 | w | Focus on watch view | `workbench.debug.action.focusWatchView` |
 | W | Add to watch | `editor.debug.action.selectionToWatch` |
 
+### Breakpoint
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| d b | Toggle breakpoint | `editor.debug.action.toggleBreakpoint` |
+| d c | Add conditional breakpoint | `editor.debug.action.conditionalBreakpoint` |
+| d d | Delete breakpoint | `debug.removeBreakpoint` |
+| d D | Delete all breakpoints | `workbench.debug.viewlet.action.removeAllBreakpoints` |
+| d e | Enable breakpoint | `debug.enableOrDisableBreakpoint` |
+| d E | Enable all breakpoints | `workbench.debug.viewlet.action.enableAllBreakpoints` |
+| d f | Add function breakpoint | `workbench.debug.viewlet.action.addFunctionBreakpointAction` |
+| d i | Toggle inline breakpoint | `editor.debug.action.toggleInlineBreakpoint` |
+| d n | Next breakpoint | `editor.debug.action.goToNextBreakpoint` |
+| d p | Previous breakpoint | `editor.debug.action.goToPreviousBreakpoint` |
+| d s | Disable breakpoint | `debug.enableOrDisableBreakpoint` |
+| d S | Disable all breakpoints | `workbench.debug.viewlet.action.disableAllBreakpoints` |
+
+#### Next breakpoint
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| d b n | Next breakpoint | `editor.debug.action.goToNextBreakpoint` |
+| d b p | Previous breakpoint | `editor.debug.action.goToPreviousBreakpoint` |
+
+#### Previous breakpoint
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| d b n | Next breakpoint | `editor.debug.action.goToNextBreakpoint` |
+| d b p | Previous breakpoint | `editor.debug.action.goToPreviousBreakpoint` |
+
 ## Diff/Compare
 
 | Key | Command name | Command Id |
@@ -84,6 +115,15 @@ In the following, you will find the default Glimpse key bindings.
 | n | Next error | `editor.action.marker.nextInFiles` |
 | N | Previous error | `editor.action.marker.prevInFiles` |
 | p | Previous error | `editor.action.marker.prevInFiles` |
+
+### Error transient
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| e f | Fix error | `editor.action.quickFix` |
+| e n | Next error | `editor.action.marker.nextInFiles` |
+| e p | Previous error | `editor.action.marker.prevInFiles` |
+| e N | Previous error | `editor.action.marker.prevInFiles` |
 
 ## Editor
 
@@ -109,6 +149,15 @@ In the following, you will find the default Glimpse key bindings.
 | T | Reopen closed editor | `workbench.action.reopenClosedEditor` |
 | 0 | First editor in group | `workbench.action.firstEditorInGroup` |
 | $ | Last editor in group | `workbench.action.lastEditorInGroup` |
+
+### New Editor in other Group
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| E h | New untitled editor (split left) | [ `workbench.action.splitEditorLeft`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
+| E j | New untitled editor (split down) | [ `workbench.action.splitEditorDown`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
+| E k | New untitled editor (split up) | [ `workbench.action.splitEditorUp`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
+| E l | New untitled editor (split right) | [ `workbench.action.splitEditorRight`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` ] |
 
 ## File
 
@@ -158,6 +207,29 @@ In the following, you will find the default Glimpse key bindings.
 | u | Unstage | `git.unstage` |
 | U | Unstage Selected Ranges | `git.unstageSelectedRanges` |
 
+### Delete
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| g b | Delete Branch | `git.deleteBranch` |
+| g t | Delete Tag | `git.deleteTag` |
+| g T | Delete Remote Tag | `git.deleteRemoteTag` |
+
+### Merge conflict
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| g b | Accept both | `merge-conflict.accept.both` |
+| g B | Accept all both | `merge-conflict.accept.all-both` |
+| g c | Accept current | `merge-conflict.accept.current` |
+| g C | Accept all current | `merge-conflict.accept.all-current` |
+| g d | Compare current conflict | `merge-conflict.compare` |
+| g i | Accept incoming | `merge-conflict.accept.incoming` |
+| g I | Accept all incoming | `merge-conflict.accept.all-incoming` |
+| g n | Next Conflict | `merge-conflict.next` |
+| g N | Previous Conflict | `merge-conflict.previous` |
+| g s | Accept selection | `merge-conflict.accept.selection` |
+
 ## GitHub Copilot
 
 | Key | Command name | Command Id |
@@ -167,6 +239,14 @@ In the following, you will find the default Glimpse key bindings.
 | f | Fix this | `github.copilot.interactiveEditor.fix` |
 | o | Open Completions Panel | `github.copilot.generate` |
 | t | Toggle (Enable/Disable) Copilot | `github.copilot.toggleCopilot` |
+
+### Generate
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| G d | Generate Docs | `github.copilot.interactiveEditor.generateDocs` |
+| G g | Generate This | `github.copilot.interactiveEditor.generate` |
+| G t | Generate Tests | `github.copilot.interactiveEditor.generateTests` |
 
 ## Help
 
@@ -270,6 +350,14 @@ In the following, you will find the default Glimpse key bindings.
 | r | Replace | `editor.action.startFindReplaceAction` |
 | R | Replace in files | `workbench.action.replaceInFiles` |
 
+### Highlight symbol
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| s n | Next occurrence | `editor.action.wordHighlight.next` |
+| s p | Previous occurrence | `editor.action.wordHighlight.prev` |
+| s N | Previous occurrence | `editor.action.wordHighlight.prev` |
+
 ## Show
 
 | Key | Command name | Command Id |
@@ -345,6 +433,30 @@ In the following, you will find the default Glimpse key bindings.
 | x | Close all groups | `workbench.action.closeAllGroups` |
 | z | Join all groups | `workbench.action.joinAllGroups` |
 
+### Enlarge group
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| w - | Shrink group | `workbench.action.decreaseViewSize` |
+| w + | Enlarge group | `workbench.action.increaseViewSize` |
+| w = | Enlarge group | `workbench.action.increaseViewSize` |
+
+### Enlarge group
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| w - | Shrink group | `workbench.action.decreaseViewSize` |
+| w + | Enlarge group | `workbench.action.increaseViewSize` |
+| w = | Enlarge group | `workbench.action.increaseViewSize` |
+
+### Shrink group
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| w - | Shrink group | `workbench.action.decreaseViewSize` |
+| w + | Enlarge group | `workbench.action.increaseViewSize` |
+| w = | Enlarge group | `workbench.action.increaseViewSize` |
+
 ## Text
 
 | Key | Command name | Command Id |
@@ -355,6 +467,29 @@ In the following, you will find the default Glimpse key bindings.
 | u | To lower case | `editor.action.transformToLowercase` |
 | U | To upper case | `editor.action.transformToUppercase` |
 | w | Delete trailing whitespace | `editor.action.trimTrailingWhitespace` |
+
+### Move lines down
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| x j | Move lines down | `editor.action.moveLinesDownAction` |
+| x k | Move lines up | `editor.action.moveLinesUpAction` |
+
+### Move lines up
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| x j | Move lines down | `editor.action.moveLinesDownAction` |
+| x k | Move lines up | `editor.action.moveLinesUpAction` |
+
+### Lines
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| x d | Duplicate lines down | `editor.action.copyLinesDownAction` |
+| x D | Duplicate lines up | `editor.action.copyLinesUpAction` |
+| x s | Sort lines in ascending order | `editor.action.sortLinesAscending` |
+| x S | Sort lines in descending order | `editor.action.sortLinesDescending` |
 
 ## Select/expand region
 
@@ -371,6 +506,61 @@ In the following, you will find the default Glimpse key bindings.
 | = | Zoom In | `workbench.action.zoomIn` |
 | - | Zoom Out | `workbench.action.zoomOut` |
 | 0 | Reset zoom | `workbench.action.zoomReset` |
+
+### Zoom In
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| z + | Zoom In | `workbench.action.zoomIn` |
+| z = | Zoom In | `workbench.action.zoomIn` |
+| z - | Zoom Out | `workbench.action.zoomOut` |
+
+### Zoom In
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| z + | Zoom In | `workbench.action.zoomIn` |
+| z = | Zoom In | `workbench.action.zoomIn` |
+| z - | Zoom Out | `workbench.action.zoomOut` |
+
+### Zoom Out
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| z + | Zoom In | `workbench.action.zoomIn` |
+| z = | Zoom In | `workbench.action.zoomIn` |
+| z - | Zoom Out | `workbench.action.zoomOut` |
+
+### Image preview
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| z + | Zoom in | `imagePreview.zoomIn` |
+| z - | Zoom out | `imagePreview.zoomOut` |
+| z = | Zoom in | `imagePreview.zoomIn` |
+
+### Font
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| z + | Zoom In | `editor.action.fontZoomIn` |
+| z = | Zoom In | `editor.action.fontZoomIn` |
+| z - | Zoom out | `editor.action.fontZoomOut` |
+| z 0 | Reset zoom | `editor.action.fontZoomReset` |
+
+### Fold
+
+| Key | Command name | Command Id |
+| --- | ------------ | ---------- |
+| z a | Toggle: around a point | `editor.toggleFold` |
+| z b | Close: all block comments | `editor.foldAllBlockComments` |
+| z c | Close: at a point | `editor.fold` |
+| z g | Close: all regions | `editor.foldAllMarkerRegions` |
+| z G | Open: all regions | `editor.unfoldAllMarkerRegions` |
+| z m | Close: all | `editor.foldAll` |
+| z o | Open: at a point | `editor.unfold` |
+| z O | Open: recursively | `editor.unfoldRecursively` |
+| z r | Open: all | `editor.unfoldAll` |
 
 ## Task
 

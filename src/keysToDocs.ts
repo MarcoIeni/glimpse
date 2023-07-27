@@ -13,7 +13,7 @@ function commandToString(command: Command): string {
     return "`" + result + "`";
 }
 
-function commandsFromMenu(menu: UserMenu): string {
+function commandsFromMenu(menu: UserMenu, prevKeys: string[]): string {
     let docs = "";
     let headingsAdded = false;
     for (const i of menu.items) {
@@ -23,7 +23,8 @@ function commandsFromMenu(menu: UserMenu): string {
                 docs += "| --- | ------------ | ---------- |\n";
                 headingsAdded = true;
             }
-            docs += "| " + prettifyKey(i.key) + " | " + i.name + " | ";
+            const cmdKeys = prevKeys.concat(i.key);
+            docs += "| " + cmdKeys.map(prettifyKey).join(" ") + " | " + i.name + " | ";
             if ("command" in i) {
                 docs += commandToString(i.command) + " |\n";
             }
@@ -38,16 +39,19 @@ function commandsFromMenu(menu: UserMenu): string {
     return docs;
 }
 
-function submenuFromMenu(menu: UserMenu): string {
+function submenuFromMenu(menu: UserMenu, hashtagNumber: number, prevKeys: string[]): string {
     let docs = "";
     for (const i of menu.items) {
         let headingsAdded = false;
         if ("menu" in i) {
             if (!headingsAdded) {
-                docs += "## " + i.name + "\n\n";
+                docs += "#".repeat(hashtagNumber);
+                docs += " " + i.name + "\n\n";
                 headingsAdded = true;
             }
-            docs += commandsFromMenu(i.menu);
+            docs += commandsFromMenu(i.menu, prevKeys);
+            const newPrevKeys = prevKeys.concat(i.key);
+            docs += submenuFromMenu(i.menu, hashtagNumber + 1, newPrevKeys);
         }
     }
     return docs;
@@ -62,7 +66,7 @@ In the following, you will find the default Glimpse key bindings.
 `;
 
 // top level menu
-docs += commandsFromMenu(menu);
-docs += submenuFromMenu(menu);
+docs += commandsFromMenu(menu, []);
+docs += submenuFromMenu(menu, 2, []);
 
 fs.writeFileSync("./website/docs/keybindings.md", docs);
