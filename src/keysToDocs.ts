@@ -62,7 +62,7 @@ let docs = `---
 sidebar_position: 6
 ---
 
-In the following, you will find the default Glimpse key bindings.
+Here are the default Glimpse key bindings.
 
 # Key bindings
 
