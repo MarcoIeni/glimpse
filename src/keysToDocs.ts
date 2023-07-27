@@ -49,8 +49,8 @@ function submenuFromMenu(menu: UserMenu, hashtagNumber: number, prevKeys: string
                 docs += " " + i.name + "\n\n";
                 headingsAdded = true;
             }
-            docs += commandsFromMenu(i.menu, prevKeys);
             const newPrevKeys = prevKeys.concat(i.key);
+            docs += commandsFromMenu(i.menu, newPrevKeys);
             docs += submenuFromMenu(i.menu, hashtagNumber + 1, newPrevKeys);
         }
     }
@@ -65,6 +65,7 @@ sidebar_position: 6
 In the following, you will find the default Glimpse key bindings.
 
 ## Top level menu
+
 `;
 
 // top level menu
