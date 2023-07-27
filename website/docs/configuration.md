@@ -36,6 +36,14 @@ module.exports = function editConfig(menu) {
 };
 ```
 
+The `command` property should be the command ID of the command you want to run.
+
+To know all the available commands and their IDs:
+
+- Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts`.
+- Search for the command you are interested in.
+- Right-click on the command and select `Copy Command ID`.
+
 ### Add a key binding a submenu
 
 ```js

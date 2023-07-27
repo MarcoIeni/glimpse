@@ -5,6 +5,12 @@ export function searchSymbolKeys(): UserMenu {
     return {
         items: [
             {
+                key: "c",
+                name: "Clear Search Results",
+                icon: "clear-all",
+                command: "search.action.clearSearchResults",
+            },
+            {
                 key: "h",
                 name: "Highlight symbol",
                 icon: "symbol-color",
