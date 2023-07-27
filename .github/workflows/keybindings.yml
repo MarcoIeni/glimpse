@@ -29,5 +29,5 @@ jobs:
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v5
               with:
-                title: "docs: update keybindings"
-                commit-message: "docs: update keybindings"
+                  title: "docs: update keybindings"
+                  commit-message: "docs: update keybindings"
