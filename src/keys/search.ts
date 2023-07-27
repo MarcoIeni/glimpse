@@ -11,6 +11,12 @@ export function searchKeys(): UserMenu {
                 command: "search.action.clearSearchResults",
             },
             {
+                key: "e",
+                name: "Search Editor: New",
+                icon: "search",
+                command: "search.action.openNewEditor",
+            },
+            {
                 key: "h",
                 name: "Highlight symbol",
                 icon: "symbol-color",
