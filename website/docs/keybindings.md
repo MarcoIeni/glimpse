@@ -6,8 +6,8 @@ In the following, you will find the default Glimpse key bindings.
 | Key | Command |
 | --- | ------- |
 | v | Select/expand region |
-|   | Commands |
-| 	 | Last editor |
+| ␣ | Commands |
+| ↹ | Last editor |
 | ! | Show terminal |
 | " | Open new external terminal |
 | ' | Show terminal |

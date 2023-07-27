@@ -1,6 +1,7 @@
 import { type UserMenu } from "./keys";
 import { defaultMenu } from "./keys/default_menu";
 import * as fs from "fs";
+import { prettifyKey } from "./prettify";
 
 function tableFromMenu(menu: UserMenu): string {
     let docs = "";
@@ -12,7 +13,7 @@ function tableFromMenu(menu: UserMenu): string {
                 docs += "| --- | ------- |\n";
                 headingsAdded = true;
             }
-            docs += "| " + i.key + " | " + i.name + " |\n";
+            docs += "| " + prettifyKey(i.key) + " | " + i.name + " |\n";
         }
     }
 
