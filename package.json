@@ -57,7 +57,8 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "test": "node ./out/test/runTest.js",
-        "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. ."
+        "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. .",
+        "write-keybindings": "ts-node src/keysToDocs.ts"
     },
     "devDependencies": {
         "@types/vscode": "^1.79.1",
@@ -74,6 +75,7 @@
         "@vscode/test-web": "^0.0.44",
         "@vscode/test-electron": "^2.3.3",
         "ts-loader": "^9.4.4",
+        "ts-node": "^10.9.1",
         "webpack": "^5.88.2",
         "webpack-cli": "^5.1.4",
         "@types/webpack-env": "^1.18.1",

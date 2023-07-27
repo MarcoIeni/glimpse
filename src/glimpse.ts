@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { keyDescription, menu, type Command, type Menu } from "./keys";
 import { Logger, notifyError } from "./logger";
+import { prettifyKey } from "./prettify";
 
 export type Executor = {
     menu: Menu;
@@ -67,16 +68,6 @@ function pick(executor: Executor, menuTitle: string): void {
     setGlimpseVisible(true).catch((err) => {
         Logger.error("Failed setting Glimpse Visible" + err);
     });
-}
-
-function prettifyKey(key: string): string {
-    if (key === " ") {
-        return "␣";
-    } else if (key === "\t") {
-        return "↹";
-    } else {
-        return key;
-    }
 }
 
 async function onValueChange(executor: Executor): Promise<void> {
