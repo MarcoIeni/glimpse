@@ -65,13 +65,13 @@ export function goToKeys(): UserMenu {
             },
             {
                 key: "s",
-                name: "Go to symbol in buffer",
+                name: "Go to symbol in editor",
                 icon: "symbol-class",
                 command: "workbench.action.gotoSymbol",
             },
             {
                 key: "S",
-                name: "Go to symbol in project",
+                name: "Go to symbol in files",
                 icon: "symbol-class",
                 command: "workbench.action.showAllSymbols",
             },

@@ -18,9 +18,8 @@ import { indentKeys } from "./indent";
 import { formatKeys } from "./format";
 import { peekKeys } from "./peek";
 import { quitKeys } from "./quit";
-import { projectKeys } from "./project";
 import { refactorKeys } from "./refactor";
-import { commentLine, searchSelectionInProject, showProblems, showTerminal } from "./common";
+import { commentLine, searchSelectionInFiles, showProblems, showTerminal } from "./common";
 import { ghCopilotKeys } from "./gh_copilot";
 
 export function defaultMenu(): UserMenu {
@@ -119,12 +118,6 @@ export function defaultMenu(): UserMenu {
         },
         {
             key: "p",
-            name: "Project",
-            icon: "project",
-            menu: projectKeys(),
-        },
-        {
-            key: "P",
             name: "Peek",
             icon: "eye",
             menu: peekKeys(),
@@ -215,12 +208,12 @@ export function defaultMenu(): UserMenu {
             key: "'",
         },
         {
-            ...searchSelectionInProject,
+            ...searchSelectionInFiles,
             key: "*",
         },
         {
             key: "/",
-            name: "Search in project",
+            name: "Search in files",
             icon: "search",
             command: "workbench.action.findInFiles",
         },

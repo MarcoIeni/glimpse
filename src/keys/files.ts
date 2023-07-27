@@ -10,10 +10,16 @@ export function filesKeys(): UserMenu {
                 commands: ["workbench.files.action.showActiveFileInExplorer", "deleteFile"],
             },
             {
-                key: "f",
+                key: "e",
                 name: "Show file in explorer",
                 icon: "list-tree",
                 command: "workbench.files.action.showActiveFileInExplorer",
+            },
+            {
+                key: "f",
+                name: "Find file",
+                icon: "file",
+                command: "workbench.action.quickOpen",
             },
             {
                 key: "l",

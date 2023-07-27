@@ -1,4 +1,4 @@
-import { searchSelectionInProject } from "./common";
+import { searchSelectionInFiles } from "./common";
 import { type UserMenu } from "../keys";
 
 export function searchKeys(): UserMenu {
@@ -24,14 +24,16 @@ export function searchKeys(): UserMenu {
                 menu: highlight(),
             },
             {
-                key: "p",
-                name: "Search in project",
+                key: "s",
+                name: "Search",
                 icon: "search",
-                command: "workbench.action.findInFiles",
+                command: "actions.find",
             },
             {
-                ...searchSelectionInProject,
-                key: "P",
+                key: "S",
+                name: "Search in files",
+                icon: "search",
+                command: "workbench.action.findInFiles",
             },
             {
                 key: "r",
@@ -44,6 +46,10 @@ export function searchKeys(): UserMenu {
                 name: "Replace in files",
                 icon: "replace",
                 command: "workbench.action.replaceInFiles",
+            },
+            {
+                ...searchSelectionInFiles,
+                key: "*",
             },
         ],
     };

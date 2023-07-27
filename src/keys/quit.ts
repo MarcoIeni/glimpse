@@ -4,6 +4,12 @@ export function quitKeys(): UserMenu {
     return {
         items: [
             {
+                key: "f",
+                name: "Open recent folder",
+                icon: "folder",
+                command: "workbench.action.openRecent",
+            },
+            {
                 key: "q",
                 name: "Quit VSCode window",
                 icon: "close",
