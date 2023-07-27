@@ -59,7 +59,7 @@ function submenuFromMenu(menu: UserMenu, hashtagNumber: number, prevKeys: string
 
 const menu = defaultMenu();
 let docs = `---
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 Here are the default Glimpse key bindings.
