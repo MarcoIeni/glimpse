@@ -23,7 +23,7 @@ export function formatKeys(): UserMenu {
             },
             {
                 key: "f",
-                name: "Format region or buffer",
+                name: "Format region or editor",
                 icon: "list-flat",
                 command: "editor.action.format",
             },

@@ -213,7 +213,7 @@ export function defaultMenu(): UserMenu {
         },
         {
             key: "/",
-            name: "Search in project",
+            name: "Search in files",
             icon: "search",
             command: "workbench.action.findInFiles",
         },
