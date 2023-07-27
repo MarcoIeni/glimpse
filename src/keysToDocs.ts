@@ -4,11 +4,13 @@ import * as fs from "fs";
 import { prettifyKey } from "./prettify";
 
 function commandToString(command: Command): string {
+    let result;
     if (typeof command === "string") {
-        return command;
+        result = command;
     } else {
-        return "{" + command.id + ", " + JSON.stringify(command.args) + "}";
+        result = command.id + ": " + JSON.stringify(command.args);
     }
+    return "`" + result + "`";
 }
 
 function tableFromMenu(menu: UserMenu): string {
