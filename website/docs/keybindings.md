@@ -293,7 +293,7 @@ Here are the default Glimpse key bindings.
 | j c | Go to previous change | `workbench.action.editor.previousChange` |
 | j C | Go to next change | `workbench.action.editor.nextChange` |
 | j d | Go to declaration | `editor.action.revealDeclaration` |
-| j g | Go to definition | `editor.action.revealDefinition` |
+| j j | Go to definition | `editor.action.revealDefinition` |
 | j h | Show call hierarchy | `references-view.showCallHierarchy` |
 | j i | Go to implementations | `editor.action.goToImplementation` |
 | j I | Find implementations | `references-view.findImplementations` |
@@ -576,4 +576,3 @@ Here are the default Glimpse key bindings.
 | : t | Run test task | `workbench.action.tasks.test` |
 | : x | Terminate task | `workbench.action.tasks.terminate` |
 | : R | Restart running task | `workbench.action.tasks.restartTask` |
-

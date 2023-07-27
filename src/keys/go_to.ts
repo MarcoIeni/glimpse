@@ -28,7 +28,7 @@ export function goToKeys(): UserMenu {
                 command: "editor.action.revealDeclaration",
             },
             {
-                key: "g",
+                key: "j",
                 name: "Go to definition",
                 icon: "symbol-function",
                 command: "editor.action.revealDefinition",
