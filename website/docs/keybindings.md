@@ -349,6 +349,7 @@ Here are the default Glimpse key bindings.
 | Key | Name | Command |
 | --- | ---- | ------- |
 | s c | Clear Search Results | `search.action.clearSearchResults` |
+| s e | Search Editor: New | `search.action.openNewEditor` |
 | s h | Highlight symbol | `editor.action.wordHighlight.trigger` |
 | s p | Search in project | `workbench.action.findInFiles` |
 | s P | Search Selection in Project | \[ `editor.action.addSelectionToNextFindMatch`, `workbench.action.findInFiles`, `search.action.focusSearchList` \] |
