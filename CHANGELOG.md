@@ -4,6 +4,13 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.10.0](https://github.com/MarcoIeni/glimpse/compare/v0.9.0...v0.10.0) (2023-07-27)
+
+
+### Features
+
+* `j j` goes to definition ([cd902bc](https://github.com/MarcoIeni/glimpse/commit/cd902bc2423823970500bd037b13f13e75c69543))
+
 ## [0.9.0](https://github.com/MarcoIeni/glimpse/compare/v0.8.0...v0.9.0) (2023-07-27)
 
 
