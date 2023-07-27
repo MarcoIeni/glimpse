@@ -1,7 +1,15 @@
-import { type UserMenu } from "./keys";
+import { type Command, type UserMenu } from "./keys";
 import { defaultMenu } from "./keys/default_menu";
 import * as fs from "fs";
 import { prettifyKey } from "./prettify";
+
+function commandToString(command: Command): string {
+    if (typeof command === "string") {
+        return command;
+    } else {
+        return "{" + command.id + ", " + JSON.stringify(command.args) + "}";
+    }
+}
 
 function tableFromMenu(menu: UserMenu): string {
     let docs = "";
@@ -9,11 +17,17 @@ function tableFromMenu(menu: UserMenu): string {
     for (const i of menu.items) {
         if ("command" in i || "commands" in i) {
             if (!headingsAdded) {
-                docs += "| Key | Command |\n";
-                docs += "| --- | ------- |\n";
+                docs += "| Key | Command name | Command Id |\n";
+                docs += "| --- | ------------ | ---------- |\n";
                 headingsAdded = true;
             }
-            docs += "| " + prettifyKey(i.key) + " | " + i.name + " |\n";
+            docs += "| " + prettifyKey(i.key) + " | " + i.name + " | ";
+            if ("command" in i) {
+                docs += commandToString(i.command) + " |\n";
+            }
+            if ("commands" in i) {
+                docs += "[ " + i.commands.map(commandToString).join(", ") + " ] |\n";
+            }
         }
     }
 
