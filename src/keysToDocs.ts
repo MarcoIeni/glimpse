@@ -63,6 +63,8 @@ sidebar_position: 6
 ---
 
 In the following, you will find the default Glimpse key bindings.
+
+## Top level menu
 `;
 
 // top level menu
