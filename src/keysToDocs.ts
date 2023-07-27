@@ -19,8 +19,8 @@ function commandsFromMenu(menu: UserMenu, prevKeys: string[]): string {
     for (const i of menu.items) {
         if ("command" in i || "commands" in i) {
             if (!headingsAdded) {
-                docs += "| Key | Command name | Command Id |\n";
-                docs += "| --- | ------------ | ---------- |\n";
+                docs += "| Key | Name | Command |\n";
+                docs += "| --- | ---- | ------- |\n";
                 headingsAdded = true;
             }
             const cmdKeys = prevKeys.concat(i.key);

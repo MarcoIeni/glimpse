@@ -3,8 +3,8 @@ sidebar_position: 6
 ---
 
 In the following, you will find the default Glimpse key bindings.
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | v | Select/expand region | `editor.action.smartSelect.grow` |
 | ␣ | Commands | `workbench.action.showCommands` |
 | ↹ | Last editor | \[ `workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup`, `list.select` \] |
@@ -26,8 +26,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Configuration
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | c | Open settings | `workbench.action.openGlobalSettings` |
 | C | Open settings JSON | `workbench.action.openSettingsJson` |
 | g | Glimpse: Configure | `glimpse.configure` |
@@ -40,16 +40,16 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Comment
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | f | Fold all block comments | `editor.foldAllBlockComments` |
 | b | Toggle block comment | `editor.action.blockComment` |
 | l | Toggle line comment | `editor.action.commentLine` |
 
 ## Debug
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | c | Continue debug | `workbench.action.debug.continue` |
 | C | Continue to cursor | `editor.debug.action.runToCursor` |
 | d | Start debug | `workbench.action.debug.start` |
@@ -67,8 +67,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Breakpoint
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d b | Toggle breakpoint | `editor.debug.action.toggleBreakpoint` |
 | d c | Add conditional breakpoint | `editor.debug.action.conditionalBreakpoint` |
 | d d | Delete breakpoint | `debug.removeBreakpoint` |
@@ -84,22 +84,22 @@ In the following, you will find the default Glimpse key bindings.
 
 #### Next breakpoint
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d b n | Next breakpoint | `editor.debug.action.goToNextBreakpoint` |
 | d b p | Previous breakpoint | `editor.debug.action.goToPreviousBreakpoint` |
 
 #### Previous breakpoint
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d b n | Next breakpoint | `editor.debug.action.goToNextBreakpoint` |
 | d b p | Previous breakpoint | `editor.debug.action.goToPreviousBreakpoint` |
 
 ## Diff/Compare
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | c | Compare active file with clipboard | `workbench.files.action.compareWithClipboard` |
 | d | Compare active file with | `workbench.files.action.compareFileWith` |
 | s | Compare active file with saved | `workbench.files.action.compareWithSaved` |
@@ -107,8 +107,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Error
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | e | Show error | `editor.action.showHover` |
 | E | Show all errors | `workbench.actions.view.problems` |
 | f | Fix error | `editor.action.quickFix` |
@@ -118,8 +118,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Error transient
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | e f | Fix error | `editor.action.quickFix` |
 | e n | Next error | `editor.action.marker.nextInFiles` |
 | e p | Previous error | `editor.action.marker.prevInFiles` |
@@ -127,8 +127,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Editor
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | c | Close active editor | `workbench.action.closeActiveEditor` |
 | C | Close other editors | `workbench.action.closeOtherEditors` |
 | e | Show all editors | `workbench.action.showAllEditorsByMostRecentlyUsed` |
@@ -152,8 +152,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ### New Editor in other Group
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | E h | New untitled editor (split left) | \[ `workbench.action.splitEditorLeft`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` \] |
 | E j | New untitled editor (split down) | \[ `workbench.action.splitEditorDown`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` \] |
 | E k | New untitled editor (split up) | \[ `workbench.action.splitEditorUp`, `workbench.action.files.newUntitledFile`, `workbench.action.closeOtherEditors` \] |
@@ -161,8 +161,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## File
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d | Delete current file | \[ `workbench.files.action.showActiveFileInExplorer`, `deleteFile` \] |
 | f | Show file in explorer | `workbench.files.action.showActiveFileInExplorer` |
 | l | Change file language | `workbench.action.editor.changeLanguageMode` |
@@ -178,8 +178,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Format
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | c | Format changes | `editor.action.formatChanges` |
 | e | Format Editor | `editor.action.formatDocument` |
 | E | Format editor with formatter | `editor.action.formatDocument.multiple` |
@@ -189,8 +189,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Git
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | a | Stage Changes | `git.stageSelectedRanges` |
 | A | Stage Selected Ranges | `git.stageSelectedRanges` |
 | b | Checkout | `git.checkout` |
@@ -209,16 +209,16 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Delete
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | g b | Delete Branch | `git.deleteBranch` |
 | g t | Delete Tag | `git.deleteTag` |
 | g T | Delete Remote Tag | `git.deleteRemoteTag` |
 
 ### Merge conflict
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | g b | Accept both | `merge-conflict.accept.both` |
 | g B | Accept all both | `merge-conflict.accept.all-both` |
 | g c | Accept current | `merge-conflict.accept.current` |
@@ -232,8 +232,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## GitHub Copilot
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | c | Copilot Chat | `workbench.panel.chatSidebar.copilot` |
 | e | Explain this | `github.copilot.interactiveEditor.explain` |
 | f | Fix this | `github.copilot.interactiveEditor.fix` |
@@ -242,16 +242,16 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Generate
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | G d | Generate Docs | `github.copilot.interactiveEditor.generateDocs` |
 | G g | Generate This | `github.copilot.interactiveEditor.generate` |
 | G t | Generate Tests | `github.copilot.interactiveEditor.generateTests` |
 
 ## Help
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d | Open VSCode Documentation | `workbench.action.openDocumentationUrl` |
 | g | Open Glimpse Documentation | `glimpse.openDocs` |
 | h | Describe thing at point | `editor.action.showHover` |
@@ -261,8 +261,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Insert
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | j | Insert line below | `editor.action.insertLineAfter` |
 | k | Insert line above | `editor.action.insertLineBefore` |
 | p | Paste as | `editor.action.pasteAs` |
@@ -270,8 +270,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Indent
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d | Detect indentation | `editor.action.detectIndentation` |
 | i | Change indentation | `changeEditorIndentation` |
 | r | Reindent | `editor.action.reindentlines` |
@@ -281,8 +281,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Jump
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | b | Go to breadcrumb | `breadcrumbs.focusAndSelect` |
 | c | Go to previous change | `workbench.action.editor.previousChange` |
 | C | Go to next change | `workbench.action.editor.nextChange` |
@@ -299,16 +299,16 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Project
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | f | Find file in project | `workbench.action.quickOpen` |
 | p | Switch project | `workbench.action.openRecent` |
 | R | Replace in files | `workbench.action.replaceInFiles` |
 
 ## Peek
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d | Peek declaration | `editor.action.peekDeclaration` |
 | h | Peek call hierarchy | `editor.showCallHierarchy` |
 | i | Peek implementations | `editor.action.peekImplementation` |
@@ -319,8 +319,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Quit
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | q | Quit VSCode window | `workbench.action.closeWindow` |
 | Q | Quit all VSCode windows | `workbench.action.quit` |
 | r | Reload window | `workbench.action.reloadWindow` |
@@ -330,8 +330,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Refactor
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | . | Quick fix | `editor.action.quickFix` |
 | e | Extract to function or variable | `editor.action.codeAction: {"kind":"refactor.extract"}` |
 | i | Organize imports | `editor.action.organizeImports` |
@@ -341,8 +341,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Search
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | c | Clear Search Results | `search.action.clearSearchResults` |
 | h | Highlight symbol | `editor.action.wordHighlight.trigger` |
 | p | Search in project | `workbench.action.findInFiles` |
@@ -352,16 +352,16 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Highlight symbol
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | s n | Next occurrence | `editor.action.wordHighlight.next` |
 | s p | Previous occurrence | `editor.action.wordHighlight.prev` |
 | s N | Previous occurrence | `editor.action.wordHighlight.prev` |
 
 ## Show
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | d | Show debug console | `workbench.debug.action.toggleRepl` |
 | e | Show explorer | `workbench.view.explorer` |
 | E | Show extensions | `workbench.view.extensions` |
@@ -375,8 +375,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Toogle
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | b | Toggle side bar visibility | `workbench.action.toggleSidebarVisibility` |
 | B | Toggle Activity Bar Visibility | `workbench.action.toggleActivityBarVisibility` |
 | c | Toggle centered layout | `workbench.action.toggleCenteredLayout` |
@@ -394,8 +394,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Test
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | a | Run all tests | `testing.runAll` |
 | A | Debug all tests | `testing.debugAll` |
 | f | Run current test file | `testing.runCurrentFile` |
@@ -405,8 +405,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Window/Group
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | + | Enlarge group | `workbench.action.increaseViewSize` |
 | = | Enlarge group | `workbench.action.increaseViewSize` |
 | - | Shrink group | `workbench.action.decreaseViewSize` |
@@ -435,32 +435,32 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Enlarge group
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | w - | Shrink group | `workbench.action.decreaseViewSize` |
 | w + | Enlarge group | `workbench.action.increaseViewSize` |
 | w = | Enlarge group | `workbench.action.increaseViewSize` |
 
 ### Enlarge group
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | w - | Shrink group | `workbench.action.decreaseViewSize` |
 | w + | Enlarge group | `workbench.action.increaseViewSize` |
 | w = | Enlarge group | `workbench.action.increaseViewSize` |
 
 ### Shrink group
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | w - | Shrink group | `workbench.action.decreaseViewSize` |
 | w + | Enlarge group | `workbench.action.increaseViewSize` |
 | w = | Enlarge group | `workbench.action.increaseViewSize` |
 
 ## Text
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | j | Move lines down | `editor.action.moveLinesDownAction` |
 | k | Move lines up | `editor.action.moveLinesUpAction` |
 | o | Open link | `editor.action.openLink` |
@@ -470,22 +470,22 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Move lines down
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | x j | Move lines down | `editor.action.moveLinesDownAction` |
 | x k | Move lines up | `editor.action.moveLinesUpAction` |
 
 ### Move lines up
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | x j | Move lines down | `editor.action.moveLinesDownAction` |
 | x k | Move lines up | `editor.action.moveLinesUpAction` |
 
 ### Lines
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | x d | Duplicate lines down | `editor.action.copyLinesDownAction` |
 | x D | Duplicate lines up | `editor.action.copyLinesUpAction` |
 | x s | Sort lines in ascending order | `editor.action.sortLinesAscending` |
@@ -493,15 +493,15 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Select/expand region
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | v | Grow selection | `editor.action.smartSelect.grow` |
 | V | Shrink selection | `editor.action.smartSelect.shrink` |
 
 ## Zoom/Fold
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | + | Zoom In | `workbench.action.zoomIn` |
 | = | Zoom In | `workbench.action.zoomIn` |
 | - | Zoom Out | `workbench.action.zoomOut` |
@@ -509,40 +509,40 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Zoom In
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | z + | Zoom In | `workbench.action.zoomIn` |
 | z = | Zoom In | `workbench.action.zoomIn` |
 | z - | Zoom Out | `workbench.action.zoomOut` |
 
 ### Zoom In
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | z + | Zoom In | `workbench.action.zoomIn` |
 | z = | Zoom In | `workbench.action.zoomIn` |
 | z - | Zoom Out | `workbench.action.zoomOut` |
 
 ### Zoom Out
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | z + | Zoom In | `workbench.action.zoomIn` |
 | z = | Zoom In | `workbench.action.zoomIn` |
 | z - | Zoom Out | `workbench.action.zoomOut` |
 
 ### Image preview
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | z + | Zoom in | `imagePreview.zoomIn` |
 | z - | Zoom out | `imagePreview.zoomOut` |
 | z = | Zoom in | `imagePreview.zoomIn` |
 
 ### Font
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | z + | Zoom In | `editor.action.fontZoomIn` |
 | z = | Zoom In | `editor.action.fontZoomIn` |
 | z - | Zoom out | `editor.action.fontZoomOut` |
@@ -550,8 +550,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ### Fold
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | z a | Toggle: around a point | `editor.toggleFold` |
 | z b | Close: all block comments | `editor.foldAllBlockComments` |
 | z c | Close: at a point | `editor.fold` |
@@ -564,8 +564,8 @@ In the following, you will find the default Glimpse key bindings.
 
 ## Task
 
-| Key | Command name | Command Id |
-| --- | ------------ | ---------- |
+| Key | Name | Command |
+| --- | ---- | ------- |
 | . | Rerun last task | `workbench.action.tasks.reRunTask` |
 | : | Run task | `workbench.action.tasks.runTask` |
 | b | Run build tasks | `workbench.action.tasks.build` |
