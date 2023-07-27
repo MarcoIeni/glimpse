@@ -2,7 +2,7 @@ import { tasksKeys } from "./tasks";
 import { gitKeys } from "./git";
 import { goToKeys } from "./go_to";
 import { helpKeys } from "./help";
-import { searchSymbolKeys } from "./search_symbol";
+import { searchKeys } from "./search";
 import { zoomKeys } from "./zoom";
 import { filesKeys } from "./files";
 import { errorKeys } from "./errors";
@@ -145,7 +145,7 @@ export function defaultMenu(): UserMenu {
             key: "s",
             name: "Search",
             icon: "search",
-            menu: searchSymbolKeys(),
+            menu: searchKeys(),
         },
         {
             key: "S",

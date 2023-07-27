@@ -1,7 +1,7 @@
 import { searchSelectionInProject } from "./common";
 import { type UserMenu } from "../keys";
 
-export function searchSymbolKeys(): UserMenu {
+export function searchKeys(): UserMenu {
     return {
         items: [
             {
