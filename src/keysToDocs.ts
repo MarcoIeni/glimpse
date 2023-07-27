@@ -13,7 +13,7 @@ function commandToString(command: Command): string {
     return "`" + result + "`";
 }
 
-function tableFromMenu(menu: UserMenu): string {
+function commandsFromMenu(menu: UserMenu): string {
     let docs = "";
     let headingsAdded = false;
     for (const i of menu.items) {
@@ -38,6 +38,21 @@ function tableFromMenu(menu: UserMenu): string {
     return docs;
 }
 
+function submenuFromMenu(menu: UserMenu): string {
+    let docs = "";
+    for (const i of menu.items) {
+        let headingsAdded = false;
+        if ("menu" in i) {
+            if (!headingsAdded) {
+                docs += "## " + i.name + "\n\n";
+                headingsAdded = true;
+            }
+            docs += commandsFromMenu(i.menu);
+        }
+    }
+    return docs;
+}
+
 const menu = defaultMenu();
 let docs = `---
 sidebar_position: 6
@@ -47,17 +62,7 @@ In the following, you will find the default Glimpse key bindings.
 `;
 
 // top level menu
-docs += tableFromMenu(menu);
-
-for (const i of menu.items) {
-    let headingsAdded = false;
-    if ("menu" in i) {
-        if (!headingsAdded) {
-            docs += "## " + i.name + "\n\n";
-            headingsAdded = true;
-        }
-        docs += tableFromMenu(i.menu);
-    }
-}
+docs += commandsFromMenu(menu);
+docs += submenuFromMenu(menu);
 
 fs.writeFileSync("./website/docs/keybindings.md", docs);
