@@ -11,8 +11,6 @@ Glimpse doesn't require you to memorize key bindings. Instead, it shows you the 
 
 Learn more at [glimpse.ieni.dev](https://glimpse.ieni.dev).
 
-TODO: add gif
-
 ## Credits
 
 <details>
