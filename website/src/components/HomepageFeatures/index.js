@@ -53,7 +53,7 @@ export default function HomepageFeatures() {
                         <Feature key={idx} {...props} />
                     ))}
                 </div>
-                <video controls autoPlay muted style={{ maxWidth: "100%" }}>
+                <video loop controls autoPlay muted style={{ maxWidth: "100%" }}>
                     <source src="/glimpse.mp4" type="video/mp4" />
                 </video>
             </div>
