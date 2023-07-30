@@ -17,8 +17,8 @@ const FeatureList = [
         title: "Discoverable 🔎",
         description: (
             <>
-                Discover new VSCode Commands you wish you knew before, and execute them easily from
-                your keyboard.
+                Discover new VSCode Commands you wish you knew before, and execute them efficiently
+                from your keyboard.
             </>
         ),
     },
@@ -26,8 +26,8 @@ const FeatureList = [
         title: "Customizable ⚙",
         description: (
             <>
-                No need to learn a new configuration file syntax: edit Glimpse menu and key bindings
-                with plain JavaScript.
+                No need to learn yet another configuration syntax: edit the Glimpse menu and key
+                bindings with plain JavaScript.
             </>
         ),
     },

@@ -7,7 +7,7 @@
 
 Glimpse is a VSCode extension that allows you to run VSCode commands with easy-to-remember key bindings.
 
-You don't need to remember complex shortcuts anymore — Glimpse shows you the available key bindings as you type.
+You no longer need to remember complex shortcuts — Glimpse shows the available key bindings as you type.
 
 Learn more at [glimpse.ieni.dev](https://glimpse.ieni.dev).
 
