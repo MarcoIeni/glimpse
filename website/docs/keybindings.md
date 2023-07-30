@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-Here are the default Glimpse key bindings.
-
 # Key bindings
+
+Here are the default Glimpse key bindings.
 
 ## Top level menu
 
