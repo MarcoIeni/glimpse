@@ -42,10 +42,6 @@ function HomepageHeader() {
                         />
                     </span>
                 </div>
-                <br />
-                <video controls autoPlay muted style={{ maxWidth: "100%" }}>
-                    <source src="/glimpse.mp4" type="video/mp4" />
-                </video>
             </div>
         </header>
     );
