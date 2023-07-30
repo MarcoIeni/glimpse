@@ -7,9 +7,9 @@ const FeatureList = [
         title: "Mnemonic 💡",
         description: (
             <>
-                Glimpse organizes the most useful VSCode Commands by mnemonic keys, like{" "}
-                <code>f</code> for file and <code>p</code> for project. If you use Vim motions,
-                you'll feel right at home.
+                The most useful VSCode Commands organized by mnemonic keys, like <code>f</code> for{" "}
+                <i>file</i> and <code>r</code> for <i>refactor</i>. Plus, if you use Vim motions,
+                you'll feel at home.
             </>
         ),
     },
@@ -26,8 +26,8 @@ const FeatureList = [
         title: "Customizable ⚙",
         description: (
             <>
-                No need for complex configuration files: edit Glimpse menu and key bindings with
-                plain JavaScript.
+                No need to learn a new configuration file syntax: edit Glimpse menu and key bindings
+                with plain JavaScript.
             </>
         ),
     },
