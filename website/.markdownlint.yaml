@@ -1,21 +1,20 @@
 ---
 # Use `#` for headers
 MD003:
-  style: atx
+    style: atx
 
 # Set maximum line length
 MD013:
-  line_length: 130
+    line_length: 130
 
 # Use `---` for horizontal rule
 MD035:
-  style: ---
+    style: ---
 
 # Use ``` for code blocks
 MD046:
-  style: fenced
+    style: fenced
 MD048:
-  style: backtick
-
+    style: backtick
 # See https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md for
 # additional info
