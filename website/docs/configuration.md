@@ -12,7 +12,8 @@ To edit the default configuration file, press `Ctrl+Shift+P` to open the command
 for `Glimpse: Configure`.
 
 After editing the configuration file, you need to reload the window for the changes to take effect.
-To do so, press `Ctrl+Shift+P` to open the command palette and search for `Developer: Reload Window`, or press `q r` from Glimpse.
+To do so, press `Ctrl+Shift+P` to open the command palette and search for
+`Developer: Reload Window`, or press `q r` from Glimpse.
 
 ## Configuration examples
 
