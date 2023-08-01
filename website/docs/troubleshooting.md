@@ -41,12 +41,13 @@ module.exports = function editConfig(menu) {
 
 ## Unresponsive menu activation
 
-If you press `<spc>` on an editor and the glimpse menu doesn't appear immediately, you might have one of the following problems.
+If you press `<spc>` on an editor and the glimpse menu doesn't appear immediately, you might have
+one of the following problems.
 
 ### Conflicting vim binding
 
-If in your `settings.json` file you have a vim binding that starts with `<spc>`, vim will wait for the second input when `<spc>` is pressed.
-Example:
+If in your `settings.json` file you have a vim binding that starts with `<spc>`, vim will wait for
+the second input when `<spc>` is pressed. Example:
 
 ```json title="settings.json"
 "vim.normalModeKeyBindingsNonRecursive": [

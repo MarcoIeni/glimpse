@@ -34,8 +34,6 @@ function commandsFromMenu(menu: UserMenu, prevKeys: string[]): string {
         }
     }
 
-    docs += "\n";
-
     return docs;
 }
 
@@ -45,6 +43,7 @@ function submenuFromMenu(menu: UserMenu, hashtagNumber: number, prevKeys: string
         let headingsAdded = false;
         if ("menu" in i) {
             if (!headingsAdded) {
+                docs += "\n";
                 docs += "#".repeat(hashtagNumber);
                 docs += " " + i.name + "\n\n";
                 headingsAdded = true;

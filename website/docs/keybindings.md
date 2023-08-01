@@ -576,4 +576,3 @@ Here are the default Glimpse key bindings.
 | : t | Run test task | `workbench.action.tasks.test` |
 | : x | Terminate task | `workbench.action.tasks.terminate` |
 | : R | Restart running task | `workbench.action.tasks.restartTask` |
-

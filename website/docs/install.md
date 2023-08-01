@@ -4,8 +4,11 @@ sidebar_position: 2
 
 # Install
 
-1. Install the [Glimpse](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse) VSCode extension. If you don't use the VSCode marketplace, you can install the extension from [Open VSX](https://open-vsx.org/extension/ieni/glimpse).
-2. Verify that the extension is correctly installed by pressing `Ctrl+Shift+P` to open the command palette and searching for `Glimpse: Menu`.
+1. Install the [Glimpse](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse)
+   VSCode extension.
+   If you don't use the VSCode marketplace, you can install the extension from [Open VSX](https://open-vsx.org/extension/ieni/glimpse).
+2. Verify that the extension is correctly installed by pressing `Ctrl+Shift+P` to open the command
+   palette and searching for `Glimpse: Menu`.
 
 Congrats, you ran Glimpse for the first time! 🎉
 
@@ -28,8 +31,11 @@ You can set the shortcut in two ways: by editing the JSON configuration file or 
 #### Configuration File
 
 To set the shortcut via the JSON configuration file:
-- Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
+
+- Press `Ctrl+Shift+P` to open the command palette and search for
+  `Preferences: Open Keyboard Shortcuts (JSON)`.
 - Add the following:
+
   ```json
   {
       "key": "alt+space",
@@ -40,13 +46,15 @@ To set the shortcut via the JSON configuration file:
 #### VSCode UI
 
 To set the shortcut the VSCode UI:
+
 - Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts`.
 - Search for `glimpse.menu`.
 - Double click on the row to edit the shortcut.
 
 ### [VSCodeVim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) users
 
-Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
+Press `Ctrl+Shift+P` to open the command palette and search for
+`Preferences: Open Keyboard Shortcuts (JSON)`.
 Add the following:
 
 ```json
