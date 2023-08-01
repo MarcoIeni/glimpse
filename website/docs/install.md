@@ -28,8 +28,10 @@ You can set the shortcut in two ways: by editing the JSON configuration file or 
 #### Configuration File
 
 To set the shortcut via the JSON configuration file:
+
 - Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts (JSON)`.
 - Add the following:
+
   ```json
   {
       "key": "alt+space",
@@ -40,6 +42,7 @@ To set the shortcut via the JSON configuration file:
 #### VSCode UI
 
 To set the shortcut the VSCode UI:
+
 - Press `Ctrl+Shift+P` to open the command palette and search for `Preferences: Open Keyboard Shortcuts`.
 - Search for `glimpse.menu`.
 - Double click on the row to edit the shortcut.

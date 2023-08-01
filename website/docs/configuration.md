@@ -113,6 +113,7 @@ module.exports = function editConfig(menu) {
   return menu;
 };
 ```
+
 Letters first:
 
 ```js

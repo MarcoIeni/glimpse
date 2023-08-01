@@ -38,3 +38,13 @@ jobs:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   # Build output to publish to the `gh-pages` branch:
                   publish_dir: ./website/build
+
+    markdown-lint:
+        runs-on: ubuntu-22.04
+        steps:
+            - uses: actions/checkout@v3
+            - name: Lint all files recursively
+              uses: avto-dev/markdown-lint@v1
+              with:
+                  config: ".markdownlint.yaml"
+                  args: "website/docs/**/*.md"
