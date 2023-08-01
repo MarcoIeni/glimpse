@@ -4,7 +4,9 @@ sidebar_position: 2
 
 # Install
 
-1. Install the [Glimpse](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse) VSCode extension. If you don't use the VSCode marketplace, you can install the extension from [Open VSX](https://open-vsx.org/extension/ieni/glimpse).
+1. Install the [Glimpse](https://marketplace.visualstudio.com/items?itemName=ieni.glimpse)
+   VSCode extension.
+   If you don't use the VSCode marketplace, you can install the extension from [Open VSX](https://open-vsx.org/extension/ieni/glimpse).
 2. Verify that the extension is correctly installed by pressing `Ctrl+Shift+P` to open the command palette and searching for `Glimpse: Menu`.
 
 Congrats, you ran Glimpse for the first time! 🎉
