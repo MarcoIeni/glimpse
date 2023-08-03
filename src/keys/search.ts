@@ -17,6 +17,12 @@ export function searchKeys(): UserMenu {
                 command: "search.action.openNewEditor",
             },
             {
+                key: "E",
+                name: "Search Editor: New to the Side",
+                icon: "search",
+                command: "search.action.openNewEditorToSide",
+            },
+            {
                 key: "h",
                 name: "Highlight symbol",
                 icon: "symbol-color",
