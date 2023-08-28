@@ -67,7 +67,7 @@
         "@types/node": "16.x",
         "@typescript-eslint/eslint-plugin": "^6.4.1",
         "@typescript-eslint/parser": "^6.5.0",
-        "eslint": "^8.47.0",
+        "eslint": "^8.48.0",
         "glob": "^8.1.0",
         "mocha": "^10.2.0",
         "prettier": "^3.0.2",
