@@ -72,7 +72,7 @@
         "mocha": "^10.2.0",
         "prettier": "^3.0.3",
         "typescript": "^5.2.2",
-        "@vscode/test-web": "^0.0.44",
+        "@vscode/test-web": "^0.0.45",
         "@vscode/test-electron": "^2.3.4",
         "ts-loader": "^9.4.4",
         "ts-node": "^10.9.1",
