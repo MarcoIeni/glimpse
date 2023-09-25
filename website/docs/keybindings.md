@@ -153,6 +153,15 @@ Here are the default Glimpse key bindings.
 | E s | Scratch editor | `workbench.action.files.newUntitledFile` |
 | E T | Reopen closed editor | `workbench.action.reopenClosedEditor` |
 | E 0 | First editor in group | `workbench.action.firstEditorInGroup` |
+| E 1 | First editor in group | `workbench.action.openEditorAtIndex1` |
+| E 2 | 2nd editor in group | `workbench.action.openEditorAtIndex2` |
+| E 3 | 3rd editor in group | `workbench.action.openEditorAtIndex3` |
+| E 4 | 4th editor in group | `workbench.action.openEditorAtIndex4` |
+| E 5 | 5th editor in group | `workbench.action.openEditorAtIndex5` |
+| E 6 | 6th editor in group | `workbench.action.openEditorAtIndex6` |
+| E 7 | 7th editor in group | `workbench.action.openEditorAtIndex7` |
+| E 8 | 8th editor in group | `workbench.action.openEditorAtIndex8` |
+| E 9 | 9th editor in group | `workbench.action.openEditorAtIndex9` |
 | E $ | Last editor in group | `workbench.action.lastEditorInGroup` |
 
 ### New Editor in other Group
