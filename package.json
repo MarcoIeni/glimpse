@@ -74,7 +74,7 @@
         "typescript": "^5.2.2",
         "@vscode/test-web": "^0.0.44",
         "@vscode/test-electron": "^2.3.5",
-        "ts-loader": "^9.4.4",
+        "ts-loader": "^9.5.0",
         "ts-node": "^10.9.1",
         "webpack": "^5.88.2",
         "webpack-cli": "^5.1.4",
