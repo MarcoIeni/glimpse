@@ -37,10 +37,12 @@ To set the shortcut via the JSON configuration file:
 - Add the following:
 
   ```json
-  {
-      "key": "alt+space",
-      "command": "glimpse.menu",
-  }
+  [
+      {
+          "key": "alt+space",
+          "command": "glimpse.menu"
+      }
+  ]
   ```
 
 #### VSCode UI
