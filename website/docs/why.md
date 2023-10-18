@@ -10,8 +10,8 @@ Hey, I'm [Marco](https://ieni.dev), the author of Glimpse. 👋
 I'm glad you asked. 😎
 
 This story begins in 2018 when I started using [spacemacs](https://www.spacemacs.org/).
-I was blown away by the ergonomics and the discoverability of its key bindings, so
-I decided I wanted the same experience in every other IDEs I was using.
+I was blown away by the ergonomics and the discoverability of its key bindings, and
+I wanted the same experience in the other IDEs.
 
 Today, I maintain [Intellimacs](https://github.com/MarcoIeni/intellimacs),
 [Spaceclipse](https://github.com/MarcoIeni/spaceclipse), and [VSpaceCode],

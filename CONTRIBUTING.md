@@ -5,6 +5,8 @@
 
 ## Run the extension locally
 
+- Press `F5` to open a new window with your extension loaded.
+
 ## Run the extension in a web environment
 
 To run the extension in an environment similar to [vscode.dev](https://vscode.dev), run:
