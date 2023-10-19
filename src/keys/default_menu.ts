@@ -148,7 +148,7 @@ export function defaultMenu(): UserMenu {
         },
         {
             key: "t",
-            name: "Toogle",
+            name: "Toggle",
             icon: "settings",
             menu: toggleKeys(),
         },
