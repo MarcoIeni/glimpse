@@ -384,7 +384,7 @@ Here are the default Glimpse key bindings.
 | S s | Show search | `workbench.view.search` |
 | S t | Show test | `workbench.view.extension.test` |
 
-## Toogle
+## Toggle
 
 | Key | Name | Command |
 | --- | ---- | ------- |
