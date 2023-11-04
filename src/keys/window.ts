@@ -78,15 +78,15 @@ export function windowKeys(): UserMenu {
             },
             {
                 key: "m",
-                name: "Maximize group",
+                name: "Maximize editor group",
                 icon: "chrome-maximize",
                 command: "workbench.action.toggleEditorWidths",
             },
             {
                 key: "M",
-                name: "Maximize group and hide side bar",
+                name: "Maximize editor group and hide others",
                 icon: "screen-full",
-                command: "workbench.action.maximizeEditor",
+                command: "workbench.action.toggleMaximizeEditorGroup",
             },
             {
                 key: "n",
