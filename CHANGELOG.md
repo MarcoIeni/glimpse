@@ -4,6 +4,18 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.14.0](https://github.com/MarcoIeni/glimpse/compare/v0.13.0...v0.14.0) (2023-11-04)
+
+
+### Features
+
+* `w M` maximizes group ([#195](https://github.com/MarcoIeni/glimpse/issues/195)) ([129b0b6](https://github.com/MarcoIeni/glimpse/commit/129b0b605a1b031c741bedc77ba1c360ca0e2485))
+
+
+### Bug Fixes
+
+* typo in toggle menu ([c56a8c8](https://github.com/MarcoIeni/glimpse/commit/c56a8c8ec07083fd01bbddd38e1999b169cb7638))
+
 ## [0.13.0](https://github.com/MarcoIeni/glimpse/compare/v0.12.0...v0.13.0) (2023-09-26)
 
 
