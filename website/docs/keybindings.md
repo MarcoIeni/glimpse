@@ -431,8 +431,8 @@ Here are the default Glimpse key bindings.
 | w K | Move in group up | `workbench.action.moveActiveEditorGroupUp` |
 | w l | Focus group right | `workbench.action.focusNextGroup` |
 | w L | Move in group right | `workbench.action.moveActiveEditorGroupRight` |
-| w m | Maximize group | `workbench.action.toggleEditorWidths` |
-| w M | Maximize group and hide side bar | `workbench.action.maximizeEditor` |
+| w m | Maximize editor group | `workbench.action.toggleEditorWidths` |
+| w M | Maximize editor group and hide others | `workbench.action.toggleMaximizeEditorGroup` |
 | w n | Duplicate workspace in new window | `workbench.action.duplicateWorkspaceInNewWindow` |
 | w N | Open new VSCode window | `workbench.action.newWindow` |
 | w o | Switch VSCode window | `workbench.action.quickSwitchWindow` |
