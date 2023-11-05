@@ -423,13 +423,13 @@ Here are the default Glimpse key bindings.
 | w - | Shrink group | `workbench.action.decreaseViewSize` |
 | w c | Close group | `workbench.action.closeEditorsInGroup` |
 | w C | Close all other groups | `workbench.action.closeEditorsInOtherGroups` |
-| w h | Focus group left | `workbench.action.focusPreviousGroup` |
+| w h | Focus group left | `workbench.action.navigateLeft` |
 | w H | Move in group left | `workbench.action.moveActiveEditorGroupLeft` |
-| w j | Focus group down | `workbench.action.focusBelowGroup` |
+| w j | Focus group down | `workbench.action.navigateDown` |
 | w J | Move in group down | `workbench.action.moveActiveEditorGroupDown` |
-| w k | Focus group up | `workbench.action.focusAboveGroup` |
+| w k | Focus group up | `workbench.action.navigateUp` |
 | w K | Move in group up | `workbench.action.moveActiveEditorGroupUp` |
-| w l | Focus group right | `workbench.action.focusNextGroup` |
+| w l | Focus group right | `workbench.action.navigateRight` |
 | w L | Move in group right | `workbench.action.moveActiveEditorGroupRight` |
 | w m | Maximize editor group | `workbench.action.toggleEditorWidths` |
 | w M | Maximize editor group and hide others | `workbench.action.toggleMaximizeEditorGroup` |
