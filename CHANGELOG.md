@@ -4,6 +4,13 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.14.1](https://github.com/MarcoIeni/glimpse/compare/v0.14.0...v0.14.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* navigate up, down, right, left with `w` ([#197](https://github.com/MarcoIeni/glimpse/issues/197)) ([b8a1263](https://github.com/MarcoIeni/glimpse/commit/b8a1263480471c94bf8c6ea1fc06a3c23c348dd2))
+
 ## [0.14.0](https://github.com/MarcoIeni/glimpse/compare/v0.13.0...v0.14.0) (2023-11-04)
 
 
