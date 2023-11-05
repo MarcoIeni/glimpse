@@ -32,7 +32,7 @@ export function windowKeys(): UserMenu {
                 key: "h",
                 name: "Focus group left",
                 icon: "arrow-left",
-                command: "workbench.action.focusPreviousGroup",
+                command: "workbench.action.navigateLeft",
             },
             {
                 key: "H",
@@ -44,7 +44,7 @@ export function windowKeys(): UserMenu {
                 key: "j",
                 name: "Focus group down",
                 icon: "arrow-down",
-                command: "workbench.action.focusBelowGroup",
+                command: "workbench.action.navigateDown",
             },
             {
                 key: "J",
@@ -56,7 +56,7 @@ export function windowKeys(): UserMenu {
                 key: "k",
                 name: "Focus group up",
                 icon: "arrow-up",
-                command: "workbench.action.focusAboveGroup",
+                command: "workbench.action.navigateUp",
             },
             {
                 key: "K",
@@ -68,7 +68,7 @@ export function windowKeys(): UserMenu {
                 key: "l",
                 name: "Focus group right",
                 icon: "arrow-right",
-                command: "workbench.action.focusNextGroup",
+                command: "workbench.action.navigateRight",
             },
             {
                 key: "L",
