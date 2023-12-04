@@ -28,4 +28,4 @@ updates:
       groups:
           docs:
               patterns:
-                  - '@docusaurus/*'
+                  - "@docusaurus/*"
