@@ -36,6 +36,7 @@ const config = {
         defaultLocale: "en",
         locales: ["en"],
     },
+    scripts: [{ src: "/js/loadtags.js" }],
     themes: [
         [
             require.resolve("@easyops-cn/docusaurus-search-local"),
