@@ -107,3 +107,26 @@ Add the following:
    "key": "space"
 }
 ```
+
+As an alternative, you can either:
+
+- Add the following to your `init.vim`:
+  ```vim
+  if exists('g:vscode')
+      " VSCode extension config
+      nnoremap <Space> <Cmd>call VSCodeNotify('glimpse.menu')<CR>
+      vnoremap <Space> <Cmd>call VSCodeNotify('glimpse.menu')<CR>
+  else
+      " ordinary Neovim config
+  endif
+  ```
+- Add the following to your `init.lua`:
+  ```lua
+  if vim.g.vscode then
+      -- VSCode extension config
+      vim.keymap.set("n", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.menu')<CR>]])
+      vim.keymap.set("v", "<Space>", [[<Cmd>call VSCodeNotify('glimpse.menu')<CR>]])
+  else
+      -- ordinary Neovim config
+  end
+  ```
