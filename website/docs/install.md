@@ -111,6 +111,7 @@ Add the following:
 As an alternative, you can either:
 
 - Add the following to your `init.vim`:
+
   ```vim
   if exists('g:vscode')
       " VSCode extension config
@@ -120,7 +121,9 @@ As an alternative, you can either:
       " ordinary Neovim config
   endif
   ```
+
 - Add the following to your `init.lua`:
+
   ```lua
   if vim.g.vscode then
       -- VSCode extension config
