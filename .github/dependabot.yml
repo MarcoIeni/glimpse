@@ -6,6 +6,7 @@ updates:
       schedule:
           interval: "weekly"
       open-pull-requests-limit: 10
+
     - package-ecosystem: "npm"
       directory: "/"
       # Check for updates every Monday
@@ -17,9 +18,14 @@ updates:
             update-types: ["version-update:semver-major"]
           - dependency-name: "@types/vscode"
             update-types: ["version-update:semver-minor"]
+
     - package-ecosystem: "npm"
       directory: "/website/"
       # Check for updates every Monday
       schedule:
           interval: "weekly"
       open-pull-requests-limit: 10
+      groups:
+          docs:
+              patterns:
+                  - "@docusaurus/*"
