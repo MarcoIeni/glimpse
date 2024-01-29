@@ -73,7 +73,7 @@
         "prettier": "^3.2.4",
         "typescript": "^5.3.3",
         "@vscode/test-web": "^0.0.44",
-        "@vscode/test-electron": "^2.3.8",
+        "@vscode/test-electron": "^2.3.9",
         "ts-loader": "^9.5.1",
         "ts-node": "^10.9.2",
         "webpack": "^5.90.0",
