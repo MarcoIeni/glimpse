@@ -29,3 +29,4 @@ updates:
           docs:
               patterns:
                   - "@docusaurus/*"
+                  - "@typescript-eslint/*"
