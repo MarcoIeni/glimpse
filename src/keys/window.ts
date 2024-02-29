@@ -148,6 +148,30 @@ export function windowKeys(): UserMenu {
                 icon: "combine",
                 command: "workbench.action.joinAllGroups",
             },
+            {
+                key: "1",
+                name: "Single column window layout",
+                icon: "editor-layout",
+                command: "workbench.action.editorLayoutSingle",
+            },
+            {
+                key: "2",
+                name: "Double column window layout",
+                icon: "editor-layout",
+                command: "workbench.action.editorLayoutTwoColumns",
+            },
+            {
+                key: "3",
+                name: "Triple column window layout",
+                icon: "editor-layout",
+                command: "workbench.action.editorLayoutThreeColumns",
+            },
+            {
+                key: "4",
+                name: "Grid window layout",
+                icon: "editor-layout",
+                command: "workbench.action.editorLayoutTwoByTwoGrid",
+            },
         ],
     };
 }
