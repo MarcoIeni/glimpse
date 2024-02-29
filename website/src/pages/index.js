@@ -21,6 +21,15 @@ function HomepageHeader() {
                 <p className="hero__subtitle">
                     <b>Mnemonic</b> key bindings for <b>VSCode</b> commands ⌨️
                 </p>
+                <div className={styles.buttons}>
+                    <Link
+                        style={{ marginRight: 10 }}
+                        className="button button--secondary button--lg"
+                        to="/docs"
+                    >
+                        Get Started️
+                    </Link>
+                </div>
             </div>
         </header>
     );
