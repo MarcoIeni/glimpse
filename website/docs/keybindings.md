@@ -443,6 +443,10 @@ Here are the default Glimpse key bindings.
 | w W | Focus group left | `workbench.action.focusPreviousGroup` |
 | w x | Close all groups | `workbench.action.closeAllGroups` |
 | w z | Join all groups | `workbench.action.joinAllGroups` |
+| w 1 | Single column window layout | `workbench.action.editorLayoutSingle` |
+| w 2 | Double column window layout | `workbench.action.editorLayoutTwoColumns` |
+| w 3 | Triple column window layout | `workbench.action.editorLayoutThreeColumns` |
+| w 4 | Grid window layout | `workbench.action.editorLayoutTwoByTwoGrid` |
 
 ### Enlarge group
 
