@@ -4,6 +4,13 @@ All notable changes to the "glimpse" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.15.0](https://github.com/MarcoIeni/glimpse/compare/v0.14.1...v0.15.0) (2024-02-29)
+
+
+### Features
+
+* **w:** add editor layout bindings ([#298](https://github.com/MarcoIeni/glimpse/issues/298)) ([c04b574](https://github.com/MarcoIeni/glimpse/commit/c04b574aa5fcbfa6543abf47e2eeebb84d337300))
+
 ## [0.14.1](https://github.com/MarcoIeni/glimpse/compare/v0.14.0...v0.14.1) (2023-11-05)
 
 
