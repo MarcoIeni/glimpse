@@ -30,6 +30,12 @@ export function searchKeys(): UserMenu {
                 menu: highlight(),
             },
             {
+                key: "q",
+                name: "Quick search",
+                icon: "zap",
+                command: "workbench.action.quickTextSearch",
+            },
+            {
                 key: "s",
                 name: "Search",
                 icon: "search",
