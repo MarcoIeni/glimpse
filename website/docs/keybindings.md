@@ -355,6 +355,7 @@ Here are the default Glimpse key bindings.
 | s e | Search Editor: New | `search.action.openNewEditor` |
 | s E | Search Editor: New to the Side | `search.action.openNewEditorToSide` |
 | s h | Highlight symbol | `editor.action.wordHighlight.trigger` |
+| s q | Quick search | `workbench.action.quickTextSearch` |
 | s s | Search | `actions.find` |
 | s S | Search in files | `workbench.action.findInFiles` |
 | s r | Replace | `editor.action.startFindReplaceAction` |
