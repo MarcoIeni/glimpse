@@ -26,7 +26,7 @@
     },
     "devDependencies": {
         "@docusaurus/module-type-aliases": "3.3.2",
-        "markdownlint-cli": "^0.40.0"
+        "markdownlint-cli": "^0.41.0"
     },
     "browserslist": {
         "production": [
