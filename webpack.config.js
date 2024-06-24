@@ -16,7 +16,6 @@ const webConfig = {
     target: "webworker", // web extensions run in a webworker context
     entry: {
         "extension-web": "./src/extension.ts", // source of the web extension main file
-        "test/suite/index-web": "./src/test/suite/index-web.ts", // source of the web extension test runner
     },
     output: {
         filename: "[name].js",
