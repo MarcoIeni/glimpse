@@ -16,7 +16,6 @@ const webConfig = {
     target: "webworker", // web extensions run in a webworker context
     entry: {
         "extension-web": "./src/extension.ts", // source of the web extension main file
-        "test/suite/index-web": "./src/test/suite/index-web.ts", // source of the web extension test runner
     },
     output: {
         filename: "[name].js",
@@ -78,9 +77,6 @@ const nodeConfig = /** @type WebpackConfig */ {
     target: "node", // extensions run in a node context
     entry: {
         "extension-node": "./src/extension.ts", // source of the node extension main file
-        "test/suite/index-node": "./src/test/suite/index-node.ts", // source of the node extension test runner
-        "test/suite/extension.test": "./src/test/suite/extension.test.ts", // create a separate file for the tests, to be found by glob
-        "test/runTest": "./src/test/runTest", // used to start the VS Code test runner (@vscode/test-electron)
     },
     output: {
         filename: "[name].js",

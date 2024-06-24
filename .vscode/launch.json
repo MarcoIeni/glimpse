@@ -43,8 +43,7 @@
             "request": "launch",
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}",
-                "--extensionDevelopmentKind=web",
-                "--extensionTestsPath=${workspaceFolder}/dist/test/suite/index-web"
+                "--extensionDevelopmentKind=web"
             ],
             "outFiles": ["${workspaceFolder}/dist/**/*.js"],
             "preLaunchTask": "npm: watch"
