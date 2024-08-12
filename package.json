@@ -68,7 +68,7 @@
         "@typescript-eslint/eslint-plugin": "^7.18.0",
         "@typescript-eslint/parser": "^7.18.0",
         "eslint": "^8.57.0",
-        "mocha": "^10.7.0",
+        "mocha": "^10.7.3",
         "prettier": "^3.3.3",
         "process": "^0.11.10",
         "ts-loader": "^9.5.1",
